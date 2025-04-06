@@ -1,0 +1,102 @@
+﻿@page
+@model FuneralOfficeSystem.Pages.Deceaseds.EditModel
+
+@{
+    ViewData["Title"] = "Επεξεργασία Αποβιώσαντα";
+}
+
+<div class="container">
+    <h1 class="text-center mb-4">Επεξεργασία Αποβιώσαντα</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form method="post" id="editForm">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <input type="hidden" asp-for="Deceased.Id" />
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="text-danger">*</span>
+                                    <label asp-for="Deceased.FirstName" class="control-label">Όνομα</label>
+                                    <input asp-for="Deceased.FirstName" class="form-control" required />
+                                    <span asp-validation-for="Deceased.FirstName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="text-danger">*</span>
+                                    <label asp-for="Deceased.LastName" class="control-label">Επώνυμο</label>
+                                    <input asp-for="Deceased.LastName" class="form-control" required />
+                                    <span asp-validation-for="Deceased.LastName" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Deceased.AMKA" class="control-label">ΑΜΚΑ</label>
+                                    <input asp-for="Deceased.AMKA" class="form-control" />
+                                    <span asp-validation-for="Deceased.AMKA" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Deceased.AFM" class="control-label">ΑΦΜ</label>
+                                    <input asp-for="Deceased.AFM" class="form-control" />
+                                    <span asp-validation-for="Deceased.AFM" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Deceased.BirthDate" class="control-label">Ημερομηνία Γέννησης</label>
+                                    <input asp-for="Deceased.BirthDate" class="form-control" type="date" />
+                                    <span asp-validation-for="Deceased.BirthDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="text-danger">*</span>
+                                    <label asp-for="Deceased.DeathDate" class="control-label">Ημερομηνία Θανάτου</label>
+                                    <input asp-for="Deceased.DeathDate" class="form-control" type="date" required />
+                                    <span asp-validation-for="Deceased.DeathDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <a asp-page="./Index" class="btn btn-secondary w-100">Επιστροφή στη Λίστα</a>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="submit" value="Αποθήκευση" class="btn btn-primary w-100" id="saveButton" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        // Προσθήκη client-side κώδικα για να επιβεβαιώσουμε ότι η φόρμα υποβάλλεται σωστά
+        $(document).ready(function () {
+            $("#editForm").on("submit", function (e) {
+                console.log("Deceased edit form submitted");
+                // Επιστρέφουμε true για να επιτρέψουμε την κανονική υποβολή της φόρμας
+                return true;
+            });
+        });
+    </script>
+}

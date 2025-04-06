@@ -1,0 +1,63 @@
+﻿@page
+@model FuneralOfficeSystem.Pages.FuneralOffices.EditModel
+
+@{
+    ViewData["Title"] = "Επεξεργασία Γραφείου Τελετών";
+}
+
+<div class="container">
+    <h1 class="mb-4">Επεξεργασία Γραφείου Τελετών</h1>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <form method="post" id="editForm">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <input type="hidden" asp-for="FuneralOffice.Id" />
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="FuneralOffice.Name" class="form-label"></label>
+                        <span class="text-danger">*</span>
+                        <input asp-for="FuneralOffice.Name" class="form-control" required />
+                        <span asp-validation-for="FuneralOffice.Name" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="FuneralOffice.Phone" class="form-label"></label>
+                        <span class="text-danger">*</span>
+                        <input asp-for="FuneralOffice.Phone" class="form-control" required />
+                        <span asp-validation-for="FuneralOffice.Phone" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="FuneralOffice.Address" class="form-label"></label>
+                    <span class="text-danger">*</span>
+                    <input asp-for="FuneralOffice.Address" class="form-control" required />
+                    <span asp-validation-for="FuneralOffice.Address" class="text-danger"></span>
+                </div>
+                <div class="mb-3 form-check">
+                    <input asp-for="FuneralOffice.IsEnabled" class="form-check-input" />
+                    <label asp-for="FuneralOffice.IsEnabled" class="form-check-label"></label>
+                </div>
+                <div class="d-flex justify-content-between mt-4">
+                    <a asp-page="Index" class="btn btn-secondary">Επιστροφή στη Λίστα</a>
+                    <button type="submit" class="btn btn-primary" id="saveButton">Αποθήκευση Αλλαγών</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        // Προσθήκη client-side κώδικα για να επιβεβαιώσουμε ότι η φόρμα υποβάλλεται σωστά
+        $(document).ready(function () {
+            $("#editForm").on("submit", function (e) {
+                console.log("Edit form submitted");
+                // Επιστρέφουμε true για να επιτρέψουμε την κανονική υποβολή της φόρμας
+                return true;
+            });
+        });
+    </script>
+}

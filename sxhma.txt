@@ -1,0 +1,2033 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS E:\Desktop\FuneralOfficeSystem> Get-ChildItem -Recurse
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          4/4/2025     08:52                FuneralOfficeSystem
+-a----          3/4/2025     05:44           1163 FuneralOfficeSystem.sln
+-a----          4/4/2025     11:03          99309 sxhma.txt
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     22:57                Areas
+d-----          2/4/2025     21:32                bin
+d-----          4/4/2025     08:35                Data
+d-----          2/4/2025     23:08                Migrations
+d-----          3/4/2025     02:03                Models
+d-----          3/4/2025     01:46                obj
+d-----          4/4/2025     10:44                Pages
+d-----          2/4/2025     22:18                Properties
+d-----          2/4/2025     23:43                Services
+d-----          2/4/2025     21:32                wwwroot
+-a----          2/4/2025     21:31            154 appsettings.Development.json
+-a----          2/4/2025     21:36            438 appsettings.json
+-a----          4/4/2025     10:34           1863 FuneralOfficeSystem.csproj
+-a----          4/4/2025     09:40           1300 FuneralOfficeSystem.csproj.user
+-a----          4/4/2025     08:52           4096 FuneralOfficeSystem.db
+-a----          4/4/2025     12:03          32768 FuneralOfficeSystem.db-shm
+-a----          4/4/2025     12:05         774592 FuneralOfficeSystem.db-wal
+-a----          2/4/2025     21:31           1170 FuneralOfficeSystem.sln
+-a----          4/4/2025     08:50           3667 Program.cs
+-a----          2/4/2025     22:57            162 ScaffoldingReadMe.txt
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\Areas
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     22:57                Identity
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\Areas\Identity
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     22:57                Pages
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\Areas\Identity\Pages
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     23:07                Account
+-a----          2/4/2025     22:57            176 _ValidationScriptsPartial.cshtml
+-a----          2/4/2025     22:57            222 _ViewImports.cshtml
+-a----          2/4/2025     22:57             58 _ViewStart.cshtml
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\Areas\Identity\Pages\Account
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/4/2025     23:04           4363 Login.cshtml
+-a----          2/4/2025     23:07           6360 Login.cshtml.cs
+-a----          2/4/2025     22:57           3165 Register.cshtml
+-a----          2/4/2025     22:57           8136 Register.cshtml.cs
+-a----          2/4/2025     22:57             58 _ViewImports.cshtml
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:32                Debug
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          4/4/2025     12:03                net8.0
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:46                af
+d-----          2/4/2025     21:46                ar
+d-----          2/4/2025     21:46                az
+d-----          2/4/2025     21:46                bg
+d-----          2/4/2025     21:46                bn-BD
+d-----          3/4/2025     01:46                cs
+d-----          2/4/2025     21:46                da
+d-----          3/4/2025     01:46                de
+d-----          2/4/2025     21:46                el
+d-----          3/4/2025     01:46                es
+d-----          2/4/2025     21:46                fa
+d-----          2/4/2025     21:46                fi-FI
+d-----          3/4/2025     01:46                fr
+d-----          2/4/2025     21:46                fr-BE
+d-----          2/4/2025     21:46                he
+d-----          2/4/2025     21:46                hr
+d-----          2/4/2025     21:46                hu
+d-----          2/4/2025     21:46                hy
+d-----          2/4/2025     21:46                id
+d-----          2/4/2025     21:46                is
+d-----          3/4/2025     01:46                it
+d-----          3/4/2025     01:46                ja
+d-----          3/4/2025     01:46                ko
+d-----          2/4/2025     21:46                ko-KR
+d-----          2/4/2025     21:46                ku
+d-----          2/4/2025     21:46                lv
+d-----          2/4/2025     21:46                ms-MY
+d-----          2/4/2025     21:46                mt
+d-----          2/4/2025     21:46                nb
+d-----          2/4/2025     21:46                nb-NO
+d-----          2/4/2025     21:46                nl
+d-----          3/4/2025     01:46                pl
+d-----          2/4/2025     21:46                pt
+d-----          3/4/2025     01:46                pt-BR
+d-----          2/4/2025     21:46                ro
+d-----          3/4/2025     01:46                ru
+d-----          3/4/2025     01:33                runtimes
+d-----          2/4/2025     21:46                sk
+d-----          2/4/2025     21:46                sl
+d-----          2/4/2025     21:46                sr
+d-----          2/4/2025     21:46                sr-Latn
+d-----          2/4/2025     21:46                sv
+d-----          2/4/2025     21:46                th-TH
+d-----          3/4/2025     01:46                tr
+d-----          2/4/2025     21:46                uk
+d-----          2/4/2025     21:46                uz-Cyrl-UZ
+d-----          2/4/2025     21:46                uz-Latn-UZ
+d-----          2/4/2025     21:46                vi
+d-----          2/4/2025     21:46                zh-CN
+d-----          3/4/2025     01:46                zh-Hans
+d-----          3/4/2025     01:46                zh-Hant
+-a----          2/4/2025     21:31            154 appsettings.Development.json
+-a----          2/4/2025     21:36            438 appsettings.json
+-a----         26/2/2024     17:24         400936 Azure.Core.dll
+-a----         10/6/2024     19:43         342960 Azure.Identity.dll
+-a----          7/2/2025     08:15        4870808 BouncyCastle.Cryptography.dll
+-a----        31/10/2024     04:18          54320 dotnet-aspnet-codegenerator-design.dll
+-a----          4/4/2025     10:41         221080 FuneralOfficeSystem.deps.json
+-a----          4/4/2025     12:03        1038336 FuneralOfficeSystem.dll
+-a----          4/4/2025     12:03         138752 FuneralOfficeSystem.exe
+-a----          4/4/2025     12:03         273528 FuneralOfficeSystem.pdb
+-a----          3/4/2025     01:46            485 FuneralOfficeSystem.runtimeconfig.json
+-a----          3/4/2025     02:14         188821 FuneralOfficeSystem.staticwebassets.endpoints.json
+-a----          3/4/2025     02:04          19065 FuneralOfficeSystem.staticwebassets.runtime.json
+-a----         29/1/2022     17:04         355944 Humanizer.dll
+-a----         10/2/2025     10:32         155648 itext.barcodes.dll
+-a----         10/2/2025     10:28          23040 itext.bouncy-castle-connector.dll
+-a----         10/2/2025     10:27         280576 itext.commons.dll
+-a----         10/2/2025     10:34         197120 itext.forms.dll
+-a----          7/2/2025     19:30        5922816 itext.html2pdf.dll
+-a----         10/2/2025     10:28        1549824 itext.io.dll
+-a----         10/2/2025     10:32        1046016 itext.kernel.dll
+-a----         10/2/2025     10:33         437760 itext.layout.dll
+-a----         10/2/2025     10:35         114176 itext.pdfa.dll
+-a----         10/2/2025     10:35          58368 itext.pdfua.dll
+-a----         10/2/2025     10:36         285184 itext.sign.dll
+-a----         10/2/2025     10:34         403456 itext.styledxmlparser.dll
+-a----         10/2/2025     10:35         144384 itext.svg.dll
+-a----          9/3/2025     02:14         949248 MailKit.dll
+-a----         13/2/2025     07:19          53000 Microsoft.AspNetCore.Cryptography.Internal.dll
+-a----         13/2/2025     07:20          23824 Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+-a----         13/2/2025     07:21          81704 Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+-a----         13/2/2025     07:21         108808 Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+-a----         13/2/2025     07:24         933128 Microsoft.AspNetCore.Identity.UI.dll
+-a----        19/10/2023     07:55        1010440 Microsoft.AspNetCore.Razor.Language.dll
+-a----        18/10/2022     19:14          19072 Microsoft.Bcl.AsyncInterfaces.dll
+-a----        19/10/2023     23:53        1919664 Microsoft.Build.dll
+-a----        19/10/2023     23:53         305936 Microsoft.Build.Framework.dll
+-a----         13/3/2024     20:40          44576 Microsoft.Build.Locator.dll
+-a----          6/6/2020     06:37         543624 Microsoft.CodeAnalysis.AnalyzerUtilities.dll
+-a----         8/11/2023     19:56        6501536 Microsoft.CodeAnalysis.CSharp.dll
+-a----         8/11/2023     19:58        2013984 Microsoft.CodeAnalysis.CSharp.Features.dll
+-a----         8/11/2023     19:56         883472 Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+-a----         8/11/2023     19:46        2895520 Microsoft.CodeAnalysis.dll
+-a----         11/5/2022     17:49         145840 Microsoft.CodeAnalysis.Elfie.dll
+-a----         8/11/2023     19:52        4902672 Microsoft.CodeAnalysis.Features.dll
+-a----        19/10/2023     07:55          92448 Microsoft.CodeAnalysis.Razor.dll
+-a----         8/11/2023     19:52         137904 Microsoft.CodeAnalysis.Scripting.dll
+-a----         8/11/2023     19:51        3852448 Microsoft.CodeAnalysis.Workspaces.dll
+-a----         8/11/2023     19:52          86688 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+-a----         8/11/2023     20:01          72864 Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+-a----         27/8/2024     21:22         275984 Microsoft.Data.SqlClient.dll
+-a----         12/2/2025     22:53         174624 Microsoft.Data.Sqlite.dll
+-a----         28/4/2023     22:31          87168 Microsoft.DiaSymReader.dll
+-a----         9/11/2016     00:14          21488 Microsoft.DotNet.PlatformAbstractions.dll
+-a----        31/10/2024     04:17         135712 Microsoft.DotNet.Scaffolding.Shared.dll
+-a----         12/2/2025     22:53          34872 Microsoft.EntityFrameworkCore.Abstractions.dll
+-a----         12/2/2025     22:54         623144 Microsoft.EntityFrameworkCore.Design.dll
+-a----         12/2/2025     22:53        2691128 Microsoft.EntityFrameworkCore.dll
+-a----         12/2/2025     22:54        2141768 Microsoft.EntityFrameworkCore.Relational.dll
+-a----         12/2/2025     22:54         294984 Microsoft.EntityFrameworkCore.Sqlite.dll
+-a----         13/2/2025     01:35         548920 Microsoft.EntityFrameworkCore.SqlServer.dll
+-a----         12/2/2025     01:18          36616 Microsoft.Extensions.Caching.Abstractions.dll
+-a----         12/2/2025     01:18          47368 Microsoft.Extensions.Caching.Memory.dll
+-a----         12/2/2025     01:18          28440 Microsoft.Extensions.Configuration.Abstractions.dll
+-a----         12/2/2025     01:13          65288 Microsoft.Extensions.DependencyInjection.Abstractions.dll
+-a----         12/2/2025     01:18          92448 Microsoft.Extensions.DependencyInjection.dll
+-a----         12/2/2025     01:19          84240 Microsoft.Extensions.DependencyModel.dll
+-a----         13/2/2025     07:19          35600 Microsoft.Extensions.FileProviders.Embedded.dll
+-a----         13/2/2025     07:20         177928 Microsoft.Extensions.Identity.Core.dll
+-a----         13/2/2025     07:20          45336 Microsoft.Extensions.Identity.Stores.dll
+-a----         12/2/2025     01:18          66320 Microsoft.Extensions.Logging.Abstractions.dll
+-a----         12/2/2025     01:18          51464 Microsoft.Extensions.Logging.dll
+-a----         12/2/2025     01:18          65320 Microsoft.Extensions.Options.dll
+-a----         12/2/2025     01:12          44344 Microsoft.Extensions.Primitives.dll
+-a----          7/6/2024     01:09        1005600 Microsoft.Identity.Client.dll
+-a----          7/6/2024     01:14          66592 Microsoft.Identity.Client.Extensions.Msal.dll
+-a----         1/12/2023     06:56          18968 Microsoft.IdentityModel.Abstractions.dll
+-a----         1/12/2023     06:34         112576 Microsoft.IdentityModel.JsonWebTokens.dll
+-a----         1/12/2023     06:35          36792 Microsoft.IdentityModel.Logging.dll
+-a----         1/12/2023     06:37          39864 Microsoft.IdentityModel.Protocols.dll
+-a----         1/12/2023     06:48         114104 Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+-a----         1/12/2023     06:41         993312 Microsoft.IdentityModel.Tokens.dll
+-a----        19/10/2023     23:53          30384 Microsoft.NET.StringTools.dll
+-a----         27/1/2022     19:19          23976 Microsoft.SqlServer.Server.dll
+-a----        31/10/2024     04:18          63048 Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+-a----        31/10/2024     04:18          37448 Microsoft.VisualStudio.Web.CodeGeneration.dll
+-a----        31/10/2024     04:18          83528 Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+-a----        31/10/2024     04:18          30264 Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+-a----        31/10/2024     04:18          35368 Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+-a----        31/10/2024     04:18         605240 Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+-a----        31/10/2023     17:00          20760 Microsoft.Win32.Registry.AccessControl.dll
+-a----        31/10/2023     17:00          25880 Microsoft.Win32.SystemEvents.dll
+-a----          9/3/2025     01:44        1257472 MimeKit.dll
+-a----          4/9/2024     00:57         177664 Mono.TextTemplating.dll
+-a----          8/3/2023     09:09         712464 Newtonsoft.Json.dll
+-a----         28/6/2024     05:52         123432 NuGet.Common.dll
+-a----         28/6/2024     05:53         179752 NuGet.Configuration.dll
+-a----         28/6/2024     05:54          97304 NuGet.DependencyResolver.Core.dll
+-a----         28/6/2024     05:54         133152 NuGet.Frameworks.dll
+-a----         28/6/2024     05:54          59440 NuGet.LibraryModel.dll
+-a----         28/6/2024     05:54         689712 NuGet.Packaging.dll
+-a----         28/6/2024     05:54         255008 NuGet.ProjectModel.dll
+-a----         28/6/2024     05:54         790960 NuGet.Protocol.dll
+-a----         28/6/2024     05:55          68544 NuGet.Versioning.dll
+-a----         11/9/2024     23:14           5120 SQLitePCLRaw.batteries_v2.dll
+-a----         11/9/2024     23:12          51200 SQLitePCLRaw.core.dll
+-a----         11/9/2024     23:12          36864 SQLitePCLRaw.provider.e_sqlite3.dll
+-a----          3/1/2024     19:43          28608 System.ClientModel.dll
+-a----        31/10/2023     16:59         184080 System.CodeDom.dll
+-a----        31/10/2023     16:59         294160 System.ComponentModel.Composition.dll
+-a----        31/10/2023     16:59          49928 System.ComponentModel.Composition.Registration.dll
+-a----        18/10/2022     19:15          20096 System.Composition.AttributedModel.dll
+-a----        18/10/2022     19:15          53880 System.Composition.Convention.dll
+-a----        18/10/2022     19:16          55440 System.Composition.Hosting.dll
+-a----        18/10/2022     19:15          26240 System.Composition.Runtime.dll
+-a----        18/10/2022     19:16          65168 System.Composition.TypedParts.dll
+-a----        31/10/2023     16:59         442632 System.Configuration.ConfigurationManager.dll
+-a----        31/10/2023     17:04         100512 System.Data.Odbc.dll
+-a----        31/10/2023     17:06         123552 System.Data.OleDb.dll
+-a----        18/10/2022     02:16         268224 System.Data.SqlClient.dll
+-a----         12/2/2025     01:12         173360 System.Diagnostics.DiagnosticSource.dll
+-a----        31/10/2023     17:05          51872 System.Diagnostics.PerformanceCounter.dll
+-a----        31/10/2023     17:05          68368 System.DirectoryServices.AccountManagement.dll
+-a----        31/10/2023     17:02         129304 System.DirectoryServices.dll
+-a----        31/10/2023     17:00          71944 System.DirectoryServices.Protocols.dll
+-a----         1/11/2023     00:14         610992 System.Drawing.Common.dll
+-a----         1/12/2023     06:31          77344 System.IdentityModel.Tokens.Jwt.dll
+-a----        31/10/2023     16:59         141584 System.IO.Packaging.dll
+-a----         12/2/2025     01:12          77608 System.IO.Pipelines.dll
+-a----        31/10/2023     17:02          35488 System.IO.Ports.dll
+-a----        31/10/2023     17:10          72968 System.Management.dll
+-a----          8/4/2021     19:45          21368 System.Memory.Data.dll
+-a----         17/8/2022     00:01        2686376 System.Private.ServiceModel.dll
+-a----        31/10/2023     16:59          83216 System.Reflection.Context.dll
+-a----        18/10/2022     19:16         242296 System.Reflection.MetadataLoadContext.dll
+-a----        31/10/2023     17:05          90288 System.Runtime.Caching.dll
+-a----         17/9/2024     02:09         264864 System.Security.Cryptography.Pkcs.dll
+-a----        31/10/2023     16:59          36616 System.Security.Cryptography.ProtectedData.dll
+-a----        31/10/2023     16:59         114448 System.Security.Permissions.dll
+-a----         17/8/2022     00:02          25000 System.ServiceModel.dll
+-a----         17/8/2022     00:02          15272 System.ServiceModel.Duplex.dll
+-a----         17/8/2022     00:02          16296 System.ServiceModel.Http.dll
+-a----         17/8/2022     00:02          15784 System.ServiceModel.NetTcp.dll
+-a----         17/8/2022     00:02          22952 System.ServiceModel.Primitives.dll
+-a----         17/8/2022     00:02          17320 System.ServiceModel.Security.dll
+-a----        31/10/2023     16:59         120592 System.ServiceModel.Syndication.dll
+-a----        31/10/2023     16:59          33552 System.ServiceProcess.ServiceController.dll
+-a----        31/10/2023     17:01         308384 System.Speech.dll
+-a----         12/2/2025     01:12          70968 System.Text.Encodings.Web.dll
+-a----         12/2/2025     01:19         643880 System.Text.Json.dll
+-a----        31/10/2023     17:10          32528 System.Threading.AccessControl.dll
+-a----         17/8/2022     00:02         384936 System.Web.Services.Description.dll
+-a----        31/10/2023     16:59          27424 System.Windows.Extensions.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\af
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          16488 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\ar
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          21608 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\az
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          16488 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\bg
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          17000 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\bn-BD
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          17000 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\cs
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          18536 Humanizer.resources.dll
+-a----         8/11/2023     19:58          46240 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+-a----         8/11/2023     19:56         421552 Microsoft.CodeAnalysis.CSharp.resources.dll
+-a----         8/11/2023     19:56          18080 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+-a----         8/11/2023     19:52         191240 Microsoft.CodeAnalysis.Features.resources.dll
+-a----         8/11/2023     19:46          46752 Microsoft.CodeAnalysis.resources.dll
+-a----         8/11/2023     19:52          18192 Microsoft.CodeAnalysis.Scripting.resources.dll
+-a----         8/11/2023     19:52          17568 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+-a----         8/11/2023     19:51          48304 Microsoft.CodeAnalysis.Workspaces.resources.dll
+-a----         17/8/2022     00:01         212904 System.Private.ServiceModel.resources.dll
+-a----         17/8/2022     00:02          19368 System.Web.Services.Description.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\da
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          17512 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\de
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          19560 Humanizer.resources.dll
+-a----         8/11/2023     19:58          46768 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+-a----         8/11/2023     19:56         450208 Microsoft.CodeAnalysis.CSharp.resources.dll
+-a----         8/11/2023     19:56          18080 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+-a----         8/11/2023     19:52         201504 Microsoft.CodeAnalysis.Features.resources.dll
+-a----         8/11/2023     19:46          48304 Microsoft.CodeAnalysis.resources.dll
+-a----         8/11/2023     19:52          18608 Microsoft.CodeAnalysis.Scripting.resources.dll
+-a----         8/11/2023     19:52          17568 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+-a----         8/11/2023     19:51          49824 Microsoft.CodeAnalysis.Workspaces.resources.dll
+-a----         17/8/2022     00:01         227240 System.Private.ServiceModel.resources.dll
+-a----         17/8/2022     00:02          19368 System.Web.Services.Description.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\el
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          17512 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\es
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          33384 Humanizer.resources.dll
+-a----         8/11/2023     19:58          47264 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+-a----         8/11/2023     19:56         440480 Microsoft.CodeAnalysis.CSharp.resources.dll
+-a----         8/11/2023     19:56          18080 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+-a----         8/11/2023     19:52         198928 Microsoft.CodeAnalysis.Features.resources.dll
+-a----         8/11/2023     19:46          48304 Microsoft.CodeAnalysis.resources.dll
+-a----         8/11/2023     19:52          18096 Microsoft.CodeAnalysis.Scripting.resources.dll
+-a----         8/11/2023     19:52          17584 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+-a----         8/11/2023     19:51          49824 Microsoft.CodeAnalysis.Workspaces.resources.dll
+-a----         17/8/2022     00:01         218536 System.Private.ServiceModel.resources.dll
+-a----         17/8/2022     00:02          19368 System.Web.Services.Description.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\fa
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          17000 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\fi-FI
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          13928 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\fr
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          19048 Humanizer.resources.dll
+-a----         8/11/2023     19:58          47776 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+-a----         8/11/2023     19:56         451232 Microsoft.CodeAnalysis.CSharp.resources.dll
+-a----         8/11/2023     19:56          18192 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+-a----         8/11/2023     19:52         205584 Microsoft.CodeAnalysis.Features.resources.dll
+-a----         8/11/2023     19:46          48800 Microsoft.CodeAnalysis.resources.dll
+-a----         8/11/2023     19:52          18608 Microsoft.CodeAnalysis.Scripting.resources.dll
+-a----         8/11/2023     19:52          17680 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+-a----         8/11/2023     19:52          50848 Microsoft.CodeAnalysis.Workspaces.resources.dll
+-a----         17/8/2022     00:01         226216 System.Private.ServiceModel.resources.dll
+-a----         17/8/2022     00:02          19368 System.Web.Services.Description.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\fr-BE
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          17000 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\he
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          21096 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\hr
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          19048 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\hu
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          16488 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\hy
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          17000 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\id
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          17000 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\is
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          24168 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\it
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          16488 Humanizer.resources.dll
+-a----         8/11/2023     19:58          47376 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+-a----         8/11/2023     19:56         447240 Microsoft.CodeAnalysis.CSharp.resources.dll
+-a----         8/11/2023     19:56          18096 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+-a----         8/11/2023     19:52         200968 Microsoft.CodeAnalysis.Features.resources.dll
+-a----         8/11/2023     19:46          48800 Microsoft.CodeAnalysis.resources.dll
+-a----         8/11/2023     19:52          18592 Microsoft.CodeAnalysis.Scripting.resources.dll
+-a----         8/11/2023     19:52          17584 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+-a----         8/11/2023     19:52          50336 Microsoft.CodeAnalysis.Workspaces.resources.dll
+-a----         17/8/2022     00:01         220584 System.Private.ServiceModel.resources.dll
+-a----         17/8/2022     00:02          19368 System.Web.Services.Description.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\ja
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          16488 Humanizer.resources.dll
+-a----         8/11/2023     19:58          48912 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+-a----         8/11/2023     19:56         492704 Microsoft.CodeAnalysis.CSharp.resources.dll
+-a----         8/11/2023     19:56          18096 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+-a----         8/11/2023     19:52         211216 Microsoft.CodeAnalysis.Features.resources.dll
+-a----         8/11/2023     19:46          51872 Microsoft.CodeAnalysis.resources.dll
+-a----         8/11/2023     19:52          18608 Microsoft.CodeAnalysis.Scripting.resources.dll
+-a----         8/11/2023     19:52          17584 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+-a----         8/11/2023     19:52          53408 Microsoft.CodeAnalysis.Workspaces.resources.dll
+-a----         17/8/2022     00:01         256424 System.Private.ServiceModel.resources.dll
+-a----         17/8/2022     00:02          20392 System.Web.Services.Description.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\ko
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         8/11/2023     19:58          46368 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+-a----         8/11/2023     19:56         452272 Microsoft.CodeAnalysis.CSharp.resources.dll
+-a----         8/11/2023     19:56          18192 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+-a----         8/11/2023     19:52         196256 Microsoft.CodeAnalysis.Features.resources.dll
+-a----         8/11/2023     19:46          48800 Microsoft.CodeAnalysis.resources.dll
+-a----         8/11/2023     19:52          18592 Microsoft.CodeAnalysis.Scripting.resources.dll
+-a----         8/11/2023     19:52          17568 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+-a----         8/11/2023     19:52          50336 Microsoft.CodeAnalysis.Workspaces.resources.dll
+-a----         17/8/2022     00:01         225704 System.Private.ServiceModel.resources.dll
+-a----         17/8/2022     00:02          19880 System.Web.Services.Description.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\ko-KR
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          26728 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\ku
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          30312 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\lv
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          27240 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\ms-MY
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          27240 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\mt
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          29800 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\nb
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          17512 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\nb-NO
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          17512 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\nl
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          16488 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\pl
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          18536 Humanizer.resources.dll
+-a----         8/11/2023     19:58          47368 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+-a----         8/11/2023     19:56         453280 Microsoft.CodeAnalysis.CSharp.resources.dll
+-a----         8/11/2023     19:56          18208 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+-a----         8/11/2023     19:52         198408 Microsoft.CodeAnalysis.Features.resources.dll
+-a----         8/11/2023     19:46          48816 Microsoft.CodeAnalysis.resources.dll
+-a----         8/11/2023     19:52          18592 Microsoft.CodeAnalysis.Scripting.resources.dll
+-a----         8/11/2023     19:52          17568 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+-a----         8/11/2023     19:52          49840 Microsoft.CodeAnalysis.Workspaces.resources.dll
+-a----         17/8/2022     00:01         226216 System.Private.ServiceModel.resources.dll
+-a----         17/8/2022     00:02          19368 System.Web.Services.Description.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\pt
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          16488 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\pt-BR
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         8/11/2023     19:58          46864 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+-a----         8/11/2023     19:56         432800 Microsoft.CodeAnalysis.CSharp.resources.dll
+-a----         8/11/2023     19:56          18096 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+-a----         8/11/2023     19:52         196888 Microsoft.CodeAnalysis.Features.resources.dll
+-a----         8/11/2023     19:46          47264 Microsoft.CodeAnalysis.resources.dll
+-a----         8/11/2023     19:52          18080 Microsoft.CodeAnalysis.Scripting.resources.dll
+-a----         8/11/2023     19:52          17568 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+-a----         8/11/2023     19:52          49312 Microsoft.CodeAnalysis.Workspaces.resources.dll
+-a----         17/8/2022     00:01         217000 System.Private.ServiceModel.resources.dll
+-a----         17/8/2022     00:02          19368 System.Web.Services.Description.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\ro
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          16488 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\ru
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          21608 Humanizer.resources.dll
+-a----         8/11/2023     19:58          55048 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+-a----         8/11/2023     19:56         595104 Microsoft.CodeAnalysis.CSharp.resources.dll
+-a----         8/11/2023     19:56          18704 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+-a----         8/11/2023     19:52         261392 Microsoft.CodeAnalysis.Features.resources.dll
+-a----         8/11/2023     19:46          58528 Microsoft.CodeAnalysis.resources.dll
+-a----         8/11/2023     19:52          19616 Microsoft.CodeAnalysis.Scripting.resources.dll
+-a----         8/11/2023     19:52          17568 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+-a----         8/11/2023     19:52          57504 Microsoft.CodeAnalysis.Workspaces.resources.dll
+-a----         17/8/2022     00:01         298408 System.Private.ServiceModel.resources.dll
+-a----         17/8/2022     00:02          20904 System.Web.Services.Description.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:46                browser
+d-----          2/4/2025     21:46                browser-wasm
+d-----          3/4/2025     01:33                freebsd
+d-----          3/4/2025     01:33                illumos
+d-----          3/4/2025     01:33                ios
+d-----          3/4/2025     01:33                linux
+d-----          2/4/2025     21:46                linux-arm
+d-----          2/4/2025     21:46                linux-arm64
+d-----          2/4/2025     21:46                linux-armel
+d-----          2/4/2025     21:46                linux-mips64
+d-----          2/4/2025     21:46                linux-musl-arm
+d-----          2/4/2025     21:46                linux-musl-arm64
+d-----          2/4/2025     21:46                linux-musl-s390x
+d-----          2/4/2025     21:46                linux-musl-x64
+d-----          2/4/2025     21:46                linux-ppc64le
+d-----          2/4/2025     21:46                linux-s390x
+d-----          2/4/2025     21:46                linux-x64
+d-----          2/4/2025     21:46                linux-x86
+d-----          2/4/2025     21:46                maccatalyst-arm64
+d-----          2/4/2025     21:46                maccatalyst-x64
+d-----          3/4/2025     01:33                osx
+d-----          2/4/2025     21:46                osx-arm64
+d-----          2/4/2025     21:46                osx-x64
+d-----          3/4/2025     01:33                solaris
+d-----          3/4/2025     01:33                tvos
+d-----          2/4/2025     21:46                unix
+d-----          2/4/2025     21:46                win
+d-----          2/4/2025     21:46                win-arm
+d-----          2/4/2025     21:46                win-arm64
+d-----          2/4/2025     21:46                win-x64
+d-----          2/4/2025     21:46                win-x86
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\browser
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:46                lib
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\browser\lib
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:46                net8.0
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\browser\lib\net8.0
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         12/2/2025     01:17          70952 System.Text.Encodings.Web.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\browser-wasm
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:46                nativeassets
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\browser-wasm\nativeassets
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:46                net8.0
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\browser-wasm\nativeassets\n
+    et8.0
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         11/9/2024     23:05        1192598 e_sqlite3.a
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\freebsd
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:46                lib
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\freebsd\lib
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:46                net7.0
+d-----          3/4/2025     01:46                net8.0
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\freebsd\lib\net8.0
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        31/10/2023     17:08         295184 System.Data.Odbc.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\illumos
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:46                lib
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\illumos\lib
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:46                net7.0
+d-----          3/4/2025     01:46                net8.0
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\illumos\lib\net8.0
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        31/10/2023     17:04         295072 System.Data.Odbc.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\ios
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:46                lib
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\ios\lib
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:46                net7.0
+d-----          3/4/2025     01:46                net8.0
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\ios\lib\net8.0
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        31/10/2023     17:08         295696 System.Data.Odbc.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:46                lib
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux\lib
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:46                net7.0
+d-----          3/4/2025     01:46                net8.0
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux\lib\net8.0
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        31/10/2023     17:04         295088 System.Data.Odbc.dll
+-a----        31/10/2023     17:00         179488 System.DirectoryServices.Protocols.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-arm
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:46                native
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-arm\native
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         11/9/2024     23:05         879532 libe_sqlite3.so
+-a----        31/10/2023     16:45           9568 libSystem.IO.Ports.Native.so
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-arm64
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:46                native
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-arm64\native
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         11/9/2024     23:05        1366840 libe_sqlite3.so
+-a----        31/10/2023     16:46          14632 libSystem.IO.Ports.Native.so
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-armel
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:46                native
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-armel\native
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         11/9/2024     23:05        1239796 libe_sqlite3.so
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-mips64
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:46                native
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-mips64\native
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         11/9/2024     23:05        1588656 libe_sqlite3.so
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-musl-arm
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:46                native
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-musl-arm\native
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         11/9/2024     23:05        1197988 libe_sqlite3.so
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-musl-arm64
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:46                native
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-musl-arm64\native
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         11/9/2024     23:05        1379920 libe_sqlite3.so
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-musl-s390x
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:46                native
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-musl-s390x\native
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         11/9/2024     23:05        1536984 libe_sqlite3.so
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-musl-x64
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:46                native
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-musl-x64\native
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         11/9/2024     23:05        1305568 libe_sqlite3.so
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-ppc64le
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:46                native
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-ppc64le\native
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         11/9/2024     23:05        1721728 libe_sqlite3.so
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-s390x
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:46                native
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-s390x\native
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         11/9/2024     23:05        1482712 libe_sqlite3.so
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-x64
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:46                native
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-x64\native
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         11/9/2024     23:05        1330920 libe_sqlite3.so
+-a----        31/10/2023     16:46          14488 libSystem.IO.Ports.Native.so
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-x86
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:46                native
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\linux-x86\native
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         11/9/2024     23:05        1394584 libe_sqlite3.so
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\maccatalyst-arm64
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:46                native
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\maccatalyst-arm64\native
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         11/9/2024     23:05        1551824 libe_sqlite3.dylib
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\maccatalyst-x64
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:46                native
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\maccatalyst-x64\native
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         11/9/2024     23:05        1590112 libe_sqlite3.dylib
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\osx
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:46                lib
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\osx\lib
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:46                net7.0
+d-----          3/4/2025     01:46                net8.0
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\osx\lib\net8.0
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        31/10/2023     17:04         295600 System.Data.Odbc.dll
+-a----        31/10/2023     17:00         179984 System.DirectoryServices.Protocols.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\osx-arm64
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:46                native
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\osx-arm64\native
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         11/9/2024     23:05        1536608 libe_sqlite3.dylib
+-a----        31/10/2023     16:48          70464 libSystem.IO.Ports.Native.dylib
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\osx-x64
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:46                native
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\osx-x64\native
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         11/9/2024     23:05        1557432 libe_sqlite3.dylib
+-a----        31/10/2023     16:49          70480 libSystem.IO.Ports.Native.dylib
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\solaris
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:46                lib
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\solaris\lib
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:46                net7.0
+d-----          3/4/2025     01:46                net8.0
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\solaris\lib\net8.0
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        31/10/2023     17:04         295184 System.Data.Odbc.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\tvos
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:46                lib
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\tvos\lib
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:46                net7.0
+d-----          3/4/2025     01:46                net8.0
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\tvos\lib\net8.0
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        31/10/2023     17:04         295584 System.Data.Odbc.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\unix
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:46                lib
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\unix\lib
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:46                net6.0
+d-----          3/4/2025     01:46                net7.0
+d-----          3/4/2025     01:46                net8.0
+d-----          3/4/2025     01:46                netcoreapp2.1
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\unix\lib\net6.0
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         27/8/2024     21:22        1559184 Microsoft.Data.SqlClient.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\unix\lib\net8.0
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        31/10/2023     17:02          74416 System.IO.Ports.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\unix\lib\netcoreapp2.1
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        18/10/2022     02:26         957376 System.Data.SqlClient.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\win
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:33                lib
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\win\lib
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:33                net6.0
+d-----          3/4/2025     01:46                net7.0
+d-----          3/4/2025     01:46                net8.0
+d-----          3/4/2025     01:46                netcoreapp2.1
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\win\lib\net6.0
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         27/8/2024     21:23        1643168 Microsoft.Data.SqlClient.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\win\lib\net8.0
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        31/10/2023     16:59          20760 Microsoft.Win32.Registry.AccessControl.dll
+-a----        31/10/2023     16:59          58632 Microsoft.Win32.SystemEvents.dll
+-a----        31/10/2023     16:59         296624 System.Data.Odbc.dll
+-a----        31/10/2023     17:00         389280 System.Data.OleDb.dll
+-a----        31/10/2023     16:59         134920 System.Diagnostics.PerformanceCounter.dll
+-a----        31/10/2023     17:00         302240 System.DirectoryServices.AccountManagement.dll
+-a----        31/10/2023     17:00         405264 System.DirectoryServices.dll
+-a----        31/10/2023     16:59         175880 System.DirectoryServices.Protocols.dll
+-a----        31/10/2023     17:00          87728 System.IO.Ports.dll
+-a----        31/10/2023     16:59         311984 System.Management.dll
+-a----        31/10/2023     17:00          92936 System.Runtime.Caching.dll
+-a----         17/9/2024     02:10         319784 System.Security.Cryptography.Pkcs.dll
+-a----        31/10/2023     17:00          87728 System.ServiceProcess.ServiceController.dll
+-a----        31/10/2023     17:00         685216 System.Speech.dll
+-a----        31/10/2023     16:59          51976 System.Threading.AccessControl.dll
+-a----        31/10/2023     16:59          72456 System.Windows.Extensions.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\win\lib\netcoreapp2.1
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        18/10/2022     02:26        1025984 System.Data.SqlClient.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\win-arm
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:46                native
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\win-arm\native
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         11/9/2024     23:05        1256960 e_sqlite3.dll
+-a----         11/8/2023     21:56         381984 Microsoft.Data.SqlClient.SNI.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\win-arm64
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:33                native
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\win-arm64\native
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         11/9/2024     23:05        1568768 e_sqlite3.dll
+-a----         11/8/2023     21:56         491552 Microsoft.Data.SqlClient.SNI.dll
+-a----         12/7/2017     14:24         174224 sni.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\win-x64
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:33                native
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\win-x64\native
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         11/9/2024     23:05        1759232 e_sqlite3.dll
+-a----         11/8/2023     21:56         504872 Microsoft.Data.SqlClient.SNI.dll
+-a----         12/7/2017     14:24         160040 sni.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\win-x86
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:33                native
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\runtimes\win-x86\native
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         11/9/2024     23:05        1429504 e_sqlite3.dll
+-a----         11/8/2023     21:56         414248 Microsoft.Data.SqlClient.SNI.dll
+-a----         12/7/2017     14:24         136488 sni.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\sk
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          18536 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\sl
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          21096 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\sr
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          19048 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\sr-Latn
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          18536 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\sv
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          16488 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\th-TH
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          29800 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\tr
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          16488 Humanizer.resources.dll
+-a----         8/11/2023     19:58          46344 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+-a----         8/11/2023     19:56         429216 Microsoft.CodeAnalysis.CSharp.resources.dll
+-a----         8/11/2023     19:56          18192 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+-a----         8/11/2023     19:52         192784 Microsoft.CodeAnalysis.Features.resources.dll
+-a----         8/11/2023     19:46          46752 Microsoft.CodeAnalysis.resources.dll
+-a----         8/11/2023     19:52          18080 Microsoft.CodeAnalysis.Scripting.resources.dll
+-a----         8/11/2023     19:52          17584 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+-a----         8/11/2023     19:52          48288 Microsoft.CodeAnalysis.Workspaces.resources.dll
+-a----         17/8/2022     00:01         212392 System.Private.ServiceModel.resources.dll
+-a----         17/8/2022     00:02          19368 System.Web.Services.Description.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\uk
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          21608 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\uz-Cyrl-UZ
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          17000 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\uz-Latn-UZ
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          16488 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\vi
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          17000 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\zh-CN
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          16488 Humanizer.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\zh-Hans
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          16488 Humanizer.resources.dll
+-a----         8/11/2023     19:58          44296 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+-a----         8/11/2023     19:56         382128 Microsoft.CodeAnalysis.CSharp.resources.dll
+-a----         8/11/2023     19:56          18080 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+-a----         8/11/2023     19:52         172304 Microsoft.CodeAnalysis.Features.resources.dll
+-a----         8/11/2023     19:46          43680 Microsoft.CodeAnalysis.resources.dll
+-a----         8/11/2023     19:52          18080 Microsoft.CodeAnalysis.Scripting.resources.dll
+-a----         8/11/2023     19:52          17568 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+-a----         8/11/2023     19:52          46240 Microsoft.CodeAnalysis.Workspaces.resources.dll
+-a----         17/8/2022     00:01         188328 System.Private.ServiceModel.resources.dll
+-a----         17/8/2022     00:02          18856 System.Web.Services.Description.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\bin\Debug\net8.0\zh-Hant
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         29/1/2022     17:04          16488 Humanizer.resources.dll
+-a----         8/11/2023     19:58          44312 Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+-a----         8/11/2023     19:56         381600 Microsoft.CodeAnalysis.CSharp.resources.dll
+-a----         8/11/2023     19:56          18192 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+-a----         8/11/2023     19:52         174360 Microsoft.CodeAnalysis.Features.resources.dll
+-a----         8/11/2023     19:46          44192 Microsoft.CodeAnalysis.resources.dll
+-a----         8/11/2023     19:52          18080 Microsoft.CodeAnalysis.Scripting.resources.dll
+-a----         8/11/2023     19:52          17568 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+-a----         8/11/2023     19:52          46256 Microsoft.CodeAnalysis.Workspaces.resources.dll
+-a----         17/8/2022     00:01         189352 System.Private.ServiceModel.resources.dll
+-a----         17/8/2022     00:02          18856 System.Web.Services.Description.resources.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\Data
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/4/2025     22:38           4968 ApplicationDbContext.cs
+-a----          4/4/2025     08:35           3518 SeedData.cs
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\Migrations
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/4/2025     23:08          28428 20250402200817_Initial.cs
+-a----          2/4/2025     23:08          29507 20250402200817_Initial.Designer.cs
+-a----          2/4/2025     23:08          29423 ApplicationDbContextModelSnapshot.cs
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\Models
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/4/2025     22:38            273 ApplicationUser.cs
+-a----          3/4/2025     02:03           1472 Client.cs
+-a----          2/4/2025     21:38           1259 Deceased.cs
+-a----          2/4/2025     21:39           1663 Funeral.cs
+-a----          2/4/2025     21:36            810 FuneralOffice.cs
+-a----          2/4/2025     21:40            935 FuneralProduct.cs
+-a----          2/4/2025     21:40            681 FuneralService.cs
+-a----          2/4/2025     21:41            888 Inventory.cs
+-a----          2/4/2025     21:41           1349 InventoryTransaction.cs
+-a----          2/4/2025     21:37            903 Product.cs
+-a----          2/4/2025     21:38            830 Service.cs
+-a----          2/4/2025     21:41            937 Supplier.cs
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\obj
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:32                Debug
+-a----          2/4/2025     21:59            972 FuneralOfficeSystem.csproj.codegeneration.targets
+-a----          3/4/2025     01:46           4798 FuneralOfficeSystem.csproj.nuget.dgspec.json
+-a----          3/4/2025     01:46           3255 FuneralOfficeSystem.csproj.nuget.g.props
+-a----          2/4/2025     21:33           2139 FuneralOfficeSystem.csproj.nuget.g.targets
+-a----          3/4/2025     01:46         662950 project.assets.json
+-a----          3/4/2025     01:46          36831 project.nuget.cache
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\obj\Debug
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     01:46                net8.0
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\obj\Debug\net8.0
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:46                ref
+d-----          2/4/2025     21:46                refint
+d-----          2/4/2025     21:46                scopedcss
+d-----          2/4/2025     21:46                staticwebassets
+-a----          2/4/2025     21:31            198 .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+-a----          4/4/2025     12:03              2 ApiEndpoints.json
+-a----          4/4/2025     12:03         138752 apphost.exe
+-a----          3/4/2025     01:46              0 FuneralO.8AD9C393.Up2Date
+-a----          2/4/2025     21:31           1261 FuneralOfficeSystem.AssemblyInfo.cs
+-a----          2/4/2025     21:31             66 FuneralOfficeSystem.AssemblyInfoInputs.cache
+-a----          3/4/2025     01:46         203256 FuneralOfficeSystem.assets.cache
+-a----          3/4/2025     01:46          80791 FuneralOfficeSystem.csproj.AssemblyReference.cache
+-a----          4/4/2025     12:03              0 FuneralOfficeSystem.csproj.BuildWithSkipAnalyzers
+-a----          4/4/2025     10:41             66 FuneralOfficeSystem.csproj.CoreCompileInputs.cache
+-a----          3/4/2025     02:04          46731 FuneralOfficeSystem.csproj.FileListAbsolute.txt
+-a----          4/4/2025     12:03        1038336 FuneralOfficeSystem.dll
+-a----          4/4/2025     10:34          11942 FuneralOfficeSystem.GeneratedMSBuildEditorConfig.editorconfig
+-a----          2/4/2025     21:46             66 FuneralOfficeSystem.genruntimeconfig.cache
+-a----          2/4/2025     21:31            770 FuneralOfficeSystem.GlobalUsings.g.cs
+-a----          4/4/2025     10:41              0 FuneralOfficeSystem.MvcApplicationPartsAssemblyInfo.cache
+-a----          4/4/2025     10:41            624 FuneralOfficeSystem.MvcApplicationPartsAssemblyInfo.cs
+-a----          4/4/2025     12:03         273528 FuneralOfficeSystem.pdb
+-a----          2/4/2025     21:31             66 FuneralOfficeSystem.RazorAssemblyInfo.cache
+-a----          2/4/2025     21:31            732 FuneralOfficeSystem.RazorAssemblyInfo.cs
+-a----          3/4/2025     02:14         188821 staticwebassets.build.endpoints.json
+-a----          3/4/2025     02:14         327279 staticwebassets.build.json
+-a----          3/4/2025     02:04          19065 staticwebassets.development.json
+-a----          3/4/2025     02:04          14893 staticwebassets.pack.json
+-a----          2/4/2025     21:46              0 staticwebassets.references.upToDateCheck.txt
+-a----          2/4/2025     21:31              0 staticwebassets.removed.txt
+-a----          2/4/2025     22:14           3183 staticwebassets.upToDateCheck.txt
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\obj\Debug\net8.0\ref
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          4/4/2025     12:03         156160 FuneralOfficeSystem.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\obj\Debug\net8.0\refint
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          4/4/2025     12:03         156160 FuneralOfficeSystem.dll
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\obj\Debug\net8.0\scopedcss
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:46                bundle
+d-----          2/4/2025     21:46                Pages
+d-----          3/4/2025     02:04                projectbundle
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\obj\Debug\net8.0\scopedcss\bundle
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/4/2025     21:46           1137 FuneralOfficeSystem.styles.css
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\obj\Debug\net8.0\scopedcss\Pages
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     02:04                Shared
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\obj\Debug\net8.0\staticwebassets
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/4/2025     21:46            166 msbuild.build.FuneralOfficeSystem.props
+-a----          2/4/2025     21:46             83 msbuild.buildMultiTargeting.FuneralOfficeSystem.props
+-a----          2/4/2025     21:46             97 msbuild.buildTransitive.FuneralOfficeSystem.props
+-a----          3/4/2025     02:14         115241 msbuild.FuneralOfficeSystem.Microsoft.AspNetCore.StaticWebAssetEndpoi
+                                                  nts.props
+-a----          3/4/2025     02:14          68164 msbuild.FuneralOfficeSystem.Microsoft.AspNetCore.StaticWebAssets.prop
+                                                  s
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\Pages
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          4/4/2025     08:58                Admin
+d-----          4/4/2025     12:03                Clients
+d-----          4/4/2025     11:37                Deceaseds
+d-----          4/4/2025     11:23                FuneralOffices
+d-----          4/4/2025     10:52                Funerals
+d-----          4/4/2025     10:52                Products
+d-----          4/4/2025     10:52                Services
+d-----          4/4/2025     09:32                Shared
+d-----          4/4/2025     11:27                Suppliers
+d-----          4/4/2025     09:54                Warehouses
+-a----          4/4/2025     10:44           9163 Index.cshtml
+-a----          4/4/2025     10:43           2902 Index.cshtml.cs
+-a----          4/4/2025     09:40            176 _ValidationScriptsPartial.cshtml
+-a----          3/4/2025     02:14            118 _ViewImports.cshtml
+-a----          3/4/2025     02:14             33 _ViewStart.cshtml
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\Pages\Admin
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          3/4/2025     05:45           5828 UserManagement.cshtml
+-a----          4/4/2025     08:58           3790 UserManagement.cshtml.cs
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\Pages\Clients
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          4/4/2025     12:03           5482 Create.cshtml
+-a----          4/4/2025     12:03           3208 Create.cshtml.cs
+-a----          4/4/2025     10:01           4514 Delete.cshtml
+-a----          4/4/2025     09:55           1677 Delete.cshtml.cs
+-a----          4/4/2025     10:01           4026 Details.cshtml
+-a----          4/4/2025     09:55           1157 Details.cshtml.cs
+-a----          4/4/2025     12:03           5560 Edit.cshtml
+-a----          4/4/2025     12:03           4683 Edit.cshtml.cs
+-a----          4/4/2025     10:52           4777 Index.cshtml
+-a----          4/4/2025     09:55            804 Index.cshtml.cs
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\Pages\Deceaseds
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          4/4/2025     11:37           5414 Create.cshtml
+-a----          4/4/2025     11:37           3339 Create.cshtml.cs
+-a----          4/4/2025     10:18           4162 Delete.cshtml
+-a----          4/4/2025     10:14           1704 Delete.cshtml.cs
+-a----          4/4/2025     10:18           3666 Details.cshtml
+-a----          4/4/2025     10:14           1172 Details.cshtml.cs
+-a----          4/4/2025     11:37           5483 Edit.cshtml
+-a----          4/4/2025     11:37           4734 Edit.cshtml.cs
+-a----          4/4/2025     10:53           4442 Index.cshtml
+-a----          4/4/2025     10:14            813 Index.cshtml.cs
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\Pages\FuneralOffices
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          4/4/2025     11:19           2760 Create.cshtml
+-a----          4/4/2025     11:19           3435 Create.cshtml.cs
+-a----          4/4/2025     09:48           2589 Delete.cshtml
+-a----          4/4/2025     09:40           1782 Delete.cshtml.cs
+-a----          4/4/2025     09:48           1872 Details.cshtml
+-a----          4/4/2025     09:40           1213 Details.cshtml.cs
+-a----          4/4/2025     11:23           2854 Edit.cshtml
+-a----          4/4/2025     11:23           4862 Edit.cshtml.cs
+-a----          4/4/2025     10:48           4204 Index.cshtml
+-a----          4/4/2025     09:40            839 Index.cshtml.cs
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\Pages\Funerals
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          4/4/2025     10:24           5794 Create.cshtml
+-a----          4/4/2025     10:20           1459 Create.cshtml.cs
+-a----          4/4/2025     10:24           5506 Delete.cshtml
+-a----          4/4/2025     10:20           1692 Delete.cshtml.cs
+-a----          4/4/2025     10:24           5022 Details.cshtml
+-a----          4/4/2025     10:20           1165 Details.cshtml.cs
+-a----          4/4/2025     10:24           5868 Edit.cshtml
+-a----          4/4/2025     10:20           2445 Edit.cshtml.cs
+-a----          4/4/2025     10:52           5701 Index.cshtml
+-a----          4/4/2025     10:20            941 Index.cshtml.cs
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\Pages\Products
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          4/4/2025     10:29           3341 Create.cshtml
+-a----          4/4/2025     10:26           1275 Create.cshtml.cs
+-a----          4/4/2025     10:29           3340 Delete.cshtml
+-a----          4/4/2025     10:26           1692 Delete.cshtml.cs
+-a----          4/4/2025     10:29           2858 Details.cshtml
+-a----          4/4/2025     10:26           1165 Details.cshtml.cs
+-a----          4/4/2025     10:29           3415 Edit.cshtml
+-a----          4/4/2025     10:26           2255 Edit.cshtml.cs
+-a----          4/4/2025     10:52           3693 Index.cshtml
+-a----          4/4/2025     10:26            852 Index.cshtml.cs
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\Pages\Services
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          4/4/2025     10:33           3341 Create.cshtml
+-a----          4/4/2025     10:30           1275 Create.cshtml.cs
+-a----          4/4/2025     10:33           3346 Delete.cshtml
+-a----          4/4/2025     10:30           1692 Delete.cshtml.cs
+-a----          4/4/2025     10:33           2858 Details.cshtml
+-a----          4/4/2025     10:30           1165 Details.cshtml.cs
+-a----          4/4/2025     10:33           3415 Edit.cshtml
+-a----          4/4/2025     10:30           2255 Edit.cshtml.cs
+-a----          4/4/2025     10:52           3697 Index.cshtml
+-a----          4/4/2025     10:30            852 Index.cshtml.cs
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\Pages\Shared
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          4/4/2025     09:32           3850 _Layout.cshtml
+-a----          3/4/2025     02:03           1139 _LoginPartial.cshtml
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\Pages\Suppliers
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          4/4/2025     11:27           3874 Create.cshtml
+-a----          4/4/2025     11:27           3395 Create.cshtml.cs
+-a----          4/4/2025     10:40           3752 Delete.cshtml
+-a----          4/4/2025     10:34           1707 Delete.cshtml.cs
+-a----          4/4/2025     10:40           3258 Details.cshtml
+-a----          4/4/2025     10:34           1173 Details.cshtml.cs
+-a----          4/4/2025     11:27           3943 Edit.cshtml
+-a----          4/4/2025     11:27           4787 Edit.cshtml.cs
+-a----          4/4/2025     10:51           4114 Index.cshtml
+-a----          4/4/2025     10:34            814 Index.cshtml.cs
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\Properties
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/4/2025     22:18           1081 launchSettings.json
+-a----          2/4/2025     21:31            139 serviceDependencies.json
+-a----          2/4/2025     21:31            145 serviceDependencies.local.json
+-a----          2/4/2025     21:31            152 serviceDependencies.local.json.user
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\Services
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/4/2025     21:42           3303 NotificationService.cs
+-a----          2/4/2025     23:43          31197 PdfService.cs
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\wwwroot
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/4/2025     02:14                css
+d-----          2/4/2025     21:32                js
+d-----          2/4/2025     21:32                lib
+-a----          2/4/2025     21:31           5430 favicon.ico
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\wwwroot\css
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          3/4/2025     02:14            943 site.css
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\wwwroot\js
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/4/2025     21:31            231 site.js
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\wwwroot\lib
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:32                bootstrap
+d-----          2/4/2025     21:32                jquery
+d-----          2/4/2025     21:32                jquery-validation
+d-----          2/4/2025     21:32                jquery-validation-unobtrusive
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\wwwroot\lib\bootstrap
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:32                dist
+-a----          2/4/2025     21:31           1153 LICENSE
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\wwwroot\lib\bootstrap\dist
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:32                css
+d-----          2/4/2025     21:32                js
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\wwwroot\lib\bootstrap\dist\css
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/4/2025     21:31          70538 bootstrap-grid.css
+-a----          2/4/2025     21:31         196535 bootstrap-grid.css.map
+-a----          2/4/2025     21:31          51319 bootstrap-grid.min.css
+-a----          2/4/2025     21:31         117439 bootstrap-grid.min.css.map
+-a----          2/4/2025     21:31          70612 bootstrap-grid.rtl.css
+-a----          2/4/2025     21:31         196539 bootstrap-grid.rtl.css.map
+-a----          2/4/2025     21:31          51394 bootstrap-grid.rtl.min.css
+-a----          2/4/2025     21:31         117516 bootstrap-grid.rtl.min.css.map
+-a----          2/4/2025     21:31           5850 bootstrap-reboot.css
+-a----          2/4/2025     21:31         105138 bootstrap-reboot.css.map
+-a----          2/4/2025     21:31           4646 bootstrap-reboot.min.css
+-a----          2/4/2025     21:31          35330 bootstrap-reboot.min.css.map
+-a----          2/4/2025     21:31           5827 bootstrap-reboot.rtl.css
+-a----          2/4/2025     21:31         105151 bootstrap-reboot.rtl.css.map
+-a----          2/4/2025     21:31           4718 bootstrap-reboot.rtl.min.css
+-a----          2/4/2025     21:31          41570 bootstrap-reboot.rtl.min.css.map
+-a----          2/4/2025     21:31          71584 bootstrap-utilities.css
+-a----          2/4/2025     21:31         192271 bootstrap-utilities.css.map
+-a----          2/4/2025     21:31          53479 bootstrap-utilities.min.css
+-a----          2/4/2025     21:31         111875 bootstrap-utilities.min.css.map
+-a----          2/4/2025     21:31          71451 bootstrap-utilities.rtl.css
+-a----          2/4/2025     21:31         192214 bootstrap-utilities.rtl.css.map
+-a----          2/4/2025     21:31          53407 bootstrap-utilities.rtl.min.css
+-a----          2/4/2025     21:31         111710 bootstrap-utilities.rtl.min.css.map
+-a----          2/4/2025     21:31         204136 bootstrap.css
+-a----          2/4/2025     21:31         536547 bootstrap.css.map
+-a----          2/4/2025     21:31         162720 bootstrap.min.css
+-a----          2/4/2025     21:31         449111 bootstrap.min.css.map
+-a----          2/4/2025     21:31         203803 bootstrap.rtl.css
+-a----          2/4/2025     21:31         536461 bootstrap.rtl.css.map
+-a----          2/4/2025     21:31         162825 bootstrap.rtl.min.css
+-a----          2/4/2025     21:31         661035 bootstrap.rtl.min.css.map
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\wwwroot\lib\bootstrap\dist\js
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/4/2025     21:31         208492 bootstrap.bundle.js
+-a----          2/4/2025     21:31         425643 bootstrap.bundle.js.map
+-a----          2/4/2025     21:31          78468 bootstrap.bundle.min.js
+-a----          2/4/2025     21:31         327261 bootstrap.bundle.min.js.map
+-a----          2/4/2025     21:31         139019 bootstrap.esm.js
+-a----          2/4/2025     21:31         288320 bootstrap.esm.js.map
+-a----          2/4/2025     21:31          72016 bootstrap.esm.min.js
+-a----          2/4/2025     21:31         222508 bootstrap.esm.min.js.map
+-a----          2/4/2025     21:31         148168 bootstrap.js
+-a----          2/4/2025     21:31         289522 bootstrap.js.map
+-a----          2/4/2025     21:31          59511 bootstrap.min.js
+-a----          2/4/2025     21:31         217145 bootstrap.min.js.map
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\wwwroot\lib\jquery
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:32                dist
+-a----          2/4/2025     21:31           1117 LICENSE.txt
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\wwwroot\lib\jquery\dist
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/4/2025     21:31         288580 jquery.js
+-a----          2/4/2025     21:31          89501 jquery.min.js
+-a----          2/4/2025     21:31         137972 jquery.min.map
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\wwwroot\lib\jquery-validation
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/4/2025     21:32                dist
+-a----          2/4/2025     21:31           1117 LICENSE.md
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\wwwroot\lib\jquery-validation\dist
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/4/2025     21:31          52977 additional-methods.js
+-a----          2/4/2025     21:31          22177 additional-methods.min.js
+-a----          2/4/2025     21:31          51171 jquery.validate.js
+-a----          2/4/2025     21:31          24601 jquery.validate.min.js
+
+
+    Directory: E:\Desktop\FuneralOfficeSystem\FuneralOfficeSystem\wwwroot\lib\jquery-validation-unobtrusive
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/4/2025     21:31          19385 jquery.validate.unobtrusive.js
+-a----          2/4/2025     21:31           5824 jquery.validate.unobtrusive.min.js
+-a----          2/4/2025     21:31           1139 LICENSE.txt
+
+
+PS E:\Desktop\FuneralOfficeSystem>

@@ -1,0 +1,81 @@
+﻿@page
+@model FuneralOfficeSystem.Pages.Services.DetailsModel
+
+@{
+    ViewData["Title"] = "Λεπτομέρειες Υπηρεσίας";
+}
+
+<div class="container">
+    <h1 class="text-center mb-4">Λεπτομέρειες Υπηρεσίας</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 30%;">
+                                        Όνομα
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Service.Name)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Κατηγορία
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Service.Category)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Περιγραφή
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Service.Description)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Προμηθευτής
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Service.Supplier.Name)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Ενεργό
+                                    </th>
+                                    <td>
+                                        @if (Model.Service.IsEnabled)
+                                        {
+                                            <span class="badge bg-success">Ναι</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-danger">Όχι</span>
+                                        }
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <a asp-page="./Index" class="btn btn-secondary w-100">Επιστροφή στη Λίστα</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a asp-page="./Edit" asp-route-id="@Model.Service.Id" class="btn btn-primary w-100">Επεξεργασία</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

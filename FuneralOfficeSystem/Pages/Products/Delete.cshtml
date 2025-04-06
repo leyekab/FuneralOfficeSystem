@@ -1,0 +1,89 @@
+﻿@page
+@model FuneralOfficeSystem.Pages.Products.DeleteModel
+
+@{
+    ViewData["Title"] = "Διαγραφή Προϊόντος";
+}
+
+<div class="container">
+    <h1 class="text-center mb-4">Διαγραφή Προϊόντος</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="alert alert-danger">
+                        <h4 class="alert-heading">Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτό το προϊόν;</h4>
+                        <p>Η ενέργεια αυτή δεν μπορεί να αναιρεθεί.</p>
+                    </div>
+
+                    <div class="table-responsive mt-4">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 30%;">
+                                        Όνομα
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Product.Name)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Κατηγορία
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Product.Category)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Περιγραφή
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Product.Description)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Προμηθευτής
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Product.Supplier.Name)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Ενεργό
+                                    </th>
+                                    <td>
+                                        @if (Model.Product.IsEnabled)
+                                        {
+                                            <span class="badge bg-success">Ναι</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-danger">Όχι</span>
+                                        }
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <form method="post" class="mt-4">
+                        <input type="hidden" asp-for="Product.Id" />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a asp-page="./Index" class="btn btn-secondary w-100">Επιστροφή στη Λίστα</a>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="submit" value="Διαγραφή" class="btn btn-danger w-100" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

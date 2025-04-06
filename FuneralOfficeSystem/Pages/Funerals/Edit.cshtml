@@ -1,0 +1,115 @@
+﻿@page "{id:int}"
+@model FuneralOfficeSystem.Pages.Funerals.EditModel
+
+@{
+    ViewData["Title"] = "Επεξεργασία Κηδείας";
+}
+
+<div class="container">
+    <h1 class="text-center mb-4">Επεξεργασία Κηδείας</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form method="post" id="editForm">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <input type="hidden" asp-for="Funeral.Id" />
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="text-danger">*</span>
+                                    <label asp-for="Funeral.DeceasedId" class="control-label">Αποβιώσας</label>
+                                    <select asp-for="Funeral.DeceasedId" class="form-control" asp-items="ViewBag.DeceasedId" required></select>
+                                    <span asp-validation-for="Funeral.DeceasedId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="text-danger">*</span>
+                                    <label asp-for="Funeral.ClientId" class="control-label">Εντολέας</label>
+                                    <select asp-for="Funeral.ClientId" class="form-control" asp-items="ViewBag.ClientId" required></select>
+                                    <span asp-validation-for="Funeral.ClientId" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="text-danger">*</span>
+                                    <label asp-for="Funeral.FuneralDate" class="control-label">Ημερομηνία Κηδείας</label>
+                                    <input asp-for="Funeral.FuneralDate" class="form-control" type="date" required />
+                                    <span asp-validation-for="Funeral.FuneralDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="text-danger">*</span>
+                                    <label asp-for="Funeral.FuneralOfficeId" class="control-label">Γραφείο Τελετών</label>
+                                    <select asp-for="Funeral.FuneralOfficeId" class="form-control" asp-items="ViewBag.FuneralOfficeId" required></select>
+                                    <span asp-validation-for="Funeral.FuneralOfficeId" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Funeral.Church" class="control-label">Εκκλησία</label>
+                                    <input asp-for="Funeral.Church" class="form-control" />
+                                    <span asp-validation-for="Funeral.Church" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Funeral.CeremonyTime" class="control-label">Ώρα Τελετής</label>
+                                    <input asp-for="Funeral.CeremonyTime" class="form-control" type="time" />
+                                    <span asp-validation-for="Funeral.CeremonyTime" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Funeral.BurialPlace" class="control-label">Τόπος Ταφής</label>
+                            <input asp-for="Funeral.BurialPlace" class="form-control" />
+                            <span asp-validation-for="Funeral.BurialPlace" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group form-check mb-3">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="Funeral.IsFinalBill" /> Τελικός Λογαριασμός
+                            </label>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <a asp-page="./Index" class="btn btn-secondary w-100">Επιστροφή στη Λίστα</a>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="submit" value="Αποθήκευση" class="btn btn-primary w-100" id="saveButton" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        // Προσθήκη client-side κώδικα για να επιβεβαιώσουμε ότι η φόρμα υποβάλλεται σωστά
+        $(document).ready(function () {
+            $("#editForm").on("submit", function (e) {
+                console.log("Funeral edit form submitted");
+                // Επιστρέφουμε true για να επιτρέψουμε την κανονική υποβολή της φόρμας
+                return true;
+            });
+        });
+    </script>
+}

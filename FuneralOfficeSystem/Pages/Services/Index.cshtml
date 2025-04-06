@@ -1,0 +1,89 @@
+﻿@page
+@model FuneralOfficeSystem.Pages.Services.IndexModel
+
+@{
+    ViewData["Title"] = "Υπηρεσίες";
+}
+
+<div class="container">
+    <h1 class="text-center mb-4">Υπηρεσίες</h1>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <a asp-page="Create" class="btn btn-primary">Προσθήκη Νέας Υπηρεσίας</a>
+        </div>
+        <div class="col-md-6">
+            <form method="get" class="input-group">
+                <input type="text" name="searchString" class="form-control" placeholder="Αναζήτηση υπηρεσίας..." />
+                <button type="submit" class="btn btn-outline-secondary">Αναζήτηση</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Service[0].Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Service[0].Description)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Service[0].Category)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Service[0].Supplier)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Service[0].IsEnabled)
+                                    </th>
+                                    <th>Ενέργειες</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Service)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Description)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Category)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Supplier.Name)
+                                        </td>
+                                        <td>
+                                            @if (item.IsEnabled)
+                                            {
+                                                <span class="badge bg-success">Ναι</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-danger">Όχι</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Επεξεργασία</a>
+                                            <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Λεπτομέρειες</a>
+                                            <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Διαγραφή</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

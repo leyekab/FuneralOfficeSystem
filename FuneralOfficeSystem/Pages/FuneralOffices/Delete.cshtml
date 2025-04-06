@@ -1,0 +1,74 @@
+﻿@page
+@model FuneralOfficeSystem.Pages.FuneralOffices.DeleteModel
+
+@{
+    ViewData["Title"] = "Διαγραφή Γραφείου Τελετών";
+}
+
+<div class="container">
+    <h1 class="mb-4">Διαγραφή Γραφείου Τελετών</h1>
+
+    <div class="card shadow border-danger mb-4">
+        <div class="card-header bg-danger text-white">
+            <h4 class="mb-0">Επιβεβαίωση Διαγραφής</h4>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-warning">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                Είστε βέβαιοι ότι θέλετε να διαγράψετε το γραφείο τελετών <strong>@Model.FuneralOffice.Name</strong>;
+                <br>Η διαγραφή είναι μόνιμη και δεν μπορεί να αναιρεθεί.
+            </div>
+
+            <div class="mt-4">
+                <h5>Στοιχεία Γραφείου</h5>
+                <div class="row mb-2">
+                    <div class="col-md-3 fw-bold">
+                        @Html.DisplayNameFor(model => model.FuneralOffice.Name):
+                    </div>
+                    <div class="col-md-9">
+                        @Html.DisplayFor(model => model.FuneralOffice.Name)
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-3 fw-bold">
+                        @Html.DisplayNameFor(model => model.FuneralOffice.Address):
+                    </div>
+                    <div class="col-md-9">
+                        @Html.DisplayFor(model => model.FuneralOffice.Address)
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-3 fw-bold">
+                        @Html.DisplayNameFor(model => model.FuneralOffice.Phone):
+                    </div>
+                    <div class="col-md-9">
+                        @Html.DisplayFor(model => model.FuneralOffice.Phone)
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-3 fw-bold">
+                        @Html.DisplayNameFor(model => model.FuneralOffice.IsEnabled):
+                    </div>
+                    <div class="col-md-9">
+                        @if (Model.FuneralOffice.IsEnabled)
+                        {
+                            <span class="badge bg-success">Ναι</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">Όχι</span>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a asp-page="./Index" class="btn btn-secondary">Ακύρωση</a>
+                <form method="post">
+                    <input type="hidden" asp-for="FuneralOffice.Id" />
+                    <button type="submit" class="btn btn-danger">Διαγραφή</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

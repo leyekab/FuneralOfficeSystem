@@ -1,0 +1,82 @@
+﻿@page
+@model FuneralOfficeSystem.Pages.Deceaseds.DetailsModel
+
+@{
+    ViewData["Title"] = "Λεπτομέρειες Αποβιώσαντα";
+}
+
+<div class="container">
+    <h1 class="text-center mb-4">Λεπτομέρειες Αποβιώσαντα</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 30%;">
+                                        Όνομα
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Deceased.FirstName)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Επώνυμο
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Deceased.LastName)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        ΑΜΚΑ
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Deceased.AMKA)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        ΑΦΜ
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Deceased.AFM)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Ημερομηνία Γέννησης
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Deceased.BirthDate)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Ημερομηνία Θανάτου
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Deceased.DeathDate)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <a asp-page="./Index" class="btn btn-secondary w-100">Επιστροφή στη Λίστα</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a asp-page="./Edit" asp-route-id="@Model.Deceased.Id" class="btn btn-primary w-100">Επεξεργασία</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

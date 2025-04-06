@@ -1,0 +1,105 @@
+﻿@page
+@model FuneralOfficeSystem.Pages.Funerals.DetailsModel
+
+@{
+    ViewData["Title"] = "Λεπτομέρειες Κηδείας";
+}
+
+<div class="container">
+    <h1 class="text-center mb-4">Λεπτομέρειες Κηδείας</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 30%;">
+                                        Αποβιώσας
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Funeral.Deceased.FirstName) @Html.DisplayFor(model => model.Funeral.Deceased.LastName)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Εντολέας
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Funeral.Client.FirstName) @Html.DisplayFor(model => model.Funeral.Client.LastName)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Ημερομηνία Κηδείας
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Funeral.FuneralDate)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Γραφείο Τελετών
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Funeral.FuneralOffice.Name)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Εκκλησία
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Funeral.Church)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Ώρα Τελετής
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Funeral.CeremonyTime)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Τόπος Ταφής
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Funeral.BurialPlace)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Τελικός Λογαριασμός
+                                    </th>
+                                    <td>
+                                        @if (Model.Funeral.IsFinalBill)
+                                        {
+                                            <span class="badge bg-success">Ναι</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-danger">Όχι</span>
+                                        }
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <a asp-page="./Index" class="btn btn-secondary w-100">Επιστροφή στη Λίστα</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a asp-page="./Edit" asp-route-id="@Model.Funeral.Id" class="btn btn-primary w-100">Επεξεργασία</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

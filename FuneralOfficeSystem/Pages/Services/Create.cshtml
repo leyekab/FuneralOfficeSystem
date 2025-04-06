@@ -1,0 +1,73 @@
+﻿@page
+@model FuneralOfficeSystem.Pages.Services.CreateModel
+
+@{
+    ViewData["Title"] = "Δημιουργία Υπηρεσίας";
+}
+
+<div class="container">
+    <h1 class="text-center mb-4">Δημιουργία Υπηρεσίας</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="text-danger">*</span>
+                                    <label asp-for="Service.Name" class="control-label">Όνομα</label>
+                                    <input asp-for="Service.Name" class="form-control" />
+                                    <span asp-validation-for="Service.Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="text-danger">*</span>
+                                    <label asp-for="Service.Category" class="control-label">Κατηγορία</label>
+                                    <input asp-for="Service.Category" class="form-control" />
+                                    <span asp-validation-for="Service.Category" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Service.Description" class="control-label">Περιγραφή</label>
+                            <textarea asp-for="Service.Description" class="form-control" rows="3"></textarea>
+                            <span asp-validation-for="Service.Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Service.SupplierId" class="control-label">Προμηθευτής</label>
+                            <select asp-for="Service.SupplierId" class="form-control" asp-items="ViewBag.SupplierId"></select>
+                            <span asp-validation-for="Service.SupplierId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group form-check mb-3">
+                            <input asp-for="Service.IsEnabled" class="form-check-input" checked />
+                            <label asp-for="Service.IsEnabled" class="form-check-label">Ενεργό</label>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <a asp-page="Index" class="btn btn-secondary w-100">Επιστροφή στη Λίστα</a>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="submit" value="Δημιουργία" class="btn btn-primary w-100" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

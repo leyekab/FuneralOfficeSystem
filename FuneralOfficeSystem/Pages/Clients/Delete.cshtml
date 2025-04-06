@@ -1,0 +1,98 @@
+﻿@page
+@model FuneralOfficeSystem.Pages.Clients.DeleteModel
+
+@{
+    ViewData["Title"] = "Διαγραφή Εντολέα";
+}
+
+<div class="container">
+    <h1 class="text-center mb-4">Διαγραφή Εντολέα</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="alert alert-danger">
+                        <h4 class="alert-heading">Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτόν τον εντολέα;</h4>
+                        <p>Η ενέργεια αυτή δεν μπορεί να αναιρεθεί.</p>
+                    </div>
+
+                    <div class="table-responsive mt-4">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 30%;">
+                                        Όνομα
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Client.FirstName)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Επώνυμο
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Client.LastName)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        ΑΦΜ
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Client.AFM)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Διεύθυνση
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Client.Address)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Τηλέφωνο
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Client.Phone)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Client.Email)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Σχέση με τον Αποβιώσαντα
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Client.RelationshipToDeceased)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <form method="post" class="mt-4">
+                        <input type="hidden" asp-for="Client.Id" />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a asp-page="./Index" class="btn btn-secondary w-100">Επιστροφή στη Λίστα</a>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="submit" value="Διαγραφή" class="btn btn-danger w-100" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

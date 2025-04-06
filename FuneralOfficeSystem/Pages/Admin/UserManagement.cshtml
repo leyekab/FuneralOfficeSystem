@@ -1,0 +1,114 @@
+﻿@page
+@model FuneralOfficeSystem.Pages.Admin.UserManagementModel
+@{
+    ViewData["Title"] = "Διαχείριση Χρηστών";
+}
+
+<div class="container">
+    <h1 class="mb-4">Διαχείριση Χρηστών</h1>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <a asp-page="./CreateUser" class="btn btn-primary">Προσθήκη Νέου Χρήστη</a>
+        </div>
+        <div class="col-md-6">
+            <form method="get" class="input-group">
+                <input type="text" name="searchString" class="form-control" placeholder="Αναζήτηση χρήστη..." value="@Model.SearchString" />
+                <button type="submit" class="btn btn-outline-secondary">Αναζήτηση</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Όνομα Χρήστη</th>
+                    <th>Email</th>
+                    <th>Όνομα</th>
+                    <th>Επίθετο</th>
+                    <th>Ρόλοι</th>
+                    <th>Ενέργειες</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.Users)
+                {
+                    <tr>
+                        <td>@user.UserName</td>
+                        <td>@user.Email</td>
+                        <td>@user.FirstName</td>
+                        <td>@user.LastName</td>
+                        <td>
+                            @foreach (var role in user.Roles)
+                            {
+                                <span class="badge bg-info me-1">@role</span>
+                            }
+                        </td>
+                        <td>
+                            <a asp-page="./EditUser" asp-route-id="@user.Id" class="btn btn-sm btn-primary">Επεξεργασία</a>
+                            <a asp-page="./EditRoles" asp-route-id="@user.Id" class="btn btn-sm btn-info">Ρόλοι</a>
+                            <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-@user.Id">Διαγραφή</button>
+                        </td>
+                    </tr>
+
+                    <!-- Μοντέλο Επιβεβαίωσης Διαγραφής -->
+                    <div class="modal fade" id="deleteModal-@user.Id" tabindex="-1" aria-labelledby="deleteModalLabel-@user.Id" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel-@user.Id">Επιβεβαίωση Διαγραφής</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Είστε βέβαιοι ότι θέλετε να διαγράψετε τον χρήστη <strong>@user.UserName</strong>;
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Άκυρο</button>
+                                    <form method="post" asp-page-handler="Delete" asp-route-id="@user.Id">
+                                        <button type="submit" class="btn btn-danger">Διαγραφή</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Σελιδοποίηση -->
+    @if (Model.TotalPages > 1)
+    {
+        <nav aria-label="Σελιδοποίηση">
+            <ul class="pagination justify-content-center">
+                @if (Model.CurrentPage > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-page="./UserManagement" asp-route-pageNumber="1" asp-route-searchString="@Model.SearchString">&laquo;</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" asp-page="./UserManagement" asp-route-pageNumber="@(Model.CurrentPage - 1)" asp-route-searchString="@Model.SearchString">&lt;</a>
+                    </li>
+                }
+
+                @for (int i = Math.Max(1, Model.CurrentPage - 2); i <= Math.Min(Model.TotalPages, Model.CurrentPage + 2); i++)
+                {
+                    <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                        <a class="page-link" asp-page="./UserManagement" asp-route-pageNumber="@i" asp-route-searchString="@Model.SearchString">@i</a>
+                    </li>
+                }
+
+                @if (Model.CurrentPage < Model.TotalPages)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-page="./UserManagement" asp-route-pageNumber="@(Model.CurrentPage + 1)" asp-route-searchString="@Model.SearchString">&gt;</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" asp-page="./UserManagement" asp-route-pageNumber="@Model.TotalPages" asp-route-searchString="@Model.SearchString">&raquo;</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    }
+</div>

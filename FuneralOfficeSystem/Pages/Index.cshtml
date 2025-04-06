@@ -1,0 +1,193 @@
+﻿@page
+@model FuneralOfficeSystem.Pages.IndexModel
+@{
+    ViewData["Title"] = "Κεντρική Σελίδα";
+}
+
+<div class="container">
+    <h1 class="text-center mb-4">Σύστημα Διαχείρισης Γραφείου Τελετών</h1>
+
+    <!-- Τα τέσσερα τετράγωνα για τις κύριες κατηγορίες -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header text-center">Γραφεία Τελετών</div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">@Model.FuneralOfficesCount</h5>
+                    <p class="card-text text-center">Συνολικά Γραφεία</p>
+                    <div class="text-center">
+                        <a href="/FuneralOffices" class="btn btn-light">Προβολή</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header text-center">Προμηθευτές</div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">@Model.SuppliersCount</h5>
+                    <p class="card-text text-center">Συνολικοί Προμηθευτές</p>
+                    <div class="text-center">
+                        <a href="/Suppliers" class="btn btn-light">Προβολή</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-white bg-info mb-3">
+                <div class="card-header text-center">Προϊόντα</div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">@Model.ProductsCount</h5>
+                    <p class="card-text text-center">Συνολικά Προϊόντα</p>
+                    <div class="text-center">
+                        <a href="/Products" class="btn btn-light">Προβολή</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-header text-center">Υπηρεσίες</div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">@Model.ServicesCount</h5>
+                    <p class="card-text text-center">Συνολικές Υπηρεσίες</p>
+                    <div class="text-center">
+                        <a href="/Services" class="btn btn-light">Προβολή</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Δεύτερη γραμμή με Διαχείριση -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-header text-center">Διαχείριση Χρηστών</div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">@Model.UsersCount</h5>
+                    <p class="card-text text-center">Εγγεγραμμένοι Χρήστες</p>
+                    <div class="text-center">
+                        <a href="/Admin/UserManagement" class="btn btn-light">Προβολή</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-white bg-danger mb-3">
+                <div class="card-header text-center">Κηδείες</div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">@Model.FuneralsCount</h5>
+                    <p class="card-text text-center">Συνολικές Κηδείες</p>
+                    <div class="text-center">
+                        <a href="/Funerals" class="btn btn-light">Προβολή</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-white bg-dark mb-3">
+                <div class="card-header text-center">Αποβιώσαντες</div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">@Model.DeceasedsCount</h5>
+                    <p class="card-text text-center">Συνολικοί Αποβιώσαντες</p>
+                    <div class="text-center">
+                        <a href="/Deceaseds" class="btn btn-light">Προβολή</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header text-center">Εντολείς</div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">@Model.ClientsCount</h5>
+                    <p class="card-text text-center">Συνολικοί Εντολείς</p>
+                    <div class="text-center">
+                        <a href="/Clients" class="btn btn-light">Προβολή</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Τρίτη γραμμή με Αποθήκες -->
+    <div class="row mb-5">
+        <div class="col-md-3">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header text-center">Αποθήκες</div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">@Model.WarehousesCount</h5>
+                    <p class="card-text text-center">Συνολικές Αποθήκες</p>
+                    <div class="text-center">
+                        <a href="/Warehouses" class="btn btn-light">Προβολή</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Λίστα με τις κηδείες των τελευταίων 90 ημερών -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2 class="mb-4">Κηδείες τελευταίων 90 ημερών</h2>
+
+            @if (Model.RecentFunerals.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Ημερομηνία</th>
+                                <th>Αποβιώσας</th>
+                                <th>Εντολέας</th>
+                                <th>Εκκλησία</th>
+                                <th>Ώρα</th>
+                                <th>Γραφείο Τελετών</th>
+                                <th>Τελικός Λογαριασμός</th>
+                                <th>Ενέργειες</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var funeral in Model.RecentFunerals)
+                            {
+                                <tr>
+                                    <td>@(funeral.FuneralDate?.ToString("dd/MM/yyyy") ?? "-")</td>
+                                    <td>@funeral.Deceased.FullName</td>
+                                    <td>@funeral.Client.FullName</td>
+                                    <td>@funeral.Church</td>
+                                    <td>@funeral.CeremonyTime</td>
+                                    <td>@funeral.FuneralOffice.Name</td>
+                                    <td>
+                                        @if (funeral.IsFinalBill)
+                                        {
+                                            <span class="badge bg-success">Ναι</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-danger">Όχι</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <a href="/Funerals/Details?id=@funeral.Id" class="btn btn-sm btn-info">Λεπτομέρειες</a>
+                                        <a href="/Funerals/Edit?id=@funeral.Id" class="btn btn-sm btn-primary">Επεξεργασία</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info">Δεν υπάρχουν κηδείες τις τελευταίες 90 ημέρες.</div>
+            }
+        </div>
+    </div>
+</div>
