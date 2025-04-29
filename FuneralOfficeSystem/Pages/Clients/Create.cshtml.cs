@@ -12,66 +12,61 @@ namespace FuneralOfficeSystem.Pages.Clients
 {
     public class CreateModel : PageModel
     {
-        private readonly FuneralOfficeSystem.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
         private readonly ILogger<CreateModel> _logger;
 
-        public CreateModel(FuneralOfficeSystem.Data.ApplicationDbContext context, ILogger<CreateModel> logger)
+        public CreateModel(ApplicationDbContext context, ILogger<CreateModel> logger)
         {
             _context = context;
             _logger = logger;
         }
 
-        public IActionResult OnGet()
-        {
-            return Page();
-        }
-
         [BindProperty]
         public Client Client { get; set; } = default!;
 
+        [BindProperty]
+        public bool IsPopup { get; set; }
+
         public async Task<IActionResult> OnPostAsync()
         {
-            _logger.LogInformation("Μέθοδος OnPostAsync εκτελείται");
-            _logger.LogInformation($"Client FirstName: {Client?.FirstName ?? "NULL"}");
-            _logger.LogInformation($"Client LastName: {Client?.LastName ?? "NULL"}");
-            _logger.LogInformation($"Client Phone: {Client?.Phone ?? "NULL"}");
-
-            // Έλεγχος αν το μοντέλο είναι null
             if (Client == null)
             {
-                _logger.LogWarning("Client είναι null");
-                ModelState.AddModelError("", "Η φόρμα δεν έστειλε δεδομένα");
-                return Page();
+                return Request.Headers["X-Requested-With"] == "XMLHttpRequest"
+                    ? new JsonResult(new { success = false })
+                    : Page() as IActionResult;
             }
 
-            // Καθαρισμός του ModelState για να αποφύγουμε προβλήματα με validation
             ModelState.Clear();
 
             try
             {
-                _logger.LogInformation("Προσπάθεια προσθήκης Client");
                 _context.Clients.Add(Client);
-                _logger.LogInformation("Προσπάθεια αποθήκευσης αλλαγών");
                 var result = await _context.SaveChangesAsync();
-                _logger.LogInformation($"Αποτέλεσμα αποθήκευσης: {result} εγγραφές αποθηκεύτηκαν");
 
                 if (result > 0)
                 {
-                    _logger.LogInformation("Επιτυχής αποθήκευση, ανακατεύθυνση στο Index");
-                    return RedirectToPage("./Index");
+                    if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+                    {
+                        return new JsonResult(new { success = true });
+                    }
+                    return IsPopup
+                        ? Content("<script>window.close();</script>", "text/html")
+                        : RedirectToPage("./Index");
                 }
                 else
                 {
-                    _logger.LogWarning("Δεν αποθηκεύτηκαν εγγραφές");
                     ModelState.AddModelError("", "Δεν ήταν δυνατή η αποθήκευση του εντολέα.");
-                    return Page();
+                    return Request.Headers["X-Requested-With"] == "XMLHttpRequest"
+                        ? new JsonResult(new { success = false })
+                        : Page() as IActionResult;
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Σφάλμα κατά την αποθήκευση του εντολέα");
                 ModelState.AddModelError("", $"Προέκυψε σφάλμα: {ex.Message}");
-                return Page();
+                return Request.Headers["X-Requested-With"] == "XMLHttpRequest"
+                    ? new JsonResult(new { success = false })
+                    : Page() as IActionResult;
             }
         }
     }

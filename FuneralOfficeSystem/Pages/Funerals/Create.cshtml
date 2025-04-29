@@ -91,9 +91,9 @@
                                 </button>
                             </div>
                             <div class="col-md-3">
-                                <a asp-controller="Clients" asp-action="Create" asp-route-funeralofficeid="3" class="btn btn-info w-100 create-btn">
+                                <button type="button" data-url="/Clients/Create?funeralofficeid=3" class="btn btn-info w-100 create-btn">
                                     <i class="bi bi-person-plus"></i> Νέος Εντολέας
-                                </a>
+                                </button>
                             </div>
                             <div class="col-md-3">
                                 <a asp-controller="Churches" asp-action="Create" asp-route-funeralofficeid="3" class="btn btn-info w-100 create-btn">
@@ -152,11 +152,11 @@
                             }));
                         }
                     });
-                },
-                minLength: 2,
-                select: function (event, ui) {
-                    $("#deceasedId").val(ui.item.id);
-                }
+                    },
+                    minLength: 2,
+                    select: function (event, ui) {
+                        $("#deceasedId").val(ui.item.id);
+                    }
             });
 
             // Άνοιγμα των φορμών σε νέο παράθυρο
@@ -195,6 +195,17 @@
                 minLength: 2,
                 select: function (event, ui) {
                     $("#clientId").val(ui.item.id);
+                }
+            });
+
+            // Έλεγχος για μηνύματα από το popup window
+            window.addEventListener('focus', function() {
+                // Ανανέωση των autocomplete όταν το παράθυρο παίρνει focus
+                if ($("#deceasedAutocomplete").length > 0) {
+                    $("#deceasedAutocomplete").autocomplete("search", "");
+                }
+                if ($("#clientAutocomplete").length > 0) {
+                    $("#clientAutocomplete").autocomplete("search", "");
                 }
             });
 
