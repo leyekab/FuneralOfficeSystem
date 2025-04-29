@@ -27,9 +27,9 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <span class="text-danger">*</span>
                                     <label asp-for="Funeral.ClientId" class="control-label">Εντολέας</label>
-                                    <select asp-for="Funeral.ClientId" class="form-control" asp-items="ViewBag.ClientId" required></select>
+                                    <input type="text" id="clientAutocomplete" class="form-control" />
+                                    <input type="hidden" asp-for="Funeral.ClientId" id="clientId" />
                                     <span asp-validation-for="Funeral.ClientId" class="text-danger"></span>
                                 </div>
                             </div>
@@ -132,15 +132,47 @@
                 }
             });
 
+            // Autocomplete για τον Εντολέα
+            $("#clientAutocomplete").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/api/Clients/Search",
+                        type: "GET",
+                        data: { searchTerm: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: item.name,
+                                    value: item.name,
+                                    id: item.id
+                                };
+                            }));
+                        }
+                    });
+                },
+                minLength: 2,
+                select: function (event, ui) {
+                    $("#clientId").val(ui.item.id);
+                }
+            });
+
             // Form validation
             $("#createForm").on("submit", function (e) {
                 var deceasedId = $("#deceasedId").val();
+                var clientId = $("#clientId").val();
+
                 if (!deceasedId) {
                     alert("Παρακαλώ επιλέξτε έναν Αποβιώσαντα από τη λίστα");
                     e.preventDefault();
                     return false;
                 }
-                console.log("Funeral create form submitted");
+
+                if (!clientId) {
+                    alert("Παρακαλώ επιλέξτε έναν Εντολέα από τη λίστα");
+                    e.preventDefault();
+                    return false;
+                }
+
                 return true;
             });
         });
