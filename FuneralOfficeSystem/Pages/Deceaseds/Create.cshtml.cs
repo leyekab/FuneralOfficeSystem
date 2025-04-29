@@ -29,7 +29,9 @@ namespace FuneralOfficeSystem.Pages.Deceaseds
         [BindProperty]
         public Deceased Deceased { get; set; } = default!;
 
-        // For more information, see https://aka.ms/RazorPagesCRUD.
+        [BindProperty]
+        public bool IsPopup { get; set; }
+
         public async Task<IActionResult> OnPostAsync()
         {
             _logger.LogInformation("Μέθοδος OnPostAsync εκτελείται");
@@ -42,7 +44,9 @@ namespace FuneralOfficeSystem.Pages.Deceaseds
             {
                 _logger.LogWarning("Deceased είναι null");
                 ModelState.AddModelError("", "Η φόρμα δεν έστειλε δεδομένα");
-                return Page();
+                return Request.Headers["X-Requested-With"] == "XMLHttpRequest"
+                    ? new JsonResult(new { success = false })
+                    : Page() as IActionResult;
             }
 
             // Καθαρισμός του ModelState για να αποφύγουμε προβλήματα με validation
@@ -58,21 +62,31 @@ namespace FuneralOfficeSystem.Pages.Deceaseds
 
                 if (result > 0)
                 {
-                    _logger.LogInformation("Επιτυχής αποθήκευση, ανακατεύθυνση στο Index");
-                    return RedirectToPage("./Index");
+                    _logger.LogInformation("Επιτυχής αποθήκευση");
+                    if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+                    {
+                        return new JsonResult(new { success = true });
+                    }
+                    return IsPopup
+                        ? Content("<script>window.close();</script>", "text/html")
+                        : RedirectToPage("./Index");
                 }
                 else
                 {
                     _logger.LogWarning("Δεν αποθηκεύτηκαν εγγραφές");
                     ModelState.AddModelError("", "Δεν ήταν δυνατή η αποθήκευση του αποβιώσαντα.");
-                    return Page();
+                    return Request.Headers["X-Requested-With"] == "XMLHttpRequest"
+                        ? new JsonResult(new { success = false })
+                        : Page() as IActionResult;
                 }
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Σφάλμα κατά την αποθήκευση του αποβιώσαντα");
                 ModelState.AddModelError("", $"Προέκυψε σφάλμα: {ex.Message}");
-                return Page();
+                return Request.Headers["X-Requested-With"] == "XMLHttpRequest"
+                    ? new JsonResult(new { success = false })
+                    : Page() as IActionResult;
             }
         }
     }

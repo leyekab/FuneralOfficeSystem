@@ -160,8 +160,15 @@
             });
 
             // Άνοιγμα των φορμών σε νέο παράθυρο
-            $(".create-btn").on("click", function () {
-                var url = $(this).data('url');
+            // $(".create-btn").on("click", function () {
+            //     var url = $(this).data('url');
+            //     if(url) {
+            //         window.open(url, '_blank', 'width=800,height=800,scrollbars=yes');
+            //     }
+            // });
+            $(".create-btn").on("click", function (e) {
+                e.preventDefault();
+                var url = $(this).data('url') || $(this).attr('href');
                 if(url) {
                     window.open(url, '_blank', 'width=800,height=800,scrollbars=yes');
                 }
