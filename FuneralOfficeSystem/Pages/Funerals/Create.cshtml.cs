@@ -15,22 +15,23 @@ namespace FuneralOfficeSystem.Pages.Funerals
             _context = context;
         }
 
-        public IActionResult OnGet()
-        {
-            ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Name");
-            ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices, "Id", "Name");
-            return Page();
-        }
-
         [BindProperty]
         public Funeral Funeral { get; set; } = default!;
 
+        public void OnGet()
+        {
+            // Αρχικοποίηση των SelectList για τα dropdowns
+            ViewData["ClientId"] = new SelectList(_context.Clients.OrderBy(c => c.LastName), "Id", "FullName");
+            ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices.OrderBy(f => f.Name), "Id", "Name");
+        }
+
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid || _context.Funerals == null || Funeral == null)
+            if (!ModelState.IsValid)
             {
-                ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Name");
-                ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices, "Id", "Name");
+                // Επαναφόρτωση των SelectList σε περίπτωση σφάλματος
+                ViewData["ClientId"] = new SelectList(_context.Clients.OrderBy(c => c.LastName), "Id", "FullName");
+                ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices.OrderBy(f => f.Name), "Id", "Name");
                 return Page();
             }
 
