@@ -1,0 +1,9 @@
+cd E:\Desktop\FuneralOfficeSystem
+git add .gitignore
+git add .
+git commit -m "Add .vs to .gitignore and track untracked files"
+git push origin master
+
+#meta tis alages 
+git commit -m "Περιγραφή των αλλαγών που έκανες"
+git push origin master
