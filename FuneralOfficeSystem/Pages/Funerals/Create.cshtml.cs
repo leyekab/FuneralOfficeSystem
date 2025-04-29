@@ -20,8 +20,7 @@ namespace FuneralOfficeSystem.Pages.Funerals
 
         public void OnGet()
         {
-            // Αρχικοποίηση των SelectList για τα dropdowns
-            ViewData["ClientId"] = new SelectList(_context.Clients.OrderBy(c => c.LastName), "Id", "FullName");
+            // Φορτώνουμε μόνο τη λίστα των Γραφείων Τελετών για το dropdown
             ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices.OrderBy(f => f.Name), "Id", "Name");
         }
 
@@ -29,8 +28,7 @@ namespace FuneralOfficeSystem.Pages.Funerals
         {
             if (!ModelState.IsValid)
             {
-                // Επαναφόρτωση των SelectList σε περίπτωση σφάλματος
-                ViewData["ClientId"] = new SelectList(_context.Clients.OrderBy(c => c.LastName), "Id", "FullName");
+                // Ξαναφορτώνουμε τη λίστα των Γραφείων Τελετών σε περίπτωση σφάλματος
                 ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices.OrderBy(f => f.Name), "Id", "Name");
                 return Page();
             }

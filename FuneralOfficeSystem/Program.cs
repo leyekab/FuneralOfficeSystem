@@ -2,6 +2,7 @@ using FuneralOfficeSystem.Data;
 using FuneralOfficeSystem.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using FuneralOfficeSystem.Controllers.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -93,6 +94,7 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapControllers();
 app.MapRazorPages();
 
 app.Run();

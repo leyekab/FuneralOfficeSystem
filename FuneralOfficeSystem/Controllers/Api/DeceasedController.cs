@@ -24,9 +24,11 @@ namespace FuneralOfficeSystem.Controllers.Api
 
             var deceased = await _context.Deceased
                 .Where(d => d.FirstName.Contains(searchTerm) ||
-                           d.LastName.Contains(searchTerm) ||
-                           d.FullName.Contains(searchTerm))
-                .Select(d => new { id = d.Id, name = d.FullName })
+                           d.LastName.Contains(searchTerm))
+                .Select(d => new {
+                    id = d.Id,
+                    name = d.FirstName + " " + d.LastName
+                })
                 .Take(10)
                 .ToListAsync();
 
