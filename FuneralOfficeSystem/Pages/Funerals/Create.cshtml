@@ -20,7 +20,8 @@
                                 <div class="form-group">
                                     <span class="text-danger">*</span>
                                     <label asp-for="Funeral.DeceasedId" class="control-label">Αποβιώσας</label>
-                                    <select asp-for="Funeral.DeceasedId" class="form-control" asp-items="ViewBag.DeceasedId" required></select>
+                                    <input id="deceasedAutocomplete" class="form-control" required />
+                                    <input type="hidden" asp-for="Funeral.DeceasedId" id="deceasedId" />
                                     <span asp-validation-for="Funeral.DeceasedId" class="text-danger"></span>
                                 </div>
                             </div>
@@ -101,12 +102,43 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.min.css" />
+    <script src="~/lib/jquery-ui/jquery-ui.min.js"></script>
     <script>
-        // Προσθήκη client-side κώδικα για να επιβεβαιώσουμε ότι η φόρμα υποβάλλεται σωστά
         $(document).ready(function () {
+            // Autocomplete για τον Αποβιώσαντα
+            $("#deceasedAutocomplete").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/api/Deceased/Search",
+                        type: "GET",
+                        data: { searchTerm: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: item.name,
+                                    value: item.name,
+                                    id: item.id
+                                };
+                            }));
+                        }
+                    });
+                },
+                minLength: 2,
+                select: function (event, ui) {
+                    $("#deceasedId").val(ui.item.id);
+                }
+            });
+
+            // Form validation
             $("#createForm").on("submit", function (e) {
+                var deceasedId = $("#deceasedId").val();
+                if (!deceasedId) {
+                    alert("Παρακαλώ επιλέξτε έναν Αποβιώσαντα από τη λίστα");
+                    e.preventDefault();
+                    return false;
+                }
                 console.log("Funeral create form submitted");
-                // Επιστρέφουμε true για να επιτρέψουμε την κανονική υποβολή της φόρμας
                 return true;
             });
         });
