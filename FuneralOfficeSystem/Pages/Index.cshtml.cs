@@ -46,7 +46,7 @@ namespace FuneralOfficeSystem.Pages
             ChurchesCount = await _context.Churches.CountAsync();
             BurialPlacesCount = await _context.BurialPlaces.CountAsync();
             FuneralsCount = await _context.Funerals.CountAsync();
-            DeceasedsCount = await _context.Deceased.CountAsync();
+            DeceasedsCount = await _context.Deceaseds.CountAsync();
             ClientsCount = await _context.Clients.CountAsync();
             WarehousesCount = await _context.Inventories.CountAsync();
             //ή αν θέλεις να δείξεις τον αριθμό των διαφορετικών αποθηκών(καθώς το Inventory είναι στην πραγματικότητα μια εγγραφή αποθήκης 

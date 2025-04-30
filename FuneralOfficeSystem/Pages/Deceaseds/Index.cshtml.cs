@@ -23,7 +23,7 @@ namespace FuneralOfficeSystem.Pages.Deceaseds
 
         public async Task OnGetAsync()
         {
-            Deceased = await _context.Deceased.ToListAsync();
+            Deceased = await _context.Deceaseds.ToListAsync();
         }
     }
 }

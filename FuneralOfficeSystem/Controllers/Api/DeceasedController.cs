@@ -22,7 +22,7 @@ namespace FuneralOfficeSystem.Controllers.Api
             if (string.IsNullOrEmpty(searchTerm))
                 return Ok(new List<object>());
 
-            var deceased = await _context.Deceased
+            var deceased = await _context.Deceaseds
                 .Where(d => d.FirstName.Contains(searchTerm) ||
                            d.LastName.Contains(searchTerm))
                 .Select(d => new {

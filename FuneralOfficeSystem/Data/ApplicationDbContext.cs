@@ -14,7 +14,7 @@ namespace FuneralOfficeSystem.Data
         public DbSet<FuneralOffice> FuneralOffices { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Service> Services { get; set; }
-        public DbSet<Deceased> Deceased { get; set; }
+        public DbSet<Deceased> Deceaseds { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Funeral> Funerals { get; set; }
         public DbSet<FuneralProduct> FuneralProducts { get; set; }

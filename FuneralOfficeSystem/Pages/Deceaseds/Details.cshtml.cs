@@ -28,7 +28,7 @@ namespace FuneralOfficeSystem.Pages.Deceaseds
                 return NotFound();
             }
 
-            var deceased = await _context.Deceased.FirstOrDefaultAsync(m => m.Id == id);
+            var deceased = await _context.Deceaseds.FirstOrDefaultAsync(m => m.Id == id);
             if (deceased == null)
             {
                 return NotFound();

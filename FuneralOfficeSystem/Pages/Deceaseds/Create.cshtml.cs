@@ -55,7 +55,7 @@ namespace FuneralOfficeSystem.Pages.Deceaseds
             try
             {
                 _logger.LogInformation("Προσπάθεια προσθήκης Deceased");
-                _context.Deceased.Add(Deceased);
+                _context.Deceaseds.Add(Deceased);
                 _logger.LogInformation("Προσπάθεια αποθήκευσης αλλαγών");
                 var result = await _context.SaveChangesAsync();
                 _logger.LogInformation($"Αποτέλεσμα αποθήκευσης: {result} εγγραφές αποθηκεύτηκαν");

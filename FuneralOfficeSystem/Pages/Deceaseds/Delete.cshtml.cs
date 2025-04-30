@@ -29,7 +29,7 @@ namespace FuneralOfficeSystem.Pages.Deceaseds
                 return NotFound();
             }
 
-            var deceased = await _context.Deceased.FirstOrDefaultAsync(m => m.Id == id);
+            var deceased = await _context.Deceaseds.FirstOrDefaultAsync(m => m.Id == id);
 
             if (deceased == null)
             {
@@ -49,11 +49,11 @@ namespace FuneralOfficeSystem.Pages.Deceaseds
                 return NotFound();
             }
 
-            var deceased = await _context.Deceased.FindAsync(id);
+            var deceased = await _context.Deceaseds.FindAsync(id);
             if (deceased != null)
             {
                 Deceased = deceased;
-                _context.Deceased.Remove(Deceased);
+                _context.Deceaseds.Remove(Deceased);
                 await _context.SaveChangesAsync();
             }
 

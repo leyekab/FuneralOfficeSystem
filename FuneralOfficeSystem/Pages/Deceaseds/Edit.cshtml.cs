@@ -32,7 +32,7 @@ namespace FuneralOfficeSystem.Pages.Deceaseds
                 return NotFound();
             }
 
-            var deceased = await _context.Deceased.FirstOrDefaultAsync(m => m.Id == id);
+            var deceased = await _context.Deceaseds.FirstOrDefaultAsync(m => m.Id == id);
             if (deceased == null)
             {
                 return NotFound();
@@ -106,7 +106,7 @@ namespace FuneralOfficeSystem.Pages.Deceaseds
 
         private bool DeceasedExists(int id)
         {
-            return _context.Deceased.Any(e => e.Id == id);
+            return _context.Deceaseds.Any(e => e.Id == id);
         }
     }
 }

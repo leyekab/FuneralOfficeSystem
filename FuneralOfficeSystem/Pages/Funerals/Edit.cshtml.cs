@@ -44,7 +44,7 @@ namespace FuneralOfficeSystem.Pages.Funerals
 
             // Ανανέωση των dropdown λιστών
             ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Address");
-            ViewData["DeceasedId"] = new SelectList(_context.Deceased, "Id", "FirstName");
+            ViewData["DeceasedId"] = new SelectList(_context.Deceaseds, "Id", "FirstName");
             ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices, "Id", "Address");
 
             return Page();
@@ -66,7 +66,7 @@ namespace FuneralOfficeSystem.Pages.Funerals
 
                 // Επαναφορά των dropdown λιστών
                 ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Address");
-                ViewData["DeceasedId"] = new SelectList(_context.Deceased, "Id", "FirstName");
+                ViewData["DeceasedId"] = new SelectList(_context.Deceaseds, "Id", "FirstName");
                 ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices, "Id", "Address");
 
                 return Page();
@@ -95,7 +95,7 @@ namespace FuneralOfficeSystem.Pages.Funerals
 
                     // Επαναφορά των dropdown λιστών
                     ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Address");
-                    ViewData["DeceasedId"] = new SelectList(_context.Deceased, "Id", "FirstName");
+                    ViewData["DeceasedId"] = new SelectList(_context.Deceaseds, "Id", "FirstName");
                     ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices, "Id", "Address");
 
                     return Page();
@@ -115,7 +115,7 @@ namespace FuneralOfficeSystem.Pages.Funerals
 
                     // Επαναφορά των dropdown λιστών
                     ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Address");
-                    ViewData["DeceasedId"] = new SelectList(_context.Deceased, "Id", "FirstName");
+                    ViewData["DeceasedId"] = new SelectList(_context.Deceaseds, "Id", "FirstName");
                     ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices, "Id", "Address");
 
                     return Page();
@@ -128,7 +128,7 @@ namespace FuneralOfficeSystem.Pages.Funerals
 
                 // Επαναφορά των dropdown λιστών
                 ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Address");
-                ViewData["DeceasedId"] = new SelectList(_context.Deceased, "Id", "FirstName");
+                ViewData["DeceasedId"] = new SelectList(_context.Deceaseds, "Id", "FirstName");
                 ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices, "Id", "Address");
 
                 return Page();
