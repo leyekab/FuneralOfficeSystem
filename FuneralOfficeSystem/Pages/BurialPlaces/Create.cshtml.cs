@@ -8,20 +8,17 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using FuneralOfficeSystem.Data;
 using FuneralOfficeSystem.Models;
 using Microsoft.Extensions.Logging;
-
 namespace FuneralOfficeSystem.Pages.BurialPlaces
 {
     public class CreateModel : PageModel
     {
         private readonly FuneralOfficeSystem.Data.ApplicationDbContext _context;
         private readonly ILogger<CreateModel> _logger;
-
         public CreateModel(FuneralOfficeSystem.Data.ApplicationDbContext context, ILogger<CreateModel> logger)
         {
             _context = context;
             _logger = logger;
         }
-
         public IActionResult OnGet()
         {
             // Initialize burial place with default values
@@ -30,17 +27,16 @@ namespace FuneralOfficeSystem.Pages.BurialPlaces
                 IsEnabled = true,
                 Funerals = new List<Funeral>()
             };
-
             return Page();
         }
-
         [BindProperty]
         public BurialPlace BurialPlace { get; set; } = default!;
-
         public async Task<IActionResult> OnPostAsync()
         {
             _logger.LogInformation("Μέθοδος OnPostAsync εκτελείται");
             _logger.LogInformation($"BurialPlace Name: {BurialPlace?.Name}");
+            _logger.LogInformation($"BurialPlace Address: {BurialPlace?.Address}");
+            _logger.LogInformation($"BurialPlace Phone: {BurialPlace?.Phone}");
             _logger.LogInformation($"BurialPlace IsEnabled: {BurialPlace?.IsEnabled}");
 
             // Έλεγχος αν το μοντέλο είναι null
@@ -55,6 +51,11 @@ namespace FuneralOfficeSystem.Pages.BurialPlaces
             if (string.IsNullOrWhiteSpace(BurialPlace.Name))
             {
                 ModelState.AddModelError("BurialPlace.Name", "Το όνομα είναι υποχρεωτικό");
+            }
+
+            if (string.IsNullOrWhiteSpace(BurialPlace.Address))
+            {
+                ModelState.AddModelError("BurialPlace.Address", "Η διεύθυνση είναι υποχρεωτική");
             }
 
             if (!ModelState.IsValid)

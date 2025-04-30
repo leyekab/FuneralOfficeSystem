@@ -3,10 +3,8 @@
 @{
     ViewData["Title"] = "Λεπτομέρειες Κοιμητηρίου";
 }
-
 <div class="container">
     <h1 class="text-center mb-4">Λεπτομέρειες Κοιμητηρίου</h1>
-
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card shadow">
@@ -20,6 +18,22 @@
                                     </th>
                                     <td>
                                         @Html.DisplayFor(model => model.BurialPlace.Name)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Διεύθυνση
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.BurialPlace.Address)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Τηλέφωνο
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.BurialPlace.Phone)
                                     </td>
                                 </tr>
                                 <tr>
@@ -40,7 +54,6 @@
                             </tbody>
                         </table>
                     </div>
-
                     <div class="row mt-4">
                         <div class="col-md-6">
                             <a asp-page="./Index" class="btn btn-secondary w-100">Επιστροφή στη Λίστα</a>

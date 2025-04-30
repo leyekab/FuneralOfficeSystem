@@ -53,6 +53,8 @@ namespace FuneralOfficeSystem.Pages.BurialPlaces
             _logger.LogInformation("Μέθοδος OnPostAsync της Edit εκτελείται");
             _logger.LogInformation($"BurialPlace ID: {BurialPlace?.Id}");
             _logger.LogInformation($"BurialPlace Name: {BurialPlace?.Name}");
+            _logger.LogInformation($"BurialPlace Address: {BurialPlace?.Address}");
+            _logger.LogInformation($"BurialPlace Phone: {BurialPlace?.Phone}");
             _logger.LogInformation($"BurialPlace IsEnabled: {BurialPlace?.IsEnabled}");
 
             // Έλεγχος αν το μοντέλο είναι null
@@ -67,6 +69,11 @@ namespace FuneralOfficeSystem.Pages.BurialPlaces
             if (string.IsNullOrWhiteSpace(BurialPlace.Name))
             {
                 ModelState.AddModelError("BurialPlace.Name", "Το όνομα είναι υποχρεωτικό");
+            }
+
+            if (string.IsNullOrWhiteSpace(BurialPlace.Address))
+            {
+                ModelState.AddModelError("BurialPlace.Address", "Η διεύθυνση είναι υποχρεωτική");
             }
 
             if (!ModelState.IsValid)
@@ -88,6 +95,8 @@ namespace FuneralOfficeSystem.Pages.BurialPlaces
 
                 // Update properties
                 existingBurialPlace.Name = BurialPlace.Name;
+                existingBurialPlace.Address = BurialPlace.Address;
+                existingBurialPlace.Phone = BurialPlace.Phone;
                 existingBurialPlace.IsEnabled = BurialPlace.IsEnabled;
 
                 _logger.LogInformation("Προσπάθεια αποθήκευσης αλλαγών");
