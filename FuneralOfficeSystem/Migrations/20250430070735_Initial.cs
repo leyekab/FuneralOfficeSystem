@@ -53,6 +53,35 @@ namespace FuneralOfficeSystem.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "BurialPlaces",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
+                    IsEnabled = table.Column<bool>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BurialPlaces", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Churches",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
+                    Phone = table.Column<string>(type: "TEXT", maxLength: 20, nullable: true),
+                    IsEnabled = table.Column<bool>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Churches", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Clients",
                 columns: table => new
                 {
@@ -60,11 +89,13 @@ namespace FuneralOfficeSystem.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     FirstName = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
                     LastName = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
-                    AFM = table.Column<string>(type: "TEXT", maxLength: 9, nullable: false),
-                    Address = table.Column<string>(type: "TEXT", maxLength: 200, nullable: false),
-                    Phone = table.Column<string>(type: "TEXT", maxLength: 20, nullable: false),
-                    Email = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    RelationshipToDeceased = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false)
+                    RelationshipToDeceased = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
+                    Address = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
+                    Phone = table.Column<string>(type: "TEXT", maxLength: 20, nullable: true),
+                    Email = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
+                    AFM = table.Column<string>(type: "TEXT", maxLength: 9, nullable: true),
+                    Notes = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
+                    IsEnabled = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -82,7 +113,9 @@ namespace FuneralOfficeSystem.Migrations
                     AMKA = table.Column<string>(type: "TEXT", maxLength: 11, nullable: false),
                     AFM = table.Column<string>(type: "TEXT", maxLength: 9, nullable: false),
                     BirthDate = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    DeathDate = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    DeathDate = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    PlaceOfDeath = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
+                    Notes = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -96,8 +129,11 @@ namespace FuneralOfficeSystem.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    Address = table.Column<string>(type: "TEXT", maxLength: 200, nullable: false),
-                    Phone = table.Column<string>(type: "TEXT", maxLength: 20, nullable: false)
+                    Description = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
+                    Address = table.Column<string>(type: "TEXT", maxLength: 200, nullable: true),
+                    Phone = table.Column<string>(type: "TEXT", maxLength: 20, nullable: true),
+                    Email = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
+                    IsEnabled = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -111,9 +147,12 @@ namespace FuneralOfficeSystem.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    Address = table.Column<string>(type: "TEXT", maxLength: 200, nullable: false),
-                    Phone = table.Column<string>(type: "TEXT", maxLength: 20, nullable: false),
-                    IsProductSupplier = table.Column<bool>(type: "INTEGER", nullable: false)
+                    Description = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
+                    Address = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
+                    Phone = table.Column<string>(type: "TEXT", maxLength: 20, nullable: true),
+                    Email = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
+                    SupplierType = table.Column<int>(type: "INTEGER", nullable: false),
+                    IsEnabled = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -232,18 +271,34 @@ namespace FuneralOfficeSystem.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    FuneralDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    BurialPlace = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    Church = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    CeremonyTime = table.Column<string>(type: "TEXT", maxLength: 20, nullable: false),
+                    CeremonyTime = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
+                    FuneralDate = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    TotalCost = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    Advance = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    Balance = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
                     IsFinalBill = table.Column<bool>(type: "INTEGER", nullable: false),
+                    Notes = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
                     FuneralOfficeId = table.Column<int>(type: "INTEGER", nullable: false),
                     DeceasedId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ClientId = table.Column<int>(type: "INTEGER", nullable: false)
+                    ClientId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ChurchId = table.Column<int>(type: "INTEGER", nullable: false),
+                    BurialPlaceId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Funerals", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Funerals_BurialPlaces_BurialPlaceId",
+                        column: x => x.BurialPlaceId,
+                        principalTable: "BurialPlaces",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Funerals_Churches_ChurchId",
+                        column: x => x.ChurchId,
+                        principalTable: "Churches",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Funerals_Clients_ClientId",
                         column: x => x.ClientId,
@@ -271,8 +326,9 @@ namespace FuneralOfficeSystem.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    Description = table.Column<string>(type: "TEXT", maxLength: 500, nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
                     Category = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
+                    IsEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
                     SupplierId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
@@ -293,8 +349,9 @@ namespace FuneralOfficeSystem.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    Description = table.Column<string>(type: "TEXT", maxLength: 500, nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
                     Category = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
+                    IsEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
                     SupplierId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
@@ -314,10 +371,13 @@ namespace FuneralOfficeSystem.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    FuneralId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ProductId = table.Column<int>(type: "INTEGER", nullable: false),
                     Quantity = table.Column<int>(type: "INTEGER", nullable: false),
-                    Price = table.Column<decimal>(type: "TEXT", nullable: false)
+                    UnitPrice = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    TotalPrice = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    Notes = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
+                    FuneralId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ProductId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -342,10 +402,12 @@ namespace FuneralOfficeSystem.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    FuneralOfficeId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ProductId = table.Column<int>(type: "INTEGER", nullable: false),
                     Quantity = table.Column<int>(type: "INTEGER", nullable: false),
-                    MinimumQuantity = table.Column<int>(type: "INTEGER", nullable: false)
+                    UnitPrice = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    TotalValue = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    Notes = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
+                    FuneralOfficeId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ProductId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -370,12 +432,14 @@ namespace FuneralOfficeSystem.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    ProductId = table.Column<int>(type: "INTEGER", nullable: false),
-                    SourceFuneralOfficeId = table.Column<int>(type: "INTEGER", nullable: true),
-                    DestinationFuneralOfficeId = table.Column<int>(type: "INTEGER", nullable: true),
+                    TransactionTypeEnum = table.Column<int>(type: "INTEGER", nullable: false),
+                    TransactionType = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
                     Quantity = table.Column<int>(type: "INTEGER", nullable: false),
                     TransactionDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    TransactionType = table.Column<string>(type: "TEXT", maxLength: 20, nullable: false)
+                    Notes = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
+                    ProductId = table.Column<int>(type: "INTEGER", nullable: false),
+                    SourceFuneralOfficeId = table.Column<int>(type: "INTEGER", nullable: false),
+                    DestinationFuneralOfficeId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -406,9 +470,10 @@ namespace FuneralOfficeSystem.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Price = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    Notes = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
                     FuneralId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ServiceId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Price = table.Column<decimal>(type: "TEXT", nullable: false)
+                    ServiceId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -473,6 +538,16 @@ namespace FuneralOfficeSystem.Migrations
                 name: "IX_FuneralProducts_ProductId",
                 table: "FuneralProducts",
                 column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Funerals_BurialPlaceId",
+                table: "Funerals",
+                column: "BurialPlaceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Funerals_ChurchId",
+                table: "Funerals",
+                column: "ChurchId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Funerals_ClientId",
@@ -579,6 +654,12 @@ namespace FuneralOfficeSystem.Migrations
 
             migrationBuilder.DropTable(
                 name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "BurialPlaces");
+
+            migrationBuilder.DropTable(
+                name: "Churches");
 
             migrationBuilder.DropTable(
                 name: "Clients");

@@ -22,6 +22,8 @@ namespace FuneralOfficeSystem.Data
         public DbSet<Inventory> Inventories { get; set; }
         public DbSet<InventoryTransaction> InventoryTransactions { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<BurialPlace> BurialPlaces { get; set; }
+        public DbSet<Church> Churches { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -83,6 +85,18 @@ namespace FuneralOfficeSystem.Data
                 .HasOne(f => f.Client)
                 .WithMany(c => c.Funerals)
                 .HasForeignKey(f => f.ClientId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Funeral>()
+                .HasOne(f => f.BurialPlace)
+                .WithMany(c => c.Funerals)
+                .HasForeignKey(f => f.BurialPlaceId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Funeral>()
+                .HasOne(f => f.Church)
+                .WithMany(c => c.Funerals)
+                .HasForeignKey(f => f.ChurchId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<Product>()

@@ -1,0 +1,72 @@
+﻿@page
+@model FuneralOfficeSystem.Pages.Churches.CreateModel
+
+@{
+    ViewData["Title"] = "Δημιουργία Εκκλησίας";
+}
+
+<div class="container">
+    <h1 class="text-center mb-4">Δημιουργία Εκκλησίας</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form method="post" id="createForm">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+
+                        <div class="form-group mb-3">
+                            <span class="text-danger">*</span>
+                            <label asp-for="Church.Name" class="control-label">Όνομα</label>
+                            <input asp-for="Church.Name" class="form-control" required />
+                            <span asp-validation-for="Church.Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <span class="text-danger">*</span>
+                            <label asp-for="Church.Address" class="control-label">Διεύθυνση</label>
+                            <input asp-for="Church.Address" class="form-control" required />
+                            <span asp-validation-for="Church.Address" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Church.Phone" class="control-label">Τηλέφωνο</label>
+                            <input asp-for="Church.Phone" class="form-control" />
+                            <span asp-validation-for="Church.Phone" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group form-check mb-3">
+                            <input asp-for="Church.IsEnabled" class="form-check-input" checked />
+                            <label asp-for="Church.IsEnabled" class="form-check-label">Ενεργή</label>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <a asp-page="Index" class="btn btn-secondary w-100">Επιστροφή στη Λίστα</a>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="submit" value="Δημιουργία" class="btn btn-primary w-100" id="saveButton" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        // Προσθήκη client-side κώδικα για να επιβεβαιώσουμε ότι η φόρμα υποβάλλεται σωστά
+        $(document).ready(function () {
+            $("#createForm").on("submit", function (e) {
+                console.log("Church create form submitted");
+                // Επιστρέφουμε true για να επιτρέψουμε την κανονική υποβολή της φόρμας
+                return true;
+            });
+        });
+    </script>
+}

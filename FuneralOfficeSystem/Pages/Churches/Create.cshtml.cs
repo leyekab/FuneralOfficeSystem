@@ -1,0 +1,103 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using FuneralOfficeSystem.Data;
+using FuneralOfficeSystem.Models;
+using Microsoft.Extensions.Logging;
+
+namespace FuneralOfficeSystem.Pages.Churches
+{
+    public class CreateModel : PageModel
+    {
+        private readonly FuneralOfficeSystem.Data.ApplicationDbContext _context;
+        private readonly ILogger<CreateModel> _logger;
+
+        public CreateModel(FuneralOfficeSystem.Data.ApplicationDbContext context, ILogger<CreateModel> logger)
+        {
+            _context = context;
+            _logger = logger;
+        }
+
+        public IActionResult OnGet()
+        {
+            // Initialize church with default values
+            Church = new Church
+            {
+                IsEnabled = true,
+                Funerals = new List<Funeral>()
+            };
+
+            return Page();
+        }
+
+        [BindProperty]
+        public Church Church { get; set; } = default!;
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            _logger.LogInformation("Μέθοδος OnPostAsync εκτελείται");
+            _logger.LogInformation($"Church Name: {Church?.Name}");
+            _logger.LogInformation($"Church Address: {Church?.Address}");
+            _logger.LogInformation($"Church Phone: {Church?.Phone}");
+            _logger.LogInformation($"Church IsEnabled: {Church?.IsEnabled}");
+
+            // Έλεγχος αν το μοντέλο είναι null
+            if (Church == null)
+            {
+                _logger.LogWarning("Church είναι null");
+                ModelState.AddModelError("", "Η φόρμα δεν έστειλε δεδομένα");
+                return Page();
+            }
+
+            // Έλεγχος για υποχρεωτικά πεδία
+            if (string.IsNullOrWhiteSpace(Church.Name))
+            {
+                ModelState.AddModelError("Church.Name", "Το όνομα είναι υποχρεωτικό");
+            }
+
+            if (string.IsNullOrWhiteSpace(Church.Address))
+            {
+                ModelState.AddModelError("Church.Address", "Η διεύθυνση είναι υποχρεωτική");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            // Initialize navigation properties
+            Church.Funerals = new List<Funeral>();
+
+            try
+            {
+                _logger.LogInformation("Προσπάθεια προσθήκης Church");
+                _context.Churches.Add(Church);
+                _logger.LogInformation("Προσπάθεια αποθήκευσης αλλαγών");
+                var result = await _context.SaveChangesAsync();
+                _logger.LogInformation($"Αποτέλεσμα αποθήκευσης: {result} εγγραφές αποθηκεύτηκαν");
+
+                if (result > 0)
+                {
+                    _logger.LogInformation("Επιτυχής αποθήκευση, ανακατεύθυνση στο Index");
+                    return RedirectToPage("./Index");
+                }
+                else
+                {
+                    _logger.LogWarning("Δεν αποθηκεύτηκαν εγγραφές");
+                    ModelState.AddModelError("", "Δεν ήταν δυνατή η αποθήκευση της εκκλησίας.");
+                    return Page();
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Σφάλμα κατά την αποθήκευση της εκκλησίας");
+                ModelState.AddModelError("", $"Προέκυψε σφάλμα: {ex.Message}");
+                return Page();
+            }
+        }
+    }
+}

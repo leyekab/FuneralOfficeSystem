@@ -27,6 +27,8 @@ namespace FuneralOfficeSystem.Pages
         public int ProductsCount { get; set; }
         public int ServicesCount { get; set; }
         public int UsersCount { get; set; }
+        public int ChurchesCount { get; set; }
+        public int BurialPlacesCount { get; set; }
         public int FuneralsCount { get; set; }
         public int DeceasedsCount { get; set; }
         public int ClientsCount { get; set; }
@@ -41,6 +43,8 @@ namespace FuneralOfficeSystem.Pages
             ProductsCount = await _context.Products.CountAsync();
             ServicesCount = await _context.Services.CountAsync();
             UsersCount = await _userManager.Users.CountAsync();
+            ChurchesCount = await _context.Churches.CountAsync();
+            BurialPlacesCount = await _context.BurialPlaces.CountAsync();
             FuneralsCount = await _context.Funerals.CountAsync();
             DeceasedsCount = await _context.Deceased.CountAsync();
             ClientsCount = await _context.Clients.CountAsync();
@@ -56,6 +60,8 @@ namespace FuneralOfficeSystem.Pages
                 .Include(f => f.Deceased)
                 .Include(f => f.FuneralOffice)
                 .Include(f => f.Client)
+                .Include(f => f.BurialPlace)
+                .Include(f => f.Church)
                 .Where(f => f.FuneralDate >= ninetyDaysAgo)
                 .OrderByDescending(f => f.FuneralDate)
                 .ToListAsync();

@@ -9,7 +9,7 @@ using FuneralOfficeSystem.Data;
 using FuneralOfficeSystem.Models;
 using Microsoft.Extensions.Logging;
 
-namespace FuneralOfficeSystem.Pages.Products
+namespace FuneralOfficeSystem.Pages.BurialPlaces
 {
     public class DeleteModel : PageModel
     {
@@ -23,29 +23,27 @@ namespace FuneralOfficeSystem.Pages.Products
         }
 
         [BindProperty]
-        public Product Product { get; set; } = default!;
+        public BurialPlace BurialPlace { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
-                _logger.LogWarning("Προσπάθεια απενεργοποίησης προϊόντος χωρίς καθορισμένο ID");
+                _logger.LogWarning("Προσπάθεια απενεργοποίησης κοιμητηρίου χωρίς καθορισμένο ID");
                 return NotFound();
             }
 
-            var product = await _context.Products
-                .Include(p => p.Supplier)
-                .Include(p => p.Inventories)
-                .Include(p => p.FuneralProducts)
+            var burialPlace = await _context.BurialPlaces
+                .Include(c => c.Funerals)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
-            if (product == null)
+            if (burialPlace == null)
             {
-                _logger.LogWarning($"Δεν βρέθηκε προϊόν με ID {id}");
+                _logger.LogWarning($"Δεν βρέθηκε κοιμητήριο με ID {id}");
                 return NotFound();
             }
 
-            Product = product;
+            BurialPlace = burialPlace;
             return Page();
         }
 
@@ -53,38 +51,37 @@ namespace FuneralOfficeSystem.Pages.Products
         {
             if (id == null)
             {
-                _logger.LogWarning("Προσπάθεια απενεργοποίησης προϊόντος χωρίς καθορισμένο ID");
+                _logger.LogWarning("Προσπάθεια απενεργοποίησης κοιμητηρίου χωρίς καθορισμένο ID");
                 return NotFound();
             }
 
             try
             {
-                var product = await _context.Products
-                    .Include(p => p.Inventories)
-                    .Include(p => p.FuneralProducts)
+                var burialPlace = await _context.BurialPlaces
+                    .Include(c => c.Funerals)
                     .FirstOrDefaultAsync(m => m.Id == id);
 
-                if (product != null)
+                if (burialPlace != null)
                 {
-                    _logger.LogInformation($"Απενεργοποίηση προϊόντος με ID {id}");
+                    _logger.LogInformation($"Απενεργοποίηση κοιμητηρίου με ID {id}");
 
                     // Αντί για διαγραφή, θέτουμε το IsEnabled σε false
-                    product.IsEnabled = false;
-                    _context.Attach(product).State = EntityState.Modified;
-                    _logger.LogInformation("Απενεργοποίηση προϊόντος αντί για διαγραφή");
+                    burialPlace.IsEnabled = false;
+                    _context.Attach(burialPlace).State = EntityState.Modified;
+                    _logger.LogInformation("Απενεργοποίηση κοιμητηρίου αντί για διαγραφή");
 
                     await _context.SaveChangesAsync();
                 }
                 else
                 {
-                    _logger.LogWarning($"Δεν βρέθηκε προϊόν με ID {id} κατά την απενεργοποίηση");
+                    _logger.LogWarning($"Δεν βρέθηκε κοιμητήριο με ID {id} κατά την απενεργοποίηση");
                 }
 
                 return RedirectToPage("./Index");
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Σφάλμα κατά την απενεργοποίηση προϊόντος");
+                _logger.LogError(ex, "Σφάλμα κατά την απενεργοποίηση κοιμητηρίου");
                 ModelState.AddModelError("", $"Προέκυψε σφάλμα: {ex.Message}");
                 return Page();
             }

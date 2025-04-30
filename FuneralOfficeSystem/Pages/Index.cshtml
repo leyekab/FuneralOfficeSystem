@@ -118,7 +118,7 @@
     </div>
 
     <!-- Τρίτη γραμμή με Αποθήκες -->
-    <div class="row mb-5">
+    @* <div class="row mb-5">
         <div class="col-md-3">
             <div class="card text-white bg-success mb-3">
                 <div class="card-header text-center">Αποθήκες</div>
@@ -131,7 +131,61 @@
                 </div>
             </div>
         </div>
+    </div> *@
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header text-center">Αποθήκες</div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">@Model.WarehousesCount</h5>
+                    <p class="card-text text-center">Συνολικές Αποθήκες</p>
+                    <div class="text-center">
+                        <a href="/Warehouses" class="btn btn-light">Προβολή</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-header text-center">Εκκλησίες</div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">@Model.ChurchesCount</h5>
+                    <p class="card-text text-center">Συνολικές Εκκλησίες</p>
+                    <div class="text-center">
+                        <a href="/Churches" class="btn btn-light">Προβολή</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-white bg-info mb-3">
+                <div class="card-header text-center">Κοιμητήρια</div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">@Model.BurialPlacesCount</h5>
+                    <p class="card-text text-center">Συνολικά Κοιμητήρια</p>
+                    <div class="text-center">
+                        <a href="/BurialPlaces" class="btn btn-light">Προβολή</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @* <div class="col-md-3">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header text-center">Εντολείς</div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">@Model.ClientsCount</h5>
+                    <p class="card-text text-center">Συνολικοί Εντολείς</p>
+                    <div class="text-center">
+                        <a href="/Clients" class="btn btn-light">Προβολή</a>
+                    </div>
+                </div>
+            </div>
+        </div> *@
     </div>
+
 
     <!-- Λίστα με τις κηδείες των τελευταίων 90 ημερών -->
     <div class="row mt-4">

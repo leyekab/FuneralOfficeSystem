@@ -1,19 +1,19 @@
 ﻿@page
-@model FuneralOfficeSystem.Pages.Products.DeleteModel
+@model FuneralOfficeSystem.Pages.BurialPlaces.DeleteModel
 @{
-    ViewData["Title"] = "Απενεργοποίηση Προϊόντος";
+    ViewData["Title"] = "Απενεργοποίηση Κοιμητηρίου";
 }
 
 <div class="container">
-    <h1 class="text-center mb-4">Απενεργοποίηση Προϊόντος</h1>
+    <h1 class="text-center mb-4">Απενεργοποίηση Κοιμητηρίου</h1>
 
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card shadow">
                 <div class="card-body">
                     <div class="alert alert-warning">
-                        <h4 class="alert-heading">Είστε βέβαιοι ότι θέλετε να απενεργοποιήσετε αυτό το προϊόν;</h4>
-                        <p>Το προϊόν θα οριστεί ως ανενεργό και δεν θα εμφανίζεται στις κύριες λίστες.</p>
+                        <h4 class="alert-heading">Είστε βέβαιοι ότι θέλετε να απενεργοποιήσετε αυτό το κοιμητήριο;</h4>
+                        <p>Το κοιμητήριο θα οριστεί ως ανενεργό και δεν θα εμφανίζεται στις κύριες λίστες.</p>
                     </div>
 
                     <div class="table-responsive mt-4">
@@ -24,31 +24,7 @@
                                         Όνομα
                                     </th>
                                     <td>
-                                        @Html.DisplayFor(model => model.Product.Name)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        Κατηγορία
-                                    </th>
-                                    <td>
-                                        @Html.DisplayFor(model => model.Product.Category)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        Περιγραφή
-                                    </th>
-                                    <td>
-                                        @Html.DisplayFor(model => model.Product.Description)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        Προμηθευτής
-                                    </th>
-                                    <td>
-                                        @Html.DisplayFor(model => model.Product.Supplier.Name)
+                                        @Html.DisplayFor(model => model.BurialPlace.Name)
                                     </td>
                                 </tr>
                                 <tr>
@@ -56,7 +32,7 @@
                                         Κατάσταση
                                     </th>
                                     <td>
-                                        @if (Model.Product.IsEnabled)
+                                        @if (Model.BurialPlace.IsEnabled)
                                         {
                                             <span class="badge bg-success">Ενεργό</span>
                                         }
@@ -71,7 +47,7 @@
                     </div>
 
                     <form method="post" class="mt-4">
-                        <input type="hidden" asp-for="Product.Id" />
+                        <input type="hidden" asp-for="BurialPlace.Id" />
                         <div class="row">
                             <div class="col-md-6">
                                 <a asp-page="./Index" class="btn btn-secondary w-100">Επιστροφή στη Λίστα</a>

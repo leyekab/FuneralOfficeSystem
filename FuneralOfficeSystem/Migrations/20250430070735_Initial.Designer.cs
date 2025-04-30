@@ -11,14 +11,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FuneralOfficeSystem.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250402200817_Initial")]
+    [Migration("20250430070735_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.3");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.14");
 
             modelBuilder.Entity("FuneralOfficeSystem.Models.ApplicationUser", b =>
                 {
@@ -92,6 +92,48 @@ namespace FuneralOfficeSystem.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("FuneralOfficeSystem.Models.BurialPlace", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsEnabled")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BurialPlaces");
+                });
+
+            modelBuilder.Entity("FuneralOfficeSystem.Models.Church", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsEnabled")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Phone")
+                        .HasMaxLength(20)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Churches");
+                });
+
             modelBuilder.Entity("FuneralOfficeSystem.Models.Client", b =>
                 {
                     b.Property<int>("Id")
@@ -99,17 +141,14 @@ namespace FuneralOfficeSystem.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("AFM")
-                        .IsRequired()
                         .HasMaxLength(9)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Address")
-                        .IsRequired()
-                        .HasMaxLength(200)
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
@@ -118,19 +157,24 @@ namespace FuneralOfficeSystem.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("IsEnabled")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Notes")
+                        .HasMaxLength(500)
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Phone")
-                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("RelationshipToDeceased")
-                        .IsRequired()
-                        .HasMaxLength(50)
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -157,7 +201,7 @@ namespace FuneralOfficeSystem.Migrations
                     b.Property<DateTime?>("BirthDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("DeathDate")
+                    b.Property<DateTime?>("DeathDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("FirstName")
@@ -168,6 +212,14 @@ namespace FuneralOfficeSystem.Migrations
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Notes")
+                        .HasMaxLength(500)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PlaceOfDeath")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -181,20 +233,22 @@ namespace FuneralOfficeSystem.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("BurialPlace")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("TEXT");
+                    b.Property<decimal>("Advance")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<decimal>("Balance")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<int>("BurialPlaceId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("CeremonyTime")
                         .IsRequired()
-                        .HasMaxLength(20)
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Church")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("TEXT");
+                    b.Property<int>("ChurchId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("ClientId")
                         .HasColumnType("INTEGER");
@@ -202,7 +256,7 @@ namespace FuneralOfficeSystem.Migrations
                     b.Property<int>("DeceasedId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("FuneralDate")
+                    b.Property<DateTime?>("FuneralDate")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("FuneralOfficeId")
@@ -211,7 +265,18 @@ namespace FuneralOfficeSystem.Migrations
                     b.Property<bool>("IsFinalBill")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Notes")
+                        .HasMaxLength(500)
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("TotalCost")
+                        .HasColumnType("decimal(18, 2)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("BurialPlaceId");
+
+                    b.HasIndex("ChurchId");
 
                     b.HasIndex("ClientId");
 
@@ -229,9 +294,19 @@ namespace FuneralOfficeSystem.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsEnabled")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -239,7 +314,6 @@ namespace FuneralOfficeSystem.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("TEXT");
 
@@ -257,14 +331,24 @@ namespace FuneralOfficeSystem.Migrations
                     b.Property<int>("FuneralId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("Price")
+                    b.Property<string>("Notes")
+                        .HasMaxLength(500)
                         .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.HasKey("Id");
 
@@ -284,8 +368,12 @@ namespace FuneralOfficeSystem.Migrations
                     b.Property<int>("FuneralId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("Price")
+                    b.Property<string>("Notes")
+                        .HasMaxLength(500)
                         .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<int>("ServiceId")
                         .HasColumnType("INTEGER");
@@ -308,14 +396,21 @@ namespace FuneralOfficeSystem.Migrations
                     b.Property<int>("FuneralOfficeId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("MinimumQuantity")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Notes")
+                        .HasMaxLength(500)
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("TotalValue")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.HasKey("Id");
 
@@ -335,13 +430,17 @@ namespace FuneralOfficeSystem.Migrations
                     b.Property<int?>("DestinationFuneralOfficeId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Notes")
+                        .HasMaxLength(500)
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("SourceFuneralOfficeId")
+                    b.Property<int>("SourceFuneralOfficeId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("TransactionDate")
@@ -349,8 +448,11 @@ namespace FuneralOfficeSystem.Migrations
 
                     b.Property<string>("TransactionType")
                         .IsRequired()
-                        .HasMaxLength(20)
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("TransactionTypeEnum")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -375,9 +477,11 @@ namespace FuneralOfficeSystem.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsEnabled")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -406,9 +510,11 @@ namespace FuneralOfficeSystem.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsEnabled")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -432,11 +538,18 @@ namespace FuneralOfficeSystem.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Address")
-                        .IsRequired()
-                        .HasMaxLength(200)
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsProductSupplier")
+                    b.Property<string>("Description")
+                        .HasMaxLength(500)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsEnabled")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
@@ -445,9 +558,11 @@ namespace FuneralOfficeSystem.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("SupplierType")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -588,6 +703,18 @@ namespace FuneralOfficeSystem.Migrations
 
             modelBuilder.Entity("FuneralOfficeSystem.Models.Funeral", b =>
                 {
+                    b.HasOne("FuneralOfficeSystem.Models.BurialPlace", "BurialPlace")
+                        .WithMany("Funerals")
+                        .HasForeignKey("BurialPlaceId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("FuneralOfficeSystem.Models.Church", "Church")
+                        .WithMany("Funerals")
+                        .HasForeignKey("ChurchId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("FuneralOfficeSystem.Models.Client", "Client")
                         .WithMany("Funerals")
                         .HasForeignKey("ClientId")
@@ -605,6 +732,10 @@ namespace FuneralOfficeSystem.Migrations
                         .HasForeignKey("FuneralOfficeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("BurialPlace");
+
+                    b.Navigation("Church");
 
                     b.Navigation("Client");
 
@@ -686,7 +817,8 @@ namespace FuneralOfficeSystem.Migrations
                     b.HasOne("FuneralOfficeSystem.Models.FuneralOffice", "SourceFuneralOffice")
                         .WithMany()
                         .HasForeignKey("SourceFuneralOfficeId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("DestinationFuneralOffice");
 
@@ -764,6 +896,16 @@ namespace FuneralOfficeSystem.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("FuneralOfficeSystem.Models.BurialPlace", b =>
+                {
+                    b.Navigation("Funerals");
+                });
+
+            modelBuilder.Entity("FuneralOfficeSystem.Models.Church", b =>
+                {
+                    b.Navigation("Funerals");
                 });
 
             modelBuilder.Entity("FuneralOfficeSystem.Models.Client", b =>
