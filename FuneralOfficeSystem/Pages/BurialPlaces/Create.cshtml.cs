@@ -31,6 +31,9 @@ namespace FuneralOfficeSystem.Pages.BurialPlaces
         }
         [BindProperty]
         public BurialPlace BurialPlace { get; set; } = default!;
+
+        [BindProperty]
+        public bool IsPopup { get; set; }
         public async Task<IActionResult> OnPostAsync()
         {
             _logger.LogInformation("Μέθοδος OnPostAsync εκτελείται");
@@ -76,8 +79,13 @@ namespace FuneralOfficeSystem.Pages.BurialPlaces
 
                 if (result > 0)
                 {
-                    _logger.LogInformation("Επιτυχής αποθήκευση, ανακατεύθυνση στο Index");
-                    return RedirectToPage("./Index");
+                    if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+                    {
+                        return new JsonResult(new { success = true });
+                    }
+                    return IsPopup
+                        ? Content("<script>window.close();</script>", "text/html")
+                        : RedirectToPage("./Index");
                 }
                 else
                 {

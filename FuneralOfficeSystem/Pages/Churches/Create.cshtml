@@ -14,6 +14,7 @@
                 <div class="card-body">
                     <form method="post" id="createForm">
                         <div asp-validation-summary="All" class="text-danger"></div>
+                        <input type="hidden" name="IsPopup" id="isPopup" value="false" />
 
                         <div class="form-group mb-3">
                             <span class="text-danger">*</span>
@@ -60,12 +61,46 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
     <script>
-        // Προσθήκη client-side κώδικα για να επιβεβαιώσουμε ότι η φόρμα υποβάλλεται σωστά
         $(document).ready(function () {
+            // Έλεγχος αν είναι popup window
+            if (window.opener) {
+                $("#isPopup").val("true");
+                // Κρύβουμε το κουμπί επιστροφής
+                $(".row.mt-4 .col-md-6:first").hide();
+                // Κάνουμε το κουμπί δημιουργίας να πιάνει όλο το πλάτος
+                $(".row.mt-4 .col-md-6:last").removeClass("col-md-6").addClass("col-md-12");
+            }
+
             $("#createForm").on("submit", function (e) {
-                console.log("Church create form submitted");
-                // Επιστρέφουμε true για να επιτρέψουμε την κανονική υποβολή της φόρμας
-                return true;
+                if (!$(this).valid()) {
+                    return true;
+                }
+
+                e.preventDefault();
+                var formData = $(this).serialize();
+
+                $.ajax({
+                    url: window.location.pathname,
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        if (response.success) {
+                            if ($("#isPopup").val() === "true") {
+                                window.close();
+                                if (window.opener && !window.opener.closed) {
+                                    window.opener.location.reload();
+                                }
+                            } else {
+                                window.location.href = './Index';
+                            }
+                        } else {
+                            $("#createForm")[0].submit();
+                        }
+                    },
+                    error: function() {
+                        $("#createForm")[0].submit();
+                    }
+                });
             });
         });
     </script>

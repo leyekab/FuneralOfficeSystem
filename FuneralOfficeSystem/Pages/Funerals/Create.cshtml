@@ -57,9 +57,10 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="Funeral.Church" class="control-label">Εκκλησία</label>
-                                    <input asp-for="Funeral.Church" class="form-control" />
-                                    <span asp-validation-for="Funeral.Church" class="text-danger"></span>
+                                    <label asp-for="Funeral.ChurchId" class="control-label">Εκκλησία</label>
+                                    <input type="text" id="churchAutocomplete" class="form-control" />
+                                    <input type="hidden" asp-for="Funeral.ChurchId" id="churchId" />
+                                    <span asp-validation-for="Funeral.ChurchId" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -72,9 +73,10 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <label asp-for="Funeral.BurialPlace" class="control-label">Τόπος Ταφής</label>
-                            <input asp-for="Funeral.BurialPlace" class="form-control" />
-                            <span asp-validation-for="Funeral.BurialPlace" class="text-danger"></span>
+                            <label asp-for="Funeral.BurialPlaceId" class="control-label">Τόπος Ταφής</label>
+                            <input type="text" id="burialPlaceAutocomplete" class="form-control" />
+                            <input type="hidden" asp-for="Funeral.BurialPlaceId" id="burialPlaceId" />
+                            <span asp-validation-for="Funeral.BurialPlaceId" class="text-danger"></span>
                         </div>
 
                         <div class="form-group form-check mb-3">
@@ -96,14 +98,14 @@
                                 </button>
                             </div>
                             <div class="col-md-3">
-                                <a asp-controller="Churches" asp-action="Create" asp-route-funeralofficeid="3" class="btn btn-info w-100 create-btn">
+                                <button type="button" data-url="/Churches/Create?funeralofficeid=3" class="btn btn-info w-100 create-btn">
                                     <i class="bi bi-building"></i> Νέα Εκκλησία
-                                </a>
+                                </button>
                             </div>
                             <div class="col-md-3">
-                                <a asp-controller="Cemeteries" asp-action="Create" asp-route-funeralofficeid="3" class="btn btn-info w-100 create-btn">
-                                    <i class="bi bi-tree"></i> Νέο Κοιμητήριο
-                                </a>
+                                <button type="button" data-url="/BurialPlaces/Create?funeralofficeid=3" class="btn btn-info w-100 create-btn">
+                                    <i class="bi bi-building"></i> Νέο Κοιμητήριο
+                                </button>
                             </div>
                         </div>
                         <!-- Δεύτερη σειρά με τα νέα κουμπιά -->
@@ -152,20 +154,14 @@
                             }));
                         }
                     });
-                    },
-                    minLength: 2,
-                    select: function (event, ui) {
-                        $("#deceasedId").val(ui.item.id);
-                    }
+                },
+                minLength: 2,
+                select: function (event, ui) {
+                    $("#deceasedId").val(ui.item.id);
+                }
             });
 
             // Άνοιγμα των φορμών σε νέο παράθυρο
-            // $(".create-btn").on("click", function () {
-            //     var url = $(this).data('url');
-            //     if(url) {
-            //         window.open(url, '_blank', 'width=800,height=800,scrollbars=yes');
-            //     }
-            // });
             $(".create-btn").on("click", function (e) {
                 e.preventDefault();
                 var url = $(this).data('url') || $(this).attr('href');
@@ -198,36 +194,104 @@
                 }
             });
 
-            // Έλεγχος για μηνύματα από το popup window
-            window.addEventListener('focus', function() {
-                // Ανανέωση των autocomplete όταν το παράθυρο παίρνει focus
-                if ($("#deceasedAutocomplete").length > 0) {
-                    $("#deceasedAutocomplete").autocomplete("search", "");
-                }
-                if ($("#clientAutocomplete").length > 0) {
-                    $("#clientAutocomplete").autocomplete("search", "");
+            // Autocomplete για την Εκκλησία
+            $("#churchAutocomplete").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/api/Churches/Search",
+                        type: "GET",
+                        data: { searchTerm: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: item.name,
+                                    value: item.name,
+                                    id: item.id
+                                };
+                            }));
+                        }
+                    });
+                },
+                minLength: 2,
+                select: function (event, ui) {
+                    $("#churchId").val(ui.item.id);
                 }
             });
 
-            // Form validation
-            $("#createForm").on("submit", function (e) {
-                var deceasedId = $("#deceasedId").val();
-                var clientId = $("#clientId").val();
+                    // Autocomplete για τον Τόπο Ταφής
+        $("#burialPlaceAutocomplete").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/api/BurialPlaces/Search",
+                    type: "GET",
+                    data: { searchTerm: request.term },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return {
+                                label: item.name,
+                                value: item.name,
+                                id: item.id
+                            };
+                        }));
+                    }
+                });
+            },
+            minLength: 2,
+            select: function (event, ui) {
+                $("#burialPlaceId").val(ui.item.id);
+            }
+        });
 
-                if (!deceasedId) {
-                    alert("Παρακαλώ επιλέξτε έναν Αποβιώσαντα από τη λίστα");
-                    e.preventDefault();
-                    return false;
-                }
+                    // Έλεγχος για μηνύματα από το popup window
+        window.addEventListener('focus', function() {
+            // Ανανέωση των autocomplete όταν το παράθυρο παίρνει focus
+            if ($("#deceasedAutocomplete").length > 0) {
+                $("#deceasedAutocomplete").autocomplete("search", "");
+            }
+            if ($("#clientAutocomplete").length > 0) {
+                $("#clientAutocomplete").autocomplete("search", "");
+            }
+            if ($("#churchAutocomplete").length > 0) {
+                $("#churchAutocomplete").autocomplete("search", "");
+            }
+            if ($("#burialPlaceAutocomplete").length > 0) {
+                $("#burialPlaceAutocomplete").autocomplete("search", "");
+            }
+        });
 
-                if (!clientId) {
-                    alert("Παρακαλώ επιλέξτε έναν Εντολέα από τη λίστα");
-                    e.preventDefault();
-                    return false;
-                }
+                    // Form validation
+        $("#createForm").on("submit", function (e) {
+            var deceasedId = $("#deceasedId").val();
+            var clientId = $("#clientId").val();
+            var churchId = $("#churchId").val();
+            var burialPlaceId = $("#burialPlaceId").val();  // Προσθήκη του burialPlaceId
 
-                return true;
-            });
+            if (!deceasedId) {
+                alert("Παρακαλώ επιλέξτε έναν Αποβιώσαντα από τη λίστα");
+                e.preventDefault();
+                return false;
+            }
+
+            if (!clientId) {
+                alert("Παρακαλώ επιλέξτε έναν Εντολέα από τη λίστα");
+                e.preventDefault();
+                return false;
+            }
+
+            if (!churchId) {
+                alert("Παρακαλώ επιλέξτε μια Εκκλησία από τη λίστα");
+                e.preventDefault();
+                return false;
+            }
+
+            if (!burialPlaceId) {  // Προσθήκη του ελέγχου για το burialPlaceId
+                alert("Παρακαλώ επιλέξτε έναν Τόπο Ταφής από τη λίστα");
+                e.preventDefault();
+                return false;
+            }
+
+            return true;
+        });
         }); // Κλείσιμο του document.ready
     </script>
 }

@@ -24,7 +24,6 @@ namespace FuneralOfficeSystem.Pages.Churches
 
         public IActionResult OnGet()
         {
-            // Initialize church with default values
             Church = new Church
             {
                 IsEnabled = true,
@@ -37,6 +36,9 @@ namespace FuneralOfficeSystem.Pages.Churches
         [BindProperty]
         public Church Church { get; set; } = default!;
 
+        [BindProperty]
+        public bool IsPopup { get; set; }
+
         public async Task<IActionResult> OnPostAsync()
         {
             _logger.LogInformation("Μέθοδος OnPostAsync εκτελείται");
@@ -45,7 +47,6 @@ namespace FuneralOfficeSystem.Pages.Churches
             _logger.LogInformation($"Church Phone: {Church?.Phone}");
             _logger.LogInformation($"Church IsEnabled: {Church?.IsEnabled}");
 
-            // Έλεγχος αν το μοντέλο είναι null
             if (Church == null)
             {
                 _logger.LogWarning("Church είναι null");
@@ -53,7 +54,6 @@ namespace FuneralOfficeSystem.Pages.Churches
                 return Page();
             }
 
-            // Έλεγχος για υποχρεωτικά πεδία
             if (string.IsNullOrWhiteSpace(Church.Name))
             {
                 ModelState.AddModelError("Church.Name", "Το όνομα είναι υποχρεωτικό");
@@ -69,7 +69,6 @@ namespace FuneralOfficeSystem.Pages.Churches
                 return Page();
             }
 
-            // Initialize navigation properties
             Church.Funerals = new List<Funeral>();
 
             try
@@ -82,8 +81,13 @@ namespace FuneralOfficeSystem.Pages.Churches
 
                 if (result > 0)
                 {
-                    _logger.LogInformation("Επιτυχής αποθήκευση, ανακατεύθυνση στο Index");
-                    return RedirectToPage("./Index");
+                    if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+                    {
+                        return new JsonResult(new { success = true });
+                    }
+                    return IsPopup
+                        ? Content("<script>window.close();</script>", "text/html")
+                        : RedirectToPage("./Index");
                 }
                 else
                 {
