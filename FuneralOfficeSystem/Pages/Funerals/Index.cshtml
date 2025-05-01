@@ -10,7 +10,8 @@
 
     <div class="row mb-3">
         <div class="col-md-6">
-            <a asp-page="Create" class="btn btn-primary">Προσθήκη Νέας Κηδείας</a>
+            @* <a asp-page="Create" class="btn btn-primary">Προσθήκη Νέας Κηδείας</a> *@
+            <a asp-page="Create" asp-route-returnUrl="/Funerals/Index" class="btn btn-primary">Προσθήκη Νέας Κηδείας</a>
         </div>
         <div class="col-md-6">
             <form method="get" class="input-group">

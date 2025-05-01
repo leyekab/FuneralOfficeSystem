@@ -1,0 +1,58 @@
+﻿@page
+@model FuneralOfficeSystem.Pages.Warehouses.DetailsModel
+@{
+    ViewData["Title"] = $"Αποθήκη - {Model.Warehouse.FuneralOfficeName}";
+}
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Αποθήκη: @Model.Warehouse.FuneralOfficeName</h1>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">
+            Προσθήκη Προϊόντος
+        </button>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Προϊόν</th>
+                            <th>Κατηγορία</th>
+                            <th>Ποσότητα</th>
+                            <th>Τιμή Μονάδας</th>
+                            <th>Συνολική Αξία</th>
+                            <th>Ενέργειες</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Warehouse.Items)
+                        {
+                            <tr>
+                                <td>@item.ProductName</td>
+                                <td>@item.Category</td>
+                                <td>@item.Quantity</td>
+                                <td>@item.UnitPrice.ToString("C")</td>
+                                <td>@item.TotalValue.ToString("C")</td>
+                                <td>
+                                    <button class="btn btn-sm btn-success" onclick="addStock(@item.ProductId)">
+                                        <i class="bi bi-plus"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-warning" onclick="removeStock(@item.ProductId)">
+                                        <i class="bi bi-dash"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-info" onclick="transfer(@item.ProductId)">
+                                        <i class="bi bi-arrow-left-right"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Add modals for add/remove/transfer stock *@

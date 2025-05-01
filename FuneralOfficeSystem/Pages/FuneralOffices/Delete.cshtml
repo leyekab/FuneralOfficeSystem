@@ -2,21 +2,21 @@
 @model FuneralOfficeSystem.Pages.FuneralOffices.DeleteModel
 
 @{
-    ViewData["Title"] = "Διαγραφή Γραφείου Τελετών";
+    ViewData["Title"] = "Απενεργοποίηση Γραφείου Τελετών";
 }
 
 <div class="container">
-    <h1 class="mb-4">Διαγραφή Γραφείου Τελετών</h1>
+    <h1 class="mb-4">Απενεργοποίηση Γραφείου Τελετών</h1>
 
-    <div class="card shadow border-danger mb-4">
-        <div class="card-header bg-danger text-white">
-            <h4 class="mb-0">Επιβεβαίωση Διαγραφής</h4>
+    <div class="card shadow border-warning mb-4">
+        <div class="card-header bg-warning text-dark">
+            <h4 class="mb-0">Επιβεβαίωση Απενεργοποίησης</h4>
         </div>
         <div class="card-body">
             <div class="alert alert-warning">
                 <i class="fas fa-exclamation-triangle me-2"></i>
-                Είστε βέβαιοι ότι θέλετε να διαγράψετε το γραφείο τελετών <strong>@Model.FuneralOffice.Name</strong>;
-                <br>Η διαγραφή είναι μόνιμη και δεν μπορεί να αναιρεθεί.
+                Είστε βέβαιοι ότι θέλετε να απενεργοποιήσετε το γραφείο τελετών <strong>@Model.FuneralOffice.Name</strong>;
+                <br>Το γραφείο θα παραμείνει στη βάση δεδομένων αλλά δεν θα είναι διαθέσιμο για νέες καταχωρήσεις.
             </div>
 
             <div class="mt-4">
@@ -66,7 +66,7 @@
                 <a asp-page="./Index" class="btn btn-secondary">Ακύρωση</a>
                 <form method="post">
                     <input type="hidden" asp-for="FuneralOffice.Id" />
-                    <button type="submit" class="btn btn-danger">Διαγραφή</button>
+                    <button type="submit" class="btn btn-warning">Απενεργοποίηση</button>
                 </form>
             </div>
         </div>

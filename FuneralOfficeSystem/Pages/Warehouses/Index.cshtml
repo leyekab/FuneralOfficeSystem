@@ -1,0 +1,38 @@
+﻿@page
+@model FuneralOfficeSystem.Pages.Warehouses.IndexModel
+@{
+    ViewData["Title"] = "Αποθήκες";
+}
+
+<div class="container">
+    <h1 class="mb-4">Αποθήκες Γραφείων Τελετών</h1>
+
+    <div class="row">
+        @foreach (var warehouse in Model.Warehouses)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="card-title mb-0">@warehouse.FuneralOfficeName</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <h6 class="mb-0">Συνολικά Προϊόντα</h6>
+                                <p class="h4">@warehouse.TotalProducts</p>
+                            </div>
+                            <div class="col-6">
+                                <h6 class="mb-0">Συνολική Αξία</h6>
+                                <p class="h4">@warehouse.TotalValue.ToString("C")</p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <a asp-page="./Details" asp-route-id="@warehouse.FuneralOfficeId"
+                               class="btn btn-primary">Διαχείριση Αποθήκης</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

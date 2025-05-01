@@ -20,9 +20,29 @@ namespace FuneralOfficeSystem.Pages.Funerals
         [BindProperty]
         public Funeral Funeral { get; set; } = default!;
 
+        [BindProperty(SupportsGet = true)]
+        public int? selectedFuneralOfficeId { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public string? ReturnUrl { get; set; }
+
         public void OnGet()
         {
-            ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices.OrderBy(f => f.Name), "Id", "Name");
+            if (Funeral == null)
+            {
+                Funeral = new Funeral();
+            }
+
+            if (selectedFuneralOfficeId.HasValue)
+            {
+                Funeral.FuneralOfficeId = selectedFuneralOfficeId.Value;
+            }
+
+            ViewData["FuneralOfficeId"] = new SelectList(
+                _context.FuneralOffices.OrderBy(f => f.Name),
+                "Id",
+                "Name",
+                selectedFuneralOfficeId);
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -37,19 +57,17 @@ namespace FuneralOfficeSystem.Pages.Funerals
             _logger.LogInformation($"CeremonyTime: {Funeral.CeremonyTime}");
             _logger.LogInformation($"IsFinalBill: {Funeral.IsFinalBill}");
 
-            // Καθαρίζουμε τα validation errors για τα navigation properties
             ModelState.Remove("Funeral.Deceased");
             ModelState.Remove("Funeral.Client");
             ModelState.Remove("Funeral.Church");
             ModelState.Remove("Funeral.BurialPlace");
             ModelState.Remove("Funeral.FuneralOffice");
 
-            // Φορτώνουμε και ελέγχουμε τα σχετικά entities
             var deceased = await _context.Deceaseds.FindAsync(Funeral.DeceasedId);
             if (deceased == null)
             {
                 ModelState.AddModelError("Funeral.DeceasedId", "Ο αποβιώσας δε βρέθηκε.");
-                ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices.OrderBy(f => f.Name), "Id", "Name");
+                ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices.OrderBy(f => f.Name), "Id", "Name", Funeral.FuneralOfficeId);
                 return Page();
             }
 
@@ -57,7 +75,7 @@ namespace FuneralOfficeSystem.Pages.Funerals
             if (client == null)
             {
                 ModelState.AddModelError("Funeral.ClientId", "Ο εντολέας δε βρέθηκε.");
-                ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices.OrderBy(f => f.Name), "Id", "Name");
+                ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices.OrderBy(f => f.Name), "Id", "Name", Funeral.FuneralOfficeId);
                 return Page();
             }
 
@@ -65,7 +83,7 @@ namespace FuneralOfficeSystem.Pages.Funerals
             if (church == null)
             {
                 ModelState.AddModelError("Funeral.ChurchId", "Η εκκλησία δε βρέθηκε.");
-                ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices.OrderBy(f => f.Name), "Id", "Name");
+                ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices.OrderBy(f => f.Name), "Id", "Name", Funeral.FuneralOfficeId);
                 return Page();
             }
 
@@ -73,7 +91,7 @@ namespace FuneralOfficeSystem.Pages.Funerals
             if (burialPlace == null)
             {
                 ModelState.AddModelError("Funeral.BurialPlaceId", "Ο τόπος ταφής δε βρέθηκε.");
-                ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices.OrderBy(f => f.Name), "Id", "Name");
+                ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices.OrderBy(f => f.Name), "Id", "Name", Funeral.FuneralOfficeId);
                 return Page();
             }
 
@@ -81,11 +99,10 @@ namespace FuneralOfficeSystem.Pages.Funerals
             if (funeralOffice == null)
             {
                 ModelState.AddModelError("Funeral.FuneralOfficeId", "Το γραφείο τελετών δε βρέθηκε.");
-                ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices.OrderBy(f => f.Name), "Id", "Name");
+                ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices.OrderBy(f => f.Name), "Id", "Name", Funeral.FuneralOfficeId);
                 return Page();
             }
 
-            // Αφού έχουμε επιβεβαιώσει ότι όλα τα entities υπάρχουν, τα αναθέτουμε
             Funeral.Deceased = deceased;
             Funeral.Client = client;
             Funeral.Church = church;
@@ -105,7 +122,7 @@ namespace FuneralOfficeSystem.Pages.Funerals
                     }
                 }
 
-                ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices.OrderBy(f => f.Name), "Id", "Name");
+                ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices.OrderBy(f => f.Name), "Id", "Name", Funeral.FuneralOfficeId);
                 return Page();
             }
 
@@ -119,7 +136,7 @@ namespace FuneralOfficeSystem.Pages.Funerals
             {
                 _logger.LogError(ex, "Error saving funeral");
                 ModelState.AddModelError("", $"Προέκυψε σφάλμα κατά την αποθήκευση: {ex.Message}");
-                ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices.OrderBy(f => f.Name), "Id", "Name");
+                ViewData["FuneralOfficeId"] = new SelectList(_context.FuneralOffices.OrderBy(f => f.Name), "Id", "Name", Funeral.FuneralOfficeId);
                 return Page();
             }
         }

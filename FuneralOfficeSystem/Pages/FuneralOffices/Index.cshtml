@@ -64,32 +64,36 @@
                         <td>
                             <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Επεξεργασία</a>
                             <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Λεπτομέρειες</a>
-                            <a asp-page="/Funerals/Create" asp-route-funeralOfficeId="@item.Id" class="btn btn-sm btn-success">Νέα Κηδεία</a>
+                            @* <a asp-page="/Funerals/Create" asp-route-selectedFuneralOfficeId="@item.Id" class="btn btn-sm btn-success">Νέα Κηδεία</a> *@
+                            <a asp-page="/Funerals/Create" asp-route-selectedFuneralOfficeId="@item.Id" asp-route-returnUrl="/FuneralOffices/Index" class="btn btn-sm btn-success">Νέα Κηδεία</a>
                             <a asp-page="/Funerals/Index" asp-route-funeralOfficeId="@item.Id" class="btn btn-sm btn-warning">Αποθήκη</a>
                             <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-@item.Id">Διαγραφή</button>
                         </td>
                     </tr>
-
-                    <!-- Μοντέλο Επιβεβαίωσης Διαγραφής -->
-                    <div class="modal fade" id="deleteModal-@item.Id" tabindex="-1" aria-labelledby="deleteModalLabel-@item.Id" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="deleteModalLabel-@item.Id">Επιβεβαίωση Διαγραφής</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    Είστε βέβαιοι ότι θέλετε να διαγράψετε το γραφείο <strong>@item.Name</strong>;
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Άκυρο</button>
-                                    <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-danger">Διαγραφή</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 }
             </tbody>
         </table>
     </div>
+
+    @* Μεταφέρουμε τα modals έξω από τον πίνακα *@
+    @foreach (var item in Model.FuneralOffice)
+    {
+        <div class="modal fade" id="deleteModal-@item.Id" tabindex="-1" aria-labelledby="deleteModalLabel-@item.Id" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel-@item.Id">Επιβεβαίωση Διαγραφής</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Είστε βέβαιοι ότι θέλετε να διαγράψετε το γραφείο <strong>@item.Name</strong>;
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Άκυρο</button>
+                        <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-danger">Διαγραφή</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 </div>

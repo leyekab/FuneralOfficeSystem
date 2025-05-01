@@ -12,11 +12,13 @@ namespace FuneralOfficeSystem.Pages.FuneralOffices
 {
     public class DeleteModel : PageModel
     {
-        private readonly FuneralOfficeSystem.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly ILogger<DeleteModel> _logger;
 
-        public DeleteModel(FuneralOfficeSystem.Data.ApplicationDbContext context)
+        public DeleteModel(ApplicationDbContext context, ILogger<DeleteModel> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [BindProperty]
@@ -52,9 +54,21 @@ namespace FuneralOfficeSystem.Pages.FuneralOffices
             var funeraloffice = await _context.FuneralOffices.FindAsync(id);
             if (funeraloffice != null)
             {
-                FuneralOffice = funeraloffice;
-                _context.FuneralOffices.Remove(FuneralOffice);
-                await _context.SaveChangesAsync();
+                _logger.LogInformation($"Απενεργοποίηση γραφείου τελετών: {funeraloffice.Name} (ID: {funeraloffice.Id})");
+
+                // Αντί για διαγραφή, απενεργοποιούμε το γραφείο
+                funeraloffice.IsEnabled = false;
+
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    _logger.LogInformation($"Επιτυχής απενεργοποίηση γραφείου τελετών: {funeraloffice.Name}");
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, $"Σφάλμα κατά την απενεργοποίηση του γραφείου τελετών: {funeraloffice.Name}");
+                    throw;
+                }
             }
 
             return RedirectToPage("./Index");

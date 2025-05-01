@@ -88,30 +88,40 @@
                         <!-- Πρώτη σειρά με τα υπάρχοντα κουμπιά -->
                         <div class="row mt-3">
                             <div class="col-md-3">
-                                <button type="button" data-url="/Deceaseds/Create?funeralofficeid=3" class="btn btn-info w-100 create-btn">
+                                <button type="button" data-url="/Deceaseds/Create?funeralOfficeId=@Model.Funeral.FuneralOfficeId" class="btn btn-info w-100 create-btn">
                                     <i class="bi bi-person-plus"></i> Νέος Αποβιώσας
                                 </button>
                             </div>
                             <div class="col-md-3">
-                                <button type="button" data-url="/Clients/Create?funeralofficeid=3" class="btn btn-info w-100 create-btn">
+                                <button type="button" data-url="/Clients/Create?funeralOfficeId=@Model.Funeral.FuneralOfficeId" class="btn btn-info w-100 create-btn">
                                     <i class="bi bi-person-plus"></i> Νέος Εντολέας
                                 </button>
                             </div>
                             <div class="col-md-3">
-                                <button type="button" data-url="/Churches/Create?funeralofficeid=3" class="btn btn-info w-100 create-btn">
+                                <button type="button" data-url="/Churches/Create?funeralOfficeId=@Model.Funeral.FuneralOfficeId" class="btn btn-info w-100 create-btn">
                                     <i class="bi bi-building"></i> Νέα Εκκλησία
                                 </button>
                             </div>
                             <div class="col-md-3">
-                                <button type="button" data-url="/BurialPlaces/Create?funeralofficeid=3" class="btn btn-info w-100 create-btn">
+                                <button type="button" data-url="/BurialPlaces/Create?funeralOfficeId=@Model.Funeral.FuneralOfficeId" class="btn btn-info w-100 create-btn">
                                     <i class="bi bi-building"></i> Νέο Κοιμητήριο
                                 </button>
                             </div>
                         </div>
                         <!-- Δεύτερη σειρά με τα νέα κουμπιά -->
                         <div class="row mt-4">
-                            <div class="col-md-6">
+                            @* <div class="col-md-6">
                                 <a asp-action="Index" class="btn btn-secondary w-100">Επιστροφή στη Λίστα</a>
+                            </div> *@
+                            <div class="col-md-6">
+                                @if (!string.IsNullOrEmpty(Model.ReturnUrl))
+                                {
+                                    <a asp-page="@Model.ReturnUrl" class="btn btn-secondary w-100">Επιστροφή στη Λίστα</a>
+                                }
+                                else
+                                {
+                                    <a asp-page="./Index" class="btn btn-secondary w-100">Επιστροφή στη Λίστα</a>
+                                }
                             </div>
                             <div class="col-md-6">
                                 <input type="submit" value="Δημιουργία" class="btn btn-primary w-100" id="saveButton" />
