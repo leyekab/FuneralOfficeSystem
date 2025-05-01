@@ -24,9 +24,10 @@ namespace FuneralOfficeSystem.Models
         [Display(Name = "Ώρα Τελετής")]
         public string CeremonyTime { get; set; } = string.Empty;
 
+        [Required(ErrorMessage = "Η ημερομηνία τελετής είναι υποχρεωτική")]
         [DataType(DataType.Date)]
         [Display(Name = "Ημερομηνία Τελετής")]
-        public DateTime? FuneralDate { get; set; }
+        public DateTime FuneralDate { get; set; }
 
         [Column(TypeName = "decimal(18, 2)")]
         [Display(Name = "Συνολικό Κόστος")]

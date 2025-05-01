@@ -251,7 +251,8 @@ namespace FuneralOfficeSystem.Services
 
                 decimal productTotal = funeral.FuneralProducts.Sum(fp => fp.TotalPrice);
                 decimal serviceTotal = funeral.FuneralServices.Sum(fs => fs.Price);
-                decimal totalAmount = productTotal + serviceTotal;
+                decimal totalAmount = (funeral.FuneralProducts?.Sum(fp => fp.Price * fp.Quantity) ?? 0) +
+                     (funeral.FuneralServices?.Sum(fs => fs.Price) ?? 0);
 
                 Table summaryTable = new Table(2)
                     .SetWidth(UnitValue.CreatePercentValue(100));
@@ -313,7 +314,7 @@ namespace FuneralOfficeSystem.Services
 
             if (funeral == null)
             {
-                return null;
+                return Array.Empty<byte>(); // Επιστρέφουμε ένα κενό array αντί για null
             }
 
             using (var ms = new MemoryStream())
@@ -545,8 +546,8 @@ namespace FuneralOfficeSystem.Services
                 }
 
                 // Γενικό σύνολο
-                decimal totalAmount = funeral.FuneralProducts.Sum(fp => fp.Price * fp.Quantity) +
-                                      funeral.FuneralServices.Sum(fs => fs.Price);
+                decimal totalAmount = funeral.FuneralProducts?.DefaultIfEmpty().Sum(fp => fp?.Price * fp?.Quantity ?? 0) ?? 0 +
+                     funeral.FuneralServices?.DefaultIfEmpty().Sum(fs => fs?.Price ?? 0) ?? 0;
 
                 Table totalTable = new Table(2)
                     .SetWidth(UnitValue.CreatePercentValue(100));

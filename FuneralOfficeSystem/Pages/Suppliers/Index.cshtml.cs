@@ -30,7 +30,7 @@ namespace FuneralOfficeSystem.Pages.Suppliers
                 suppliersQuery = suppliersQuery.Where(s =>
                     s.Name.Contains(searchString) ||
                     (s.Address != null && s.Address.Contains(searchString)) ||
-                    s.Phone.Contains(searchString));
+                    (s.Phone != null && s.Phone.Contains(searchString)));
             }
 
             Supplier = await suppliersQuery.ToListAsync();

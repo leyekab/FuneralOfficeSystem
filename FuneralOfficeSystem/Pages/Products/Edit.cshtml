@@ -13,14 +13,16 @@
             <div class="card shadow">
                 <div class="card-body">
                     <form method="post" id="editForm">
-                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <input type="hidden" asp-for="Product.Id" />
+                        <input type="hidden" asp-for="Product.LastModifiedAt" />
+                        <input type="hidden" asp-for="Product.LastModifiedBy" />
 
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <span class="text-danger">*</span>
-                                    <label asp-for="Product.Name" class="control-label">Όνομα</label>
+                                    <label asp-for="Product.Name" class="control-label"></label>
                                     <input asp-for="Product.Name" class="form-control" required />
                                     <span asp-validation-for="Product.Name" class="text-danger"></span>
                                 </div>
@@ -28,36 +30,51 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <span class="text-danger">*</span>
-                                    <label asp-for="Product.Category" class="control-label">Κατηγορία</label>
-                                    <input asp-for="Product.Category" class="form-control" required />
-                                    <span asp-validation-for="Product.Category" class="text-danger"></span>
+                                    <label asp-for="Product.CategoryId" class="control-label"></label>
+                                    <select asp-for="Product.CategoryId" class="form-control"
+                                            asp-items="Model.Categories"
+                                            required
+                                            onchange="loadCategoryProperties()">
+                                        <option value="">-- Επιλέξτε Κατηγορία --</option>
+                                    </select>
+                                    <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label asp-for="Product.Description" class="control-label">Περιγραφή</label>
+                            <label asp-for="Product.Description" class="control-label"></label>
                             <textarea asp-for="Product.Description" class="form-control" rows="3"></textarea>
                             <span asp-validation-for="Product.Description" class="text-danger"></span>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label asp-for="Product.SupplierId" class="control-label">Προμηθευτής</label>
-                            <select asp-for="Product.SupplierId" class="form-control" asp-items="ViewBag.SupplierId"></select>
+                            <label asp-for="Product.SupplierId" class="control-label"></label>
+                            <select asp-for="Product.SupplierId" class="form-control" asp-items="ViewBag.SupplierId">
+                                <option value="">-- Επιλέξτε Προμηθευτή --</option>
+                            </select>
                             <span asp-validation-for="Product.SupplierId" class="text-danger"></span>
+                        </div>
+
+                        <!-- Δυναμικές ιδιότητες -->
+                        <div id="propertyFields" class="mb-3">
                         </div>
 
                         <div class="form-group form-check mb-3">
                             <input asp-for="Product.IsEnabled" class="form-check-input" />
-                            <label asp-for="Product.IsEnabled" class="form-check-label">Ενεργό</label>
+                            <label asp-for="Product.IsEnabled" class="form-check-label"></label>
                         </div>
 
                         <div class="row mt-4">
                             <div class="col-md-6">
-                                <a asp-page="./Index" class="btn btn-secondary w-100">Επιστροφή στη Λίστα</a>
+                                <a asp-page="./Index" class="btn btn-secondary w-100">
+                                    <i class="fas fa-arrow-left"></i> Επιστροφή στη Λίστα
+                                </a>
                             </div>
                             <div class="col-md-6">
-                                <input type="submit" value="Αποθήκευση" class="btn btn-primary w-100" id="saveButton" />
+                                <button type="submit" class="btn btn-primary w-100">
+                                    <i class="fas fa-save"></i> Αποθήκευση
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -71,13 +88,76 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+
+    @{
+        var propertiesJson = Json.Serialize(Model.Properties ?? new Dictionary<int, string>());
+    }
+
     <script>
-        // Προσθήκη client-side κώδικα για να επιβεβαιώσουμε ότι η φόρμα υποβάλλεται σωστά
-        $(document).ready(function () {
-            $("#editForm").on("submit", function (e) {
-                console.log("Product edit form submitted");
-                // Επιστρέφουμε true για να επιτρέψουμε την κανονική υποβολή της φόρμας
-                return true;
+        // Ορισμός των properties με ασφαλή τρόπο και σωστή σύνταξη JavaScript
+        const currentProperties = JSON.parse('@Html.Raw(propertiesJson)');
+
+        function loadCategoryProperties() {
+            const categoryId = $("#Product_CategoryId").val();
+            if (!categoryId) {
+                $("#propertyFields").empty();
+                return;
+            }
+
+            $.get(`/api/Categories/${categoryId}/Properties`, function(properties) {
+                const container = $("#propertyFields");
+                container.empty();
+
+                properties.forEach(property => {
+                    const fieldId = `property_${property.id}`;
+                    const isRequired = property.isRequired ? 'required' : '';
+                    const existingValue = (currentProperties[property.id] || '').replace(/"/g, '&quot;');
+
+                    let input;
+                    switch(property.dataType.toLowerCase()) {
+                        case 'number':
+                            input = `<input type="number" id="${fieldId}" name="Properties[${property.id}]"
+                                    value="${existingValue}" class="form-control" ${isRequired} />`;
+                            break;
+                        case 'boolean':
+                            const checked = existingValue.toLowerCase() === 'true' ? 'checked' : '';
+                            input = `<div class="form-check">
+                                        <input type="checkbox" id="${fieldId}" name="Properties[${property.id}]"
+                                               ${checked} class="form-check-input" />
+                                    </div>`;
+                            break;
+                        default: // string
+                            input = `<input type="text" id="${fieldId}" name="Properties[${property.id}]"
+                                    value="${existingValue}" class="form-control" ${isRequired} />`;
+                    }
+
+                    const fieldHtml = `
+                        <div class="form-group mb-3">
+                            ${property.isRequired ? '<span class="text-danger">*</span>' : ''}
+                            <label for="${fieldId}">${property.name}</label>
+                            ${input}
+                            <div class="invalid-feedback">
+                                Το πεδίο είναι υποχρεωτικό
+                            </div>
+                        </div>`;
+
+                    container.append(fieldHtml);
+                });
+            });
+        }
+
+        $(document).ready(function() {
+            if ($("#Product_CategoryId").val()) {
+                loadCategoryProperties();
+            }
+
+            $("#editForm").on("submit", function(e) {
+                const form = $(this);
+                if (!form[0].checkValidity()) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                form.addClass('was-validated');
             });
         });
     </script>

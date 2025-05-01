@@ -23,14 +23,16 @@ namespace FuneralOfficeSystem.Pages.Services
 
         public async Task OnGetAsync(string searchString)
         {
-            IQueryable<Service> servicesQuery = _context.Services.Include(s => s.Supplier);
+            IQueryable<Service> servicesQuery = _context.Services
+                .Include(s => s.Supplier)
+                .Include(s => s.Category);  // Προσθήκη του Include για το Category
 
             if (!string.IsNullOrEmpty(searchString))
             {
                 servicesQuery = servicesQuery.Where(s =>
                     s.Name.Contains(searchString) ||
                     (s.Description != null && s.Description.Contains(searchString)) ||
-                    s.Category.Contains(searchString) ||
+                    s.Category.Name.Contains(searchString) ||
                     (s.Supplier != null && s.Supplier.Name.Contains(searchString)));
             }
 

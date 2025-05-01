@@ -47,7 +47,7 @@ namespace FuneralOfficeSystem.Pages.Warehouses
                     {
                         ProductId = i.ProductId,
                         ProductName = i.Product.Name,
-                        Category = i.Product.Category,
+                        Category = i.Product.Category.Name,
                         Quantity = i.Quantity,
                         UnitPrice = i.UnitPrice,
                         TotalValue = i.TotalValue,

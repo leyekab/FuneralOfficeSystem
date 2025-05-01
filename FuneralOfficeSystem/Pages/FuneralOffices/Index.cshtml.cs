@@ -28,9 +28,9 @@ namespace FuneralOfficeSystem.Pages.FuneralOffices
             if (!string.IsNullOrEmpty(searchString))
             {
                 funeralOfficesQuery = funeralOfficesQuery.Where(s =>
-                    s.Name.Contains(searchString) ||
-                    s.Address.Contains(searchString) ||
-                    s.Phone.Contains(searchString));
+                    (s.Name != null && s.Name.Contains(searchString)) ||
+                    (s.Address != null && s.Address.Contains(searchString)) ||
+                    (s.Phone != null && s.Phone.Contains(searchString)));
             }
 
             FuneralOffice = await funeralOfficesQuery.ToListAsync();

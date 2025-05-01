@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FuneralOfficeSystem.Models
 {
@@ -17,20 +17,25 @@ namespace FuneralOfficeSystem.Models
         [Display(Name = "Περιγραφή")]
         public string? Description { get; set; }
 
-        [Required(ErrorMessage = "Η κατηγορία είναι υποχρεωτική")]
-        [StringLength(50)]
-        [Display(Name = "Κατηγορία")]
-        public string Category { get; set; } = string.Empty;
-
         [Display(Name = "Ενεργό")]
-        [DefaultValue(true)]
         public bool IsEnabled { get; set; } = true;
 
-        // Navigation properties
+        [Display(Name = "Κατηγορία")]
+        public int CategoryId { get; set; }
+        public virtual ProductCategory Category { get; set; } = null!;
+
         [Display(Name = "Προμηθευτής")]
         public int? SupplierId { get; set; }
-
         public virtual Supplier? Supplier { get; set; }
+
+        [Display(Name = "Τελευταία Τροποποίηση")]
+        public DateTime? LastModifiedAt { get; set; }
+
+        [Display(Name = "Τροποποιήθηκε από")]
+        [StringLength(256)]
+        public string? LastModifiedBy { get; set; }
+
+        public virtual ICollection<ProductProperty> Properties { get; set; } = new List<ProductProperty>();
         public virtual ICollection<Inventory> Inventories { get; set; } = new List<Inventory>();
         public virtual ICollection<FuneralProduct> FuneralProducts { get; set; } = new List<FuneralProduct>();
     }

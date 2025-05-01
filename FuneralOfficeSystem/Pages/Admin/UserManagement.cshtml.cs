@@ -20,15 +20,16 @@ namespace FuneralOfficeSystem.Pages.Admin
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            SearchString = string.Empty; // Αρχικοποίηση του SearchString
         }
 
         public class UserViewModel
         {
-            public string Id { get; set; }
-            public string UserName { get; set; }
-            public string Email { get; set; }
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
+            public required string Id { get; set; } // Προσθήκη required
+            public required string UserName { get; set; }
+            public string? Email { get; set; }
+            public required string FirstName { get; set; }
+            public required string LastName { get; set; }
             public List<string> Roles { get; set; } = new List<string>();
         }
 
@@ -38,21 +39,21 @@ namespace FuneralOfficeSystem.Pages.Admin
         public int TotalPages { get; set; }
         public string SearchString { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int pageNumber = 1, string searchString = null)
+        public async Task<IActionResult> OnGetAsync(int pageNumber = 1, string? searchString = null)
         {
-            SearchString = searchString;
+            SearchString = searchString ?? string.Empty;
             CurrentPage = pageNumber < 1 ? 1 : pageNumber;
 
             var usersQuery = _userManager.Users.AsQueryable();
 
             // Εφαρμογή φίλτρου αναζήτησης αν υπάρχει
-            if (!string.IsNullOrEmpty(searchString))
+            if (!string.IsNullOrEmpty(SearchString))
             {
                 usersQuery = usersQuery.Where(u =>
-                    u.UserName.Contains(searchString) ||
-                    u.Email.Contains(searchString) ||
-                    u.FirstName.Contains(searchString) ||
-                    u.LastName.Contains(searchString));
+                    (u.UserName != null && u.UserName.Contains(SearchString)) ||
+                    (u.Email != null && u.Email.Contains(SearchString)) ||
+                    (u.FirstName != null && u.FirstName.Contains(SearchString)) ||
+                    (u.LastName != null && u.LastName.Contains(SearchString)));
             }
 
             var totalUsers = await usersQuery.CountAsync();
@@ -71,11 +72,11 @@ namespace FuneralOfficeSystem.Pages.Admin
 
                 Users.Add(new UserViewModel
                 {
-                    Id = user.Id,
-                    UserName = user.UserName,
+                    Id = user.Id ?? string.Empty, // Null check για το Id
+                    UserName = user.UserName ?? string.Empty,
                     Email = user.Email,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
+                    FirstName = user.FirstName ?? string.Empty,
+                    LastName = user.LastName ?? string.Empty,
                     Roles = roles.ToList()
                 });
             }

@@ -53,7 +53,7 @@ namespace FuneralOfficeSystem.Pages.Services
             _logger.LogInformation("Μέθοδος OnPostAsync της Edit εκτελείται");
             _logger.LogInformation($"Service ID: {Service?.Id}");
             _logger.LogInformation($"Service Name: {Service?.Name ?? "NULL"}");
-            _logger.LogInformation($"Service Category: {Service?.Category ?? "NULL"}");
+            _logger.LogInformation($"Service Category: {Service?.Category?.Name ?? "NULL"}");
             _logger.LogInformation($"Service Description: {Service?.Description ?? "NULL"}");
             _logger.LogInformation($"Service SupplierId: {Service?.SupplierId}");
             _logger.LogInformation($"Service IsEnabled: {Service?.IsEnabled}");
@@ -65,11 +65,23 @@ namespace FuneralOfficeSystem.Pages.Services
                 return Page();
             }
 
+            if (Service == null)
+            {
+                _logger.LogError("Το Service είναι null");
+                return NotFound();
+            }
+
             try
             {
                 _logger.LogInformation("Ενημέρωση υπηρεσίας");
-                _context.Attach(Service).State = EntityState.Modified;
+                var serviceToUpdate = await _context.Services.FindAsync(Service.Id);
 
+                if (serviceToUpdate == null)
+                {
+                    return NotFound();
+                }
+
+                _context.Entry(serviceToUpdate).CurrentValues.SetValues(Service);
                 await _context.SaveChangesAsync();
                 _logger.LogInformation("Η υπηρεσία ενημερώθηκε με επιτυχία");
 

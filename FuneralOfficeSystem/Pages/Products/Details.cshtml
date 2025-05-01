@@ -1,77 +1,135 @@
-﻿@page
+﻿@page "{id:int}"
 @model FuneralOfficeSystem.Pages.Products.DetailsModel
-
 @{
     ViewData["Title"] = "Λεπτομέρειες Προϊόντος";
 }
 
 <div class="container">
-    <h1 class="text-center mb-4">Λεπτομέρειες Προϊόντος</h1>
-
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2 class="mb-0">Λεπτομέρειες Προϊόντος</h2>
+                        <span class="badge @(Model.Product.IsEnabled ? "bg-success" : "bg-danger")">
+                            @(Model.Product.IsEnabled ? "Ενεργό" : "Ανενεργό")
+                        </span>
+                    </div>
+                </div>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-borderless">
-                            <tbody>
-                                <tr>
-                                    <th style="width: 30%;">
-                                        Όνομα
-                                    </th>
-                                    <td>
-                                        @Html.DisplayFor(model => model.Product.Name)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        Κατηγορία
-                                    </th>
-                                    <td>
-                                        @Html.DisplayFor(model => model.Product.Category)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        Περιγραφή
-                                    </th>
-                                    <td>
-                                        @Html.DisplayFor(model => model.Product.Description)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        Προμηθευτής
-                                    </th>
-                                    <td>
-                                        @Html.DisplayFor(model => model.Product.Supplier.Name)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        Ενεργό
-                                    </th>
-                                    <td>
-                                        @if (Model.Product.IsEnabled)
-                                        {
-                                            <span class="badge bg-success">Ναι</span>
-                                        }
-                                        else
-                                        {
-                                            <span class="badge bg-danger">Όχι</span>
-                                        }
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="row mb-3">
+                        <div class="col-md-4 fw-bold">@Html.DisplayNameFor(model => model.Product.Name)</div>
+                        <div class="col-md-8">@Html.DisplayFor(model => model.Product.Name)</div>
                     </div>
 
-                    <div class="row mt-4">
-                        <div class="col-md-6">
-                            <a asp-page="./Index" class="btn btn-secondary w-100">Επιστροφή στη Λίστα</a>
+                    <div class="row mb-3">
+                        <div class="col-md-4 fw-bold">@Html.DisplayNameFor(model => model.Product.Category)</div>
+                        <div class="col-md-8">@(Model.Product.Category?.Name ?? "Δεν έχει οριστεί")</div>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(Model.Product.Description))
+                    {
+                        <div class="row mb-3">
+                            <div class="col-md-4 fw-bold">@Html.DisplayNameFor(model => model.Product.Description)</div>
+                            <div class="col-md-8">@Html.DisplayFor(model => model.Product.Description)</div>
                         </div>
-                        <div class="col-md-6">
-                            <a asp-page="./Edit" asp-route-id="@Model.Product.Id" class="btn btn-primary w-100">Επεξεργασία</a>
+                    }
+
+                    <div class="row mb-3">
+                        <div class="col-md-4 fw-bold">@Html.DisplayNameFor(model => model.Product.Supplier)</div>
+                        <div class="col-md-8">@(Model.Product.Supplier?.Name ?? "Δεν έχει οριστεί")</div>
+                    </div>
+
+                    @if (Model.Product.Properties.Any())
+                    {
+                        <div class="row mb-3">
+                            <div class="col-md-4 fw-bold">Ιδιότητες</div>
+                            <div class="col-md-8">
+                                <div class="list-group">
+                                    @foreach (var prop in Model.Product.Properties)
+                                    {
+                                        <div class="list-group-item">
+                                            <strong>@prop.CategoryProperty.Name:</strong> @prop.Value
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    @if (Model.Product.Inventories.Any())
+                    {
+                        <div class="row mb-3">
+                            <div class="col-md-4 fw-bold">Αποθέματα</div>
+                            <div class="col-md-8">
+                                <div class="list-group">
+                                    @foreach (var inventory in Model.Product.Inventories)
+                                    {
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span>@inventory.FuneralOffice.Name</span>
+                                            <span class="badge bg-primary rounded-pill">@inventory.Quantity</span>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    @if (Model.Product.FuneralProducts.Any())
+                    {
+                        <div class="row mb-3">
+                            <div class="col-md-4 fw-bold">Χρήση σε Κηδείες</div>
+                            <div class="col-md-8">
+                                <div class="list-group">
+                                    @foreach (var fp in Model.Product.FuneralProducts.OrderByDescending(fp => fp.Funeral.FuneralDate))
+                                    {
+                                        <div class="list-group-item">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h6 class="mb-1">
+                                                    <a asp-page="/Funerals/Details" asp-route-id="@fp.FuneralId">
+                                                        Κηδεία #@fp.FuneralId - @fp.Funeral.Deceased.FullName
+                                                    </a>
+                                                </h6>
+                                                <small>@(fp.Funeral.FuneralDate.ToString("dd/MM/yyyy") ?? "-")</small>
+                                            </div>
+                                            <small>Ποσότητα: @fp.Quantity</small>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    @if (Model.Product.LastModifiedAt.HasValue)
+                    {
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <div class="alert alert-info">
+                                    <small>
+                                        Τελευταία τροποποίηση:
+                                        @Model.Product.LastModifiedAt.Value.ToLocalTime().ToString("dd/MM/yyyy HH:mm:ss")
+                                        από τον χρήστη @(string.IsNullOrEmpty(Model.Product.LastModifiedBy) ? "System" : Model.Product.LastModifiedBy)
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="row mt-4">
+                        <div class="col-md-4">
+                            <a asp-page="./Index" class="btn btn-secondary w-100">
+                                <i class="fas fa-arrow-left"></i> Επιστροφή
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a asp-page="./Edit" asp-route-id="@Model.Product.Id" class="btn btn-primary w-100">
+                                <i class="fas fa-edit"></i> Επεξεργασία
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a asp-page="./Delete" asp-route-id="@Model.Product.Id" class="btn btn-warning w-100">
+                                <i class="fas fa-power-off"></i> Απενεργοποίηση
+                            </a>
                         </div>
                     </div>
                 </div>

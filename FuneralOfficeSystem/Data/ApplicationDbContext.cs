@@ -1,6 +1,7 @@
 ﻿using FuneralOfficeSystem.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace FuneralOfficeSystem.Data
 {
@@ -12,7 +13,6 @@ namespace FuneralOfficeSystem.Data
         }
 
         public DbSet<FuneralOffice> FuneralOffices { get; set; }
-        public DbSet<Product> Products { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Deceased> Deceaseds { get; set; }
         public DbSet<Client> Clients { get; set; }
@@ -24,13 +24,17 @@ namespace FuneralOfficeSystem.Data
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<BurialPlace> BurialPlaces { get; set; }
         public DbSet<Church> Churches { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<CategoryProperty> CategoryProperties { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductProperty> ProductProperties { get; set; }
+        public DbSet<ServiceCategory> ServiceCategories { get; set; }
+        public DbSet<ServiceCategoryProperty> ServiceCategoryProperties { get; set; }
+        public DbSet<ServiceProperty> ServiceProperties { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-
-            // SQLite δεν υποστηρίζει κάποιους τύπους που χρησιμοποιεί το EF Core από προεπιλογή
-            // Προσαρμόζουμε τους τύπους δεδομένων για να λειτουργούν με SQLite
 
             // Relationships/constraints configuration
             builder.Entity<FuneralProduct>()
@@ -128,6 +132,72 @@ namespace FuneralOfficeSystem.Data
                 .WithMany()
                 .HasForeignKey(it => it.DestinationFuneralOfficeId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            // Ρύθμιση για την ιεραρχική δομή κατηγοριών
+            builder.Entity<ProductCategory>()
+                .HasOne(c => c.ParentCategory)
+                .WithMany(c => c.SubCategories)
+                .HasForeignKey(c => c.ParentCategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Ρύθμιση σχέσεων για το Product
+            builder.Entity<Product>()
+                .HasOne(p => p.Category)
+                .WithMany(c => c.Products)
+                .HasForeignKey(p => p.CategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Product>()
+                .HasMany(p => p.Inventories)
+                .WithOne(i => i.Product)
+                .HasForeignKey(i => i.ProductId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Product>()
+                .HasMany(p => p.FuneralProducts)
+                .WithOne(fp => fp.Product)
+                .HasForeignKey(fp => fp.ProductId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Product>()
+                .HasMany(p => p.Properties)
+                .WithOne(pp => pp.Product)
+                .HasForeignKey(pp => pp.ProductId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Ρύθμιση σχέσεων για CategoryProperty
+            builder.Entity<CategoryProperty>()
+                .HasOne(cp => cp.Category)
+                .WithMany(c => c.Properties)
+                .HasForeignKey(cp => cp.CategoryId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Ρύθμιση για την ιεραρχική δομή κατηγοριών υπηρεσιών
+            builder.Entity<ServiceCategory>()
+                .HasOne(c => c.ParentCategory)
+                .WithMany(c => c.SubCategories)
+                .HasForeignKey(c => c.ParentCategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Ρύθμιση σχέσεων για την Υπηρεσία
+            builder.Entity<Service>()
+                .HasOne(s => s.Category)
+                .WithMany(c => c.Services)
+                .HasForeignKey(s => s.CategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Service>()
+                .HasMany(s => s.Properties)
+                .WithOne(sp => sp.Service)
+                .HasForeignKey(sp => sp.ServiceId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Ρύθμιση σχέσεων για τις ιδιότητες κατηγορίας
+            builder.Entity<ServiceCategoryProperty>()
+                .HasOne(cp => cp.Category)
+                .WithMany(c => c.Properties)
+                .HasForeignKey(cp => cp.CategoryId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

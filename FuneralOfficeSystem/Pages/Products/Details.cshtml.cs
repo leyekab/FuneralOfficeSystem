@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -13,10 +11,10 @@ namespace FuneralOfficeSystem.Pages.Products
 {
     public class DetailsModel : PageModel
     {
-        private readonly FuneralOfficeSystem.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
         private readonly ILogger<DetailsModel> _logger;
 
-        public DetailsModel(FuneralOfficeSystem.Data.ApplicationDbContext context, ILogger<DetailsModel> logger)
+        public DetailsModel(ApplicationDbContext context, ILogger<DetailsModel> logger)
         {
             _context = context;
             _logger = logger;
@@ -28,23 +26,37 @@ namespace FuneralOfficeSystem.Pages.Products
         {
             if (id == null)
             {
-                _logger.LogWarning("Προσπάθεια προβολής λεπτομερειών χωρίς καθορισμένο ID");
+                _logger.LogWarning("Προσπάθεια προβολής προϊόντος χωρίς ID");
                 return NotFound();
             }
 
-            var product = await _context.Products
-                .Include(p => p.Supplier)
-                .Include(p => p.Inventories)
-                .FirstOrDefaultAsync(m => m.Id == id);
-
-            if (product == null)
+            try
             {
-                _logger.LogWarning($"Δεν βρέθηκε προϊόν με ID {id}");
-                return NotFound();
-            }
+                var product = await _context.Products
+                    .Include(p => p.Category)
+                    .Include(p => p.Supplier)
+                    .Include(p => p.Properties)
+                        .ThenInclude(pp => pp.CategoryProperty)
+                    .Include(p => p.Inventories)
+                    .Include(p => p.FuneralProducts)
+                        .ThenInclude(fp => fp.Funeral)
+                    .FirstOrDefaultAsync(m => m.Id == id);
 
-            Product = product;
-            return Page();
+                if (product == null)
+                {
+                    _logger.LogWarning($"Προϊόν με ID {id} δε βρέθηκε");
+                    return NotFound();
+                }
+
+                Product = product;
+                return Page();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Σφάλμα κατά την ανάκτηση του προϊόντος με ID {id}");
+                TempData["ErrorMessage"] = "Προέκυψε σφάλμα κατά την ανάκτηση του προϊόντος.";
+                return RedirectToPage("./Index");
+            }
         }
     }
 }

@@ -31,19 +31,18 @@ namespace FuneralOfficeSystem.Pages.Services
         [BindProperty]
         public Service Service { get; set; } = default!;
 
-        // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             _logger.LogInformation("Μέθοδος OnPostAsync εκτελείται");
             _logger.LogInformation($"Service Name: {Service?.Name ?? "NULL"}");
-            _logger.LogInformation($"Service Category: {Service?.Category ?? "NULL"}");
+            _logger.LogInformation($"Service Category: {Service?.Category?.Name ?? "NULL"}");
             _logger.LogInformation($"Service Description: {Service?.Description ?? "NULL"}");
             _logger.LogInformation($"Service SupplierId: {Service?.SupplierId}");
             _logger.LogInformation($"Service IsEnabled: {Service?.IsEnabled}");
 
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || Service == null) // Προσθήκη ελέγχου null
             {
-                _logger.LogWarning("Το ModelState δεν είναι έγκυρο");
+                _logger.LogWarning("Το ModelState δεν είναι έγκυρο ή το Service είναι null");
                 ViewData["SupplierId"] = new SelectList(_context.Suppliers.Where(s => s.SupplierType != SupplierType.Products), "Id", "Name");
                 return Page();
             }
@@ -51,7 +50,7 @@ namespace FuneralOfficeSystem.Pages.Services
             try
             {
                 _logger.LogInformation("Προσθήκη νέας υπηρεσίας");
-                _context.Services.Add(Service);
+                _context.Services.Add(Service); // Τώρα είμαστε σίγουροι ότι το Service δεν είναι null
                 await _context.SaveChangesAsync();
                 _logger.LogInformation("Η υπηρεσία αποθηκεύτηκε με επιτυχία");
 

@@ -49,7 +49,17 @@
                                         Προμηθευτής
                                     </th>
                                     <td>
-                                        @Html.DisplayFor(model => model.Service.Supplier.Name)
+                                        @{
+                                            var supplier = Model?.Service?.Supplier;
+                                        }
+                                        @if (supplier != null)
+                                        {
+                                            @Html.DisplayFor(model => supplier.Name)
+                                        }
+                                        else
+                                        {
+                                            <span>Δεν έχει οριστεί</span>
+                                        }
                                     </td>
                                 </tr>
                                 <tr>
@@ -57,13 +67,20 @@
                                         Ενεργό
                                     </th>
                                     <td>
-                                        @if (Model.Service.IsEnabled)
+                                        @if (Model?.Service != null)
                                         {
-                                            <span class="badge bg-success">Ναι</span>
+                                            @if (Model.Service.IsEnabled)
+                                            {
+                                                <span class="badge bg-success">Ναι</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-danger">Όχι</span>
+                                            }
                                         }
                                         else
                                         {
-                                            <span class="badge bg-danger">Όχι</span>
+                                            <span>Δεν έχει οριστεί</span>
                                         }
                                     </td>
                                 </tr>

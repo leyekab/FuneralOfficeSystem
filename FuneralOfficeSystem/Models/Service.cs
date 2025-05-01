@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FuneralOfficeSystem.Models
 {
@@ -17,20 +18,27 @@ namespace FuneralOfficeSystem.Models
         [Display(Name = "Περιγραφή")]
         public string? Description { get; set; }
 
-        [Required(ErrorMessage = "Η κατηγορία είναι υποχρεωτική")]
-        [StringLength(50)]
-        [Display(Name = "Κατηγορία")]
-        public string Category { get; set; } = string.Empty;
-
         [Display(Name = "Ενεργό")]
         [DefaultValue(true)]
         public bool IsEnabled { get; set; } = true;
 
-        // Navigation properties
-        [Display(Name = "Προμηθευτής")]
-        public int? SupplierId { get; set; }
+        [Display(Name = "Τιμή")]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal Price { get; set; }
 
+        [Display(Name = "Έκπτωση %")]
+        [Range(0, 100)]
+        public decimal? DiscountPercentage { get; set; }
+
+        // Navigation properties
+        public int CategoryId { get; set; }
+        public virtual ServiceCategory Category { get; set; } = null!;
+
+        public int? SupplierId { get; set; }
         public virtual Supplier? Supplier { get; set; }
+
+        // Δυναμικές ιδιότητες υπηρεσίας
+        public virtual ICollection<ServiceProperty> Properties { get; set; } = new List<ServiceProperty>();
         public virtual ICollection<FuneralService> FuneralServices { get; set; } = new List<FuneralService>();
     }
 }

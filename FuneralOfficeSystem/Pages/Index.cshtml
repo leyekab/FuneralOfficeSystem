@@ -212,7 +212,7 @@
                             @foreach (var funeral in Model.RecentFunerals)
                             {
                                 <tr>
-                                    <td>@(funeral.FuneralDate?.ToString("dd/MM/yyyy") ?? "-")</td>
+                                    <td>@(funeral.FuneralDate.ToString("dd/MM/yyyy") ?? "-")</td>
                                     <td>@funeral.Deceased.FullName</td>
                                     <td>@funeral.Client.FullName</td>
                                     <td>@funeral.Church</td>

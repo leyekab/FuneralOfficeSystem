@@ -1,83 +1,86 @@
-﻿@page
+﻿@page "{id:int}"
 @model FuneralOfficeSystem.Pages.Products.DeleteModel
 @{
     ViewData["Title"] = "Απενεργοποίηση Προϊόντος";
 }
 
 <div class="container">
-    <h1 class="text-center mb-4">Απενεργοποίηση Προϊόντος</h1>
-
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card shadow">
+                <div class="card-header bg-warning text-dark">
+                    <h2 class="text-center mb-0">Απενεργοποίηση Προϊόντος</h2>
+                </div>
                 <div class="card-body">
                     <div class="alert alert-warning">
-                        <h4 class="alert-heading">Είστε βέβαιοι ότι θέλετε να απενεργοποιήσετε αυτό το προϊόν;</h4>
-                        <p>Το προϊόν θα οριστεί ως ανενεργό και δεν θα εμφανίζεται στις κύριες λίστες.</p>
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Είστε βέβαιοι ότι θέλετε να απενεργοποιήσετε το προϊόν;
                     </div>
 
-                    <div class="table-responsive mt-4">
-                        <table class="table table-borderless">
-                            <tbody>
-                                <tr>
-                                    <th style="width: 30%;">
-                                        Όνομα
-                                    </th>
-                                    <td>
-                                        @Html.DisplayFor(model => model.Product.Name)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        Κατηγορία
-                                    </th>
-                                    <td>
-                                        @Html.DisplayFor(model => model.Product.Category)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        Περιγραφή
-                                    </th>
-                                    <td>
-                                        @Html.DisplayFor(model => model.Product.Description)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        Προμηθευτής
-                                    </th>
-                                    <td>
-                                        @Html.DisplayFor(model => model.Product.Supplier.Name)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        Κατάσταση
-                                    </th>
-                                    <td>
-                                        @if (Model.Product.IsEnabled)
-                                        {
-                                            <span class="badge bg-success">Ενεργό</span>
-                                        }
-                                        else
-                                        {
-                                            <span class="badge bg-danger">Ανενεργό</span>
-                                        }
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="row mb-3">
+                        <div class="col-md-4 fw-bold">@Html.DisplayNameFor(model => model.Product.Name)</div>
+                        <div class="col-md-8">@Html.DisplayFor(model => model.Product.Name)</div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4 fw-bold">@Html.DisplayNameFor(model => model.Product.Category)</div>
+                        <div class="col-md-8">@(Model.Product.Category?.Name ?? "Δεν έχει οριστεί")</div>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(Model.Product.Description))
+                    {
+                        <div class="row mb-3">
+                            <div class="col-md-4 fw-bold">@Html.DisplayNameFor(model => model.Product.Description)</div>
+                            <div class="col-md-8">@Html.DisplayFor(model => model.Product.Description)</div>
+                        </div>
+                    }
+
+                    <div class="row mb-3">
+                        <div class="col-md-4 fw-bold">@Html.DisplayNameFor(model => model.Product.Supplier)</div>
+                        <div class="col-md-8">@(Model.Product.Supplier?.Name ?? "Δεν έχει οριστεί")</div>
+                    </div>
+
+                    @if (Model.Product.Properties.Any())
+                    {
+                        <div class="row mb-3">
+                            <div class="col-md-4 fw-bold">Ιδιότητες</div>
+                            <div class="col-md-8">
+                                @foreach (var prop in Model.Product.Properties)
+                                {
+                                    <div>
+                                        <strong>@prop.CategoryProperty.Name:</strong> @prop.Value
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+
+                    <div class="row mb-3">
+                        <div class="col-md-4 fw-bold">Τρέχουσα Κατάσταση</div>
+                        <div class="col-md-8">
+                            @if (Model.Product.IsEnabled)
+                            {
+                                <span class="badge bg-success">Ενεργό</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Ανενεργό</span>
+                            }
+                        </div>
                     </div>
 
                     <form method="post" class="mt-4">
                         <input type="hidden" asp-for="Product.Id" />
                         <div class="row">
                             <div class="col-md-6">
-                                <a asp-page="./Index" class="btn btn-secondary w-100">Επιστροφή στη Λίστα</a>
+                                <a asp-page="./Index" class="btn btn-secondary w-100">
+                                    <i class="fas fa-arrow-left"></i> Επιστροφή
+                                </a>
                             </div>
                             <div class="col-md-6">
-                                <input type="submit" value="Απενεργοποίηση" class="btn btn-warning w-100" />
+                                <button type="submit" class="btn btn-warning w-100">
+                                    <i class="fas fa-power-off"></i> Απενεργοποίηση
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -86,3 +89,16 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        // Επιβεβαίωση απενεργοποίησης
+        $(document).ready(function() {
+            $("form").on("submit", function(e) {
+                if (!confirm("Είστε σίγουροι ότι θέλετε να απενεργοποιήσετε αυτό το προϊόν;")) {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+}

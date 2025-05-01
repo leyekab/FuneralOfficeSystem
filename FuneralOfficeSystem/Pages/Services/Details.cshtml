@@ -20,7 +20,14 @@
                                         Όνομα
                                     </th>
                                     <td>
-                                        @Html.DisplayFor(model => model.Service.Name)
+                                        @if (Model?.Service != null)
+                                        {
+                                            @Html.DisplayFor(model => model.Service.Name)
+                                        }
+                                        else
+                                        {
+                                            <span>Δεν έχει οριστεί</span>
+                                        }
                                     </td>
                                 </tr>
                                 <tr>
@@ -28,7 +35,14 @@
                                         Κατηγορία
                                     </th>
                                     <td>
-                                        @Html.DisplayFor(model => model.Service.Category)
+                                        @if (Model?.Service != null)
+                                        {
+                                            @Html.DisplayFor(model => model.Service.Category)
+                                        }
+                                        else
+                                        {
+                                            <span>Δεν έχει οριστεί</span>
+                                        }
                                     </td>
                                 </tr>
                                 <tr>
@@ -36,7 +50,14 @@
                                         Περιγραφή
                                     </th>
                                     <td>
-                                        @Html.DisplayFor(model => model.Service.Description)
+                                        @if (Model?.Service != null)
+                                        {
+                                            @Html.DisplayFor(model => model.Service.Description)
+                                        }
+                                        else
+                                        {
+                                            <span>Δεν έχει οριστεί</span>
+                                        }
                                     </td>
                                 </tr>
                                 <tr>
@@ -44,7 +65,15 @@
                                         Προμηθευτής
                                     </th>
                                     <td>
-                                        @Html.DisplayFor(model => model.Service.Supplier.Name)
+                                        @if (Model?.Service?.Supplier != null)
+                                        {
+                                            var supplier = Model.Service.Supplier;
+                                            @Html.DisplayFor(m => supplier.Name)
+                                        }
+                                        else
+                                        {
+                                            <span>Δεν έχει οριστεί</span>
+                                        }
                                     </td>
                                 </tr>
                                 <tr>
@@ -52,13 +81,20 @@
                                         Ενεργό
                                     </th>
                                     <td>
-                                        @if (Model.Service.IsEnabled)
+                                        @if (Model?.Service != null)
                                         {
-                                            <span class="badge bg-success">Ναι</span>
+                                            @if (Model.Service.IsEnabled)
+                                            {
+                                                <span class="badge bg-success">Ναι</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-danger">Όχι</span>
+                                            }
                                         }
                                         else
                                         {
-                                            <span class="badge bg-danger">Όχι</span>
+                                            <span>Δεν έχει οριστεί</span>
                                         }
                                     </td>
                                 </tr>
@@ -71,7 +107,10 @@
                             <a asp-page="./Index" class="btn btn-secondary w-100">Επιστροφή στη Λίστα</a>
                         </div>
                         <div class="col-md-6">
-                            <a asp-page="./Edit" asp-route-id="@Model.Service.Id" class="btn btn-primary w-100">Επεξεργασία</a>
+                            @if (Model?.Service != null)
+                            {
+                                <a asp-page="./Edit" asp-route-id="@Model.Service.Id" class="btn btn-primary w-100">Επεξεργασία</a>
+                            }
                         </div>
                     </div>
                 </div>

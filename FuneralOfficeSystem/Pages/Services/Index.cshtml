@@ -60,7 +60,14 @@
                                             @Html.DisplayFor(modelItem => item.Category)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Supplier.Name)
+                                            @if (item.Supplier != null)
+                                            {
+                                                @Html.DisplayFor(modelItem => item.Supplier.Name)
+                                            }
+                                            else
+                                            {
+                                                <span>Δεν έχει οριστεί</span>
+                                            }
                                         </td>
                                         <td>
                                             @if (item.IsEnabled)
